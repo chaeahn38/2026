@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bézier Editor</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #ffffff;
+        min-height: 100vh;
+        font-family: "Helvetica", "Arial", sans-serif;
+        overflow: hidden;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      header {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
+      }
+
+      header p {
+        margin-bottom: 0.2rem;
+        font-size: 14px;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 10;
+      }
+
+      footer p {
+        margin-bottom: 0.2rem;
+        font-size: 14px;
+      }
+
+      .editor-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      svg#canvas {
+        background: #ffffff;
+        cursor: crosshair;
+      }
+
+      /* 글리프 채우기 */
+      .glyph-fill {
+        fill: #000000;
+        fill-rule: evenodd;
+      }
+
+      /* 핸들 연결선 */
+      .handle-line {
+        stroke: #999999;
+        stroke-width: 1;
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      /* 온커브 포인트 (정사각형) */
+      .point-oncurve {
+        fill: #999999;
+        stroke: #666666;
+        stroke-width: 1.5;
+        cursor: move;
+      }
+
+      .point-oncurve:hover {
+        fill: #666666;
+        stroke: #999999;
+      }
+
+      /* 오프커브 포인트 (원형) */
+      .point-offcurve {
+        fill: transparent;
+        stroke: #999999;
+        stroke-width: 1.5;
+        cursor: move;
+      }
+
+      .point-offcurve:hover {
+        fill: #999999;
+        stroke: #666666;
+      }
+
+      /* 선택된 포인트 */
+      .point-selected {
+        fill: #ff6b6b !important;
+        stroke: #000 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p>Chae Ahn</p>
+      <p>1004 Lausanne</p>
+      <p>Switzerland</p>
+      <p><a href="mailto:chaeyunahn@gmail.com">chaeyunahn@gmail.com</a></p>
+      <p><a href="mailto:chae.ahn@ecal.ch">chae.ahn@ecal.ch</a></p>
+    </header>
+
+    <div class="editor-container">
+      <svg id="canvas"></svg>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <p><i>Chae is open for commissions and collaborations!</i></p>
+        <p class="date-display" id="currentDate">Today is</p>
+      </div>
+    </footer>
+
+    <script>
+      // SVG path data from uploaded a_letter.svg
+      const originalPathData =
+        "M533.01,558.67c0,108.31-106.89,200.95-219.48,200.95-86.94,0-153.92-49.88-153.92-143.94,0-111.16,58.43-148.22,158.19-168.17l215.2-44.18v155.34ZM34.2,179.57l115.44,75.53c51.31-82.66,129.69-116.86,238-116.86,89.79,0,145.37,24.23,145.37,76.96,0,39.9-25.65,69.83-65.56,79.81l-232.3,51.31C89.79,377.67,0,456.05,0,621.37c0,151.07,104.04,266.51,276.48,266.51,109.74,0,185.27-48.46,257.96-129.69h12.83v105.46h142.52V286.46C689.78,89.79,604.27,0,387.65,0,216.63,0,92.64,57.01,34.2,179.57Z";
+
+      // Canvas setup
+      const svg = document.getElementById("canvas");
+      const viewBoxWidth = 689.78;
+      const viewBoxHeight = 887.88;
+
+      function setupCanvas() {
+        const canvasWidth = window.innerWidth;
+        const canvasHeight = window.innerHeight;
+
+        svg.setAttribute("width", canvasWidth);
+        svg.setAttribute("height", canvasHeight);
+        svg.setAttribute("viewBox", `0 0 ${viewBoxWidth} ${viewBoxHeight}`);
+      }
+
+      setupCanvas();
+      window.addEventListener("resize", () => {
+        setupCanvas();
+        applyTransformations();
+        render();
+      });
+
+      // Parse SVG path to extract points
+      function parsePath(d) {
+        const paths = [];
+        let currentPath = [];
+        let currentX = 0,
+          currentY = 0;
+        let startX = 0,
+          startY = 0;
+
+        const commands = d.match(/[MLCQSTAZHVmlcqstavhz][^MLCQSTAZHVmlcqstavhz]*/gi) || [];
+
+        for (const cmd of commands) {
+          const type = cmd[0];
+          const args = cmd
+            .slice(1)
+            .trim()
+            .replace(/(\d)-/g, "$1 -")
+            .split(/[\s,]+/)
+            .filter((s) => s)
+            .map(Number);
+
+          switch (type) {
+            case "M":
+              if (currentPath.length > 0) {
+                paths.push(currentPath);
+              }
+              currentPath = [];
+              currentX = args[0];
+              currentY = args[1];
+              startX = currentX;
+              startY = currentY;
+              currentPath.push({ x: currentX, y: currentY, type: "oncurve", isStart: true });
+              break;
+
+            case "L":
+              currentX = args[0];
+              currentY = args[1];
+              currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              break;
+
+            case "l":
+              currentX += args[0];
+              currentY += args[1];
+              currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              break;
+
+            case "H":
+              currentX = args[0];
+              currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              break;
+
+            case "h":
+              currentX += args[0];
+              currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              break;
+
+            case "V":
+              currentY = args[0];
+              currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              break;
+
+            case "v":
+              currentY += args[0];
+              currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              break;
+
+            case "C":
+              for (let i = 0; i < args.length; i += 6) {
+                currentPath.push({ x: args[i], y: args[i + 1], type: "offcurve" });
+                currentPath.push({ x: args[i + 2], y: args[i + 3], type: "offcurve" });
+                currentX = args[i + 4];
+                currentY = args[i + 5];
+                currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              }
+              break;
+
+            case "c":
+              for (let i = 0; i < args.length; i += 6) {
+                currentPath.push({
+                  x: currentX + args[i],
+                  y: currentY + args[i + 1],
+                  type: "offcurve",
+                });
+                currentPath.push({
+                  x: currentX + args[i + 2],
+                  y: currentY + args[i + 3],
+                  type: "offcurve",
+                });
+                currentX += args[i + 4];
+                currentY += args[i + 5];
+                currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+              }
+              break;
+
+            case "Z":
+            case "z":
+              currentX = startX;
+              currentY = startY;
+              break;
+          }
+        }
+
+        if (currentPath.length > 0) {
+          paths.push(currentPath);
+        }
+
+        return paths;
+      }
+
+      // Build path string from points
+      function buildPath(paths) {
+        let d = "";
+
+        for (const path of paths) {
+          if (path.length === 0) continue;
+
+          let i = 0;
+          d += `M${path[i].x.toFixed(2)},${path[i].y.toFixed(2)}`;
+          i++;
+
+          while (i < path.length) {
+            const pt = path[i];
+
+            if (pt.type === "oncurve") {
+              d += `L${pt.x.toFixed(2)},${pt.y.toFixed(2)}`;
+              i++;
+            } else if (pt.type === "offcurve") {
+              if (
+                i + 2 <= path.length &&
+                path[i + 1] &&
+                path[i + 1].type === "offcurve" &&
+                path[i + 2] &&
+                path[i + 2].type === "oncurve"
+              ) {
+                d += `C${path[i].x.toFixed(2)},${path[i].y.toFixed(2)},${path[i + 1].x.toFixed(
+                  2
+                )},${path[i + 1].y.toFixed(2)},${path[i + 2].x.toFixed(2)},${path[i + 2].y.toFixed(
+                  2
+                )}`;
+                i += 3;
+              } else {
+                i++;
+              }
+            } else {
+              i++;
+            }
+          }
+
+          d += "Z";
+        }
+
+        return d;
+      }
+
+      // State
+      const originalPaths = parsePath(originalPathData);
+      let paths = null;
+
+      function applyTransformations() {
+        // Deep copy of original paths
+        paths = JSON.parse(JSON.stringify(originalPaths));
+
+        // Scale based on screen size
+        const centerX = viewBoxWidth / 2;
+        const centerY = viewBoxHeight / 2;
+        let scale = 0.95;
+
+        // Mobile scaling (390px and below)
+        if (window.innerWidth <= 390) {
+          scale *= 0.9;
+        }
+
+        for (const path of paths) {
+          for (const pt of path) {
+            pt.x = (pt.x - centerX) * scale + centerX;
+            pt.y = (pt.y - centerY) * scale + centerY;
+          }
+        }
+
+        // Move left
+        for (const path of paths) {
+          for (const pt of path) {
+            pt.x -= 20;
+          }
+        }
+      }
+
+      applyTransformations();
+
+      let selectedPoint = null;
+      let isDragging = false;
+
+      function getSVGCoords(e) {
+        const rect = svg.getBoundingClientRect();
+        const scaleX = viewBoxWidth / rect.width;
+        const scaleY = viewBoxHeight / rect.height;
+        return {
+          x: (e.clientX - rect.left) * scaleX,
+          y: (e.clientY - rect.top) * scaleY,
+        };
+      }
+
+      function movePoint(pathIdx, pointIdx, newX, newY) {
+        const pt = paths[pathIdx][pointIdx];
+        const deltaX = newX - pt.x;
+        const deltaY = newY - pt.y;
+
+        pt.x = newX;
+        pt.y = newY;
+
+        // If this is an oncurve point, move connected offcurve points
+        if (pt.type === "oncurve") {
+          const path = paths[pathIdx];
+
+          // Move previous offcurve point(s)
+          if (pointIdx > 0 && path[pointIdx - 1].type === "offcurve") {
+            path[pointIdx - 1].x += deltaX;
+            path[pointIdx - 1].y += deltaY;
+
+            // Check second previous point for cubic curves
+            if (pointIdx > 1 && path[pointIdx - 2].type === "offcurve") {
+              path[pointIdx - 2].x += deltaX;
+              path[pointIdx - 2].y += deltaY;
+            }
+          }
+
+          // Move next offcurve point(s)
+          if (pointIdx < path.length - 1 && path[pointIdx + 1].type === "offcurve") {
+            path[pointIdx + 1].x += deltaX;
+            path[pointIdx + 1].y += deltaY;
+
+            // Check second next point for cubic curves
+            if (pointIdx < path.length - 2 && path[pointIdx + 2].type === "offcurve") {
+              path[pointIdx + 2].x += deltaX;
+              path[pointIdx + 2].y += deltaY;
+            }
+          }
+        }
+      }
+
+      function render() {
+        svg.innerHTML = "";
+
+        // Draw filled glyph
+        const glyphPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const pathData = buildPath(paths);
+        glyphPath.setAttribute("d", pathData);
+        glyphPath.setAttribute("class", "glyph-fill");
+        glyphPath.setAttribute("fill", "#000000");
+        svg.appendChild(glyphPath);
+
+        // Draw handle lines first (so they appear behind points)
+        for (let pathIdx = 0; pathIdx < paths.length; pathIdx++) {
+          const path = paths[pathIdx];
+
+          for (let i = 0; i < path.length; i++) {
+            const pt = path[i];
+
+            if (pt.type === "offcurve") {
+              // Find the oncurve point before this offcurve
+              let prevOncurveIdx = -1;
+              for (let j = i - 1; j >= 0; j--) {
+                if (path[j].type === "oncurve") {
+                  prevOncurveIdx = j;
+                  break;
+                }
+              }
+
+              // Find the oncurve point after this offcurve
+              let nextOncurveIdx = -1;
+              for (let j = i + 1; j < path.length; j++) {
+                if (path[j].type === "oncurve") {
+                  nextOncurveIdx = j;
+                  break;
+                }
+              }
+
+              // Draw line from previous oncurve to this offcurve (if this is first offcurve in segment)
+              if (prevOncurveIdx >= 0 && i === prevOncurveIdx + 1) {
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", path[prevOncurveIdx].x);
+                line.setAttribute("y1", path[prevOncurveIdx].y);
+                line.setAttribute("x2", pt.x);
+                line.setAttribute("y2", pt.y);
+                line.setAttribute("class", "handle-line");
+                svg.appendChild(line);
+              }
+
+              // Draw line from this offcurve to next oncurve (if this is last offcurve in segment)
+              if (
+                nextOncurveIdx >= 0 &&
+                (nextOncurveIdx === i + 1 || (path[i + 1] && path[i + 1].type === "oncurve"))
+              ) {
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", pt.x);
+                line.setAttribute("y1", pt.y);
+                line.setAttribute("x2", path[nextOncurveIdx].x);
+                line.setAttribute("y2", path[nextOncurveIdx].y);
+                line.setAttribute("class", "handle-line");
+                svg.appendChild(line);
+              }
+            }
+          }
+        }
+
+        // Draw points
+        for (let pathIdx = 0; pathIdx < paths.length; pathIdx++) {
+          const path = paths[pathIdx];
+
+          for (let i = 0; i < path.length; i++) {
+            const pt = path[i];
+            const isSelected =
+              selectedPoint && selectedPoint.pathIdx === pathIdx && selectedPoint.pointIdx === i;
+
+            if (pt.type === "oncurve") {
+              const size = 8;
+              const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+              rect.setAttribute("x", pt.x - size / 2);
+              rect.setAttribute("y", pt.y - size / 2);
+              rect.setAttribute("width", size);
+              rect.setAttribute("height", size);
+              rect.setAttribute("class", "point-oncurve" + (isSelected ? " point-selected" : ""));
+              rect.setAttribute("data-path", pathIdx);
+              rect.setAttribute("data-point", i);
+              svg.appendChild(rect);
+            } else {
+              const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+              circle.setAttribute("cx", pt.x);
+              circle.setAttribute("cy", pt.y);
+              circle.setAttribute("r", 5);
+              circle.setAttribute(
+                "class",
+                "point-offcurve" + (isSelected ? " point-selected" : "")
+              );
+              circle.setAttribute("data-path", pathIdx);
+              circle.setAttribute("data-point", i);
+              svg.appendChild(circle);
+            }
+          }
+        }
+      }
+
+      // Mouse events
+      svg.addEventListener("mousedown", (e) => {
+        const target = e.target;
+
+        if (target.hasAttribute("data-path")) {
+          const pathIdx = parseInt(target.getAttribute("data-path"));
+          const pointIdx = parseInt(target.getAttribute("data-point"));
+
+          selectedPoint = { pathIdx, pointIdx };
+          isDragging = true;
+          render();
+          e.preventDefault();
+        } else {
+          selectedPoint = null;
+          render();
+        }
+      });
+
+      svg.addEventListener("mousemove", (e) => {
+        const coords = getSVGCoords(e);
+
+        if (isDragging && selectedPoint) {
+          movePoint(selectedPoint.pathIdx, selectedPoint.pointIdx, coords.x, coords.y);
+          render();
+        }
+      });
+
+      svg.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+
+      svg.addEventListener("mouseleave", () => {
+        isDragging = false;
+      });
+
+      // Touch events for mobile
+      svg.addEventListener(
+        "touchstart",
+        (e) => {
+          const touch = e.touches[0];
+          const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+          if (target && target.hasAttribute("data-path")) {
+            const pathIdx = parseInt(target.getAttribute("data-path"));
+            const pointIdx = parseInt(target.getAttribute("data-point"));
+
+            selectedPoint = { pathIdx, pointIdx };
+            isDragging = true;
+            render();
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      svg.addEventListener(
+        "touchmove",
+        (e) => {
+          const touch = e.touches[0];
+          const coords = getSVGCoords(touch);
+
+          if (isDragging && selectedPoint) {
+            movePoint(selectedPoint.pathIdx, selectedPoint.pointIdx, coords.x, coords.y);
+            render();
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      svg.addEventListener("touchend", () => {
+        isDragging = false;
+      });
+
+      // Initial render
+      render();
+
+      // Update current date
+      const dateElement = document.getElementById('currentDate');
+      const today = new Date();
+
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+      const dayName = days[today.getDay()];
+      const day = today.getDate();
+      const monthName = months[today.getMonth()];
+      const year = today.getFullYear();
+
+      dateElement.textContent = `Today is ${dayName}, ${day} ${monthName} ${year}`;
+    </script>
+  </body>
+</html>
