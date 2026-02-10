@@ -341,10 +341,12 @@
           }
         }
 
-        // Move left
-        for (const path of paths) {
-          for (const pt of path) {
-            pt.x -= 20;
+        // Shift right on desktop only
+        if (window.innerWidth > 768) {
+          for (const path of paths) {
+            for (const pt of path) {
+              pt.x -= 20;
+            }
           }
         }
       }
@@ -355,13 +357,11 @@
       let isDragging = false;
 
       function getSVGCoords(e) {
-        const rect = svg.getBoundingClientRect();
-        const scaleX = viewBoxWidth / rect.width;
-        const scaleY = viewBoxHeight / rect.height;
-        return {
-          x: (e.clientX - rect.left) * scaleX,
-          y: (e.clientY - rect.top) * scaleY,
-        };
+        const pt = svg.createSVGPoint();
+        pt.x = e.clientX;
+        pt.y = e.clientY;
+        const svgPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+        return { x: svgPt.x, y: svgPt.y };
       }
 
       function movePoint(pathIdx, pointIdx, newX, newY) {
@@ -476,8 +476,10 @@
             const isSelected =
               selectedPoint && selectedPoint.pathIdx === pathIdx && selectedPoint.pointIdx === i;
 
+            const isMobile = window.innerWidth <= 768;
+
             if (pt.type === "oncurve") {
-              const size = 8;
+              const size = isMobile ? 20 : 8;
               const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
               rect.setAttribute("x", pt.x - size / 2);
               rect.setAttribute("y", pt.y - size / 2);
@@ -491,7 +493,7 @@
               const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
               circle.setAttribute("cx", pt.x);
               circle.setAttribute("cy", pt.y);
-              circle.setAttribute("r", 5);
+              circle.setAttribute("r", isMobile ? 12 : 5);
               circle.setAttribute(
                 "class",
                 "point-offcurve" + (isSelected ? " point-selected" : "")
@@ -582,11 +584,24 @@
       render();
 
       // Update current date
-      const dateElement = document.getElementById('currentDate');
+      const dateElement = document.getElementById("currentDate");
       const today = new Date();
 
-      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
 
       const dayName = days[today.getDay()];
       const day = today.getDate();
