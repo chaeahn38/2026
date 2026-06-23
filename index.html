@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -297,9 +297,9 @@
                 path[i + 2].type === "oncurve"
               ) {
                 d += `C${path[i].x.toFixed(2)},${path[i].y.toFixed(2)},${path[i + 1].x.toFixed(
-                  2
+                  2,
                 )},${path[i + 1].y.toFixed(2)},${path[i + 2].x.toFixed(2)},${path[i + 2].y.toFixed(
-                  2
+                  2,
                 )}`;
                 i += 3;
               } else {
@@ -319,6 +319,8 @@
       // State
       const originalPaths = parsePath(originalPathData);
       let paths = null;
+      let homePaths = null;
+      let springAnim = null;
 
       function applyTransformations() {
         // Deep copy of original paths
@@ -349,6 +351,8 @@
             }
           }
         }
+
+        homePaths = JSON.parse(JSON.stringify(paths));
       }
 
       applyTransformations();
@@ -476,6 +480,12 @@
             const isSelected =
               selectedPoint && selectedPoint.pathIdx === pathIdx && selectedPoint.pointIdx === i;
 
+            // Skip last point if it duplicates the start point (closed path artifact)
+            if (i === path.length - 1 && i > 0 && pt.type === "oncurve") {
+              const first = path[0];
+              if (Math.abs(pt.x - first.x) < 0.01 && Math.abs(pt.y - first.y) < 0.01) continue;
+            }
+
             const isMobile = window.innerWidth <= 768;
 
             if (pt.type === "oncurve") {
@@ -496,7 +506,7 @@
               circle.setAttribute("r", isMobile ? 12 : 5);
               circle.setAttribute(
                 "class",
-                "point-offcurve" + (isSelected ? " point-selected" : "")
+                "point-offcurve" + (isSelected ? " point-selected" : ""),
               );
               circle.setAttribute("data-path", pathIdx);
               circle.setAttribute("data-point", i);
@@ -506,9 +516,78 @@
         }
       }
 
+      function startSpringBack(pathIdx, pointIdx) {
+        if (springAnim) {
+          cancelAnimationFrame(springAnim.rafId);
+          springAnim = null;
+        }
+
+        const path = paths[pathIdx];
+        const homePath = homePaths[pathIdx];
+        const pt = path[pointIdx];
+
+        // Collect the dragged point + its connected handles
+        const affected = [pointIdx];
+        if (pt.type === "oncurve") {
+          if (pointIdx > 0 && path[pointIdx - 1].type === "offcurve") {
+            affected.push(pointIdx - 1);
+            if (pointIdx > 1 && path[pointIdx - 2].type === "offcurve") affected.push(pointIdx - 2);
+          }
+          if (pointIdx < path.length - 1 && path[pointIdx + 1].type === "offcurve") {
+            affected.push(pointIdx + 1);
+            if (pointIdx < path.length - 2 && path[pointIdx + 2].type === "offcurve")
+              affected.push(pointIdx + 2);
+          }
+        }
+
+        // All affected points share the same offset (movePoint moves them by same delta)
+        let offsetX = path[pointIdx].x - homePath[pointIdx].x;
+        let offsetY = path[pointIdx].y - homePath[pointIdx].y;
+        let vx = 0,
+          vy = 0;
+        const stiffness = 0.05;
+        const damping = 0.2;
+
+        function tick() {
+          vx = (vx - offsetX * stiffness) * damping;
+          vy = (vy - offsetY * stiffness) * damping;
+          offsetX += vx;
+          offsetY += vy;
+
+          for (const idx of affected) {
+            path[idx].x = homePath[idx].x + offsetX;
+            path[idx].y = homePath[idx].y + offsetY;
+          }
+          render();
+
+          if (
+            Math.abs(offsetX) > 0.4 ||
+            Math.abs(offsetY) > 0.4 ||
+            Math.abs(vx) > 0.15 ||
+            Math.abs(vy) > 0.15
+          ) {
+            springAnim.rafId = requestAnimationFrame(tick);
+          } else {
+            for (const idx of affected) {
+              path[idx].x = homePath[idx].x;
+              path[idx].y = homePath[idx].y;
+            }
+            render();
+            springAnim = null;
+          }
+        }
+
+        springAnim = { rafId: requestAnimationFrame(tick) };
+      }
+
       // Mouse events
       svg.addEventListener("mousedown", (e) => {
         const target = e.target;
+
+        if (springAnim) {
+          cancelAnimationFrame(springAnim.rafId);
+          springAnim = null;
+        }
 
         if (target.hasAttribute("data-path")) {
           const pathIdx = parseInt(target.getAttribute("data-path"));
@@ -534,10 +613,16 @@
       });
 
       svg.addEventListener("mouseup", () => {
+        if (isDragging && selectedPoint) {
+          startSpringBack(selectedPoint.pathIdx, selectedPoint.pointIdx);
+        }
         isDragging = false;
       });
 
       svg.addEventListener("mouseleave", () => {
+        if (isDragging && selectedPoint) {
+          startSpringBack(selectedPoint.pathIdx, selectedPoint.pointIdx);
+        }
         isDragging = false;
       });
 
@@ -547,6 +632,11 @@
         (e) => {
           const touch = e.touches[0];
           const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+          if (springAnim) {
+            cancelAnimationFrame(springAnim.rafId);
+            springAnim = null;
+          }
 
           if (target && target.hasAttribute("data-path")) {
             const pathIdx = parseInt(target.getAttribute("data-path"));
@@ -558,7 +648,7 @@
             e.preventDefault();
           }
         },
-        { passive: false }
+        { passive: false },
       );
 
       svg.addEventListener(
@@ -573,10 +663,13 @@
             e.preventDefault();
           }
         },
-        { passive: false }
+        { passive: false },
       );
 
       svg.addEventListener("touchend", () => {
+        if (isDragging && selectedPoint) {
+          startSpringBack(selectedPoint.pathIdx, selectedPoint.pointIdx);
+        }
         isDragging = false;
       });
 
