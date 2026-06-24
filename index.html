@@ -67,6 +67,7 @@
       svg#canvas {
         background: #ffffff;
         cursor: crosshair;
+        touch-action: none;
       }
 
       /* 글리프 채우기 */
@@ -114,6 +115,76 @@
         fill: #ff6b6b !important;
         stroke: #000 !important;
       }
+
+      /* 테마 버튼 */
+      .theme-btn {
+        position: fixed;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 10;
+      }
+
+      @media (max-width: 768px) {
+        .theme-btn {
+          top: 1rem;
+          transform: none;
+        }
+      }
+
+      .theme-btn img {
+        display: block;
+        width: 30px;
+        height: auto;
+        transition: transform 0.15s ease;
+      }
+
+      .theme-btn:hover img {
+        transform: scaleX(-1);
+      }
+
+      /* 다크 모드 */
+      body.dark {
+        background: #000000;
+      }
+
+      body.dark header p,
+      body.dark header a,
+      body.dark footer p,
+      body.dark footer i {
+        color: #ffffff;
+      }
+
+      body.dark svg#canvas {
+        background: #000000;
+      }
+      body.dark .glyph-fill {
+        fill: #ffffff;
+      }
+
+      body.dark .handle-line {
+        stroke: #666666;
+      }
+
+      body.dark .point-oncurve {
+        fill: #666666;
+        stroke: #999999;
+      }
+      body.dark .point-oncurve:hover {
+        fill: #999999;
+        stroke: #666666;
+      }
+
+      body.dark .point-offcurve {
+        stroke: #666666;
+      }
+      body.dark .point-offcurve:hover {
+        fill: #666666;
+      }
     </style>
   </head>
   <body>
@@ -124,6 +195,10 @@
       <p><a href="mailto:chaeyunahn@gmail.com">chaeyunahn@gmail.com</a></p>
       <p><a href="mailto:chae.ahn@ecal.ch">chae.ahn@ecal.ch</a></p>
     </header>
+
+    <button class="theme-btn" id="themeBtn">
+      <img src="icon/Property 1=Black.svg" id="themeIcon" alt="" />
+    </button>
 
     <div class="editor-container">
       <svg id="canvas"></svg>
@@ -258,6 +333,14 @@
 
             case "Z":
             case "z":
+              // Remove duplicate end point when it coincides with the start (closed path)
+              if (currentPath.length > 1) {
+                const last = currentPath[currentPath.length - 1];
+                const first = currentPath[0];
+                if (Math.abs(last.x - first.x) < 1.0 && Math.abs(last.y - first.y) < 1.0) {
+                  currentPath.pop();
+                }
+              }
               currentX = startX;
               currentY = startY;
               break;
@@ -302,6 +385,10 @@
                   2,
                 )}`;
                 i += 3;
+              } else if (path[i + 1] && path[i + 1].type === "offcurve" && i + 2 >= path.length) {
+                // Trailing offcurve pair — close back to start point
+                d += `C${path[i].x.toFixed(2)},${path[i].y.toFixed(2)},${path[i + 1].x.toFixed(2)},${path[i + 1].y.toFixed(2)},${path[0].x.toFixed(2)},${path[0].y.toFixed(2)}`;
+                i += 2;
               } else {
                 i++;
               }
@@ -480,16 +567,10 @@
             const isSelected =
               selectedPoint && selectedPoint.pathIdx === pathIdx && selectedPoint.pointIdx === i;
 
-            // Skip last point if it duplicates the start point (closed path artifact)
-            if (i === path.length - 1 && i > 0 && pt.type === "oncurve") {
-              const first = path[0];
-              if (Math.abs(pt.x - first.x) < 0.01 && Math.abs(pt.y - first.y) < 0.01) continue;
-            }
-
             const isMobile = window.innerWidth <= 768;
 
             if (pt.type === "oncurve") {
-              const size = isMobile ? 20 : 8;
+              const size = isMobile ? 22 : 14;
               const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
               rect.setAttribute("x", pt.x - size / 2);
               rect.setAttribute("y", pt.y - size / 2);
@@ -503,7 +584,7 @@
               const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
               circle.setAttribute("cx", pt.x);
               circle.setAttribute("cy", pt.y);
-              circle.setAttribute("r", isMobile ? 12 : 5);
+              circle.setAttribute("r", isMobile ? 14 : 7);
               circle.setAttribute(
                 "class",
                 "point-offcurve" + (isSelected ? " point-selected" : ""),
@@ -545,8 +626,8 @@
         let offsetY = path[pointIdx].y - homePath[pointIdx].y;
         let vx = 0,
           vy = 0;
-        const stiffness = 0.05;
-        const damping = 0.2;
+        const stiffness = 0.8;
+        const damping = 0.05;
 
         function tick() {
           vx = (vx - offsetX * stiffness) * damping;
@@ -584,12 +665,11 @@
       svg.addEventListener("mousedown", (e) => {
         const target = e.target;
 
-        if (springAnim) {
-          cancelAnimationFrame(springAnim.rafId);
-          springAnim = null;
-        }
-
         if (target.hasAttribute("data-path")) {
+          if (springAnim) {
+            cancelAnimationFrame(springAnim.rafId);
+            springAnim = null;
+          }
           const pathIdx = parseInt(target.getAttribute("data-path"));
           const pointIdx = parseInt(target.getAttribute("data-point"));
 
@@ -633,12 +713,11 @@
           const touch = e.touches[0];
           const target = document.elementFromPoint(touch.clientX, touch.clientY);
 
-          if (springAnim) {
-            cancelAnimationFrame(springAnim.rafId);
-            springAnim = null;
-          }
-
           if (target && target.hasAttribute("data-path")) {
+            if (springAnim) {
+              cancelAnimationFrame(springAnim.rafId);
+              springAnim = null;
+            }
             const pathIdx = parseInt(target.getAttribute("data-path"));
             const pointIdx = parseInt(target.getAttribute("data-point"));
 
@@ -671,6 +750,13 @@
           startSpringBack(selectedPoint.pathIdx, selectedPoint.pointIdx);
         }
         isDragging = false;
+      });
+
+      // Theme toggle
+      const themeIcon = document.getElementById("themeIcon");
+      document.getElementById("themeBtn").addEventListener("click", () => {
+        const isDark = document.body.classList.toggle("dark");
+        themeIcon.src = isDark ? "icon/Property 1=White.svg" : "icon/Property 1=Black.svg";
       });
 
       // Initial render
