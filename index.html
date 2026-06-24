@@ -234,7 +234,12 @@
       window.addEventListener("resize", () => {
         setupCanvas();
         applyTransformations();
-        render();
+        if (window.innerWidth <= 768) {
+          startMobileAnimation();
+        } else {
+          if (mobileAnimRAF) { cancelAnimationFrame(mobileAnimRAF); mobileAnimRAF = null; }
+          render();
+        }
       });
 
       // Parse SVG path to extract points
@@ -408,6 +413,7 @@
       let paths = null;
       let homePaths = null;
       let springAnim = null;
+      let mobileAnimRAF = null;
 
       function applyTransformations() {
         // Deep copy of original paths
@@ -710,6 +716,7 @@
       svg.addEventListener(
         "touchstart",
         (e) => {
+          if (mobileAnimRAF) return;
           const touch = e.touches[0];
           const target = document.elementFromPoint(touch.clientX, touch.clientY);
 
@@ -733,6 +740,7 @@
       svg.addEventListener(
         "touchmove",
         (e) => {
+          if (mobileAnimRAF) return;
           const touch = e.touches[0];
           const coords = getSVGCoords(touch);
 
@@ -759,8 +767,77 @@
         themeIcon.src = isDark ? "icon/Property 1=White.svg" : "icon/Property 1=Black.svg";
       });
 
+      function generateRandomTargets() {
+        const spread = 180;
+        return homePaths.map((path) =>
+          path.map((pt) => ({
+            ...pt,
+            x: pt.x + (Math.random() - 0.5) * spread * 2,
+            y: pt.y + (Math.random() - 0.5) * spread * 2,
+          }))
+        );
+      }
+
+      function startMobileAnimation() {
+        if (mobileAnimRAF) cancelAnimationFrame(mobileAnimRAF);
+
+        paths = JSON.parse(JSON.stringify(homePaths));
+
+        let animState = "to-random";
+        let targets = generateRandomTargets();
+        let vels = paths.map((path) => path.map(() => ({ x: 0, y: 0 })));
+
+        const stiffness = 0.05;
+        const damping = 0.2;
+
+        function tick() {
+          let settled = true;
+
+          for (let pi = 0; pi < paths.length; pi++) {
+            for (let i = 0; i < paths[pi].length; i++) {
+              const pt = paths[pi][i];
+              const tgt = targets[pi][i];
+              const v = vels[pi][i];
+
+              const dx = pt.x - tgt.x;
+              const dy = pt.y - tgt.y;
+
+              v.x = (v.x - dx * stiffness) * damping;
+              v.y = (v.y - dy * stiffness) * damping;
+
+              pt.x += v.x;
+              pt.y += v.y;
+
+              if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5 || Math.abs(v.x) > 0.1 || Math.abs(v.y) > 0.1)
+                settled = false;
+            }
+          }
+
+          render();
+
+          if (settled) {
+            vels = paths.map((path) => path.map(() => ({ x: 0, y: 0 })));
+            if (animState === "to-random") {
+              animState = "to-home";
+              targets = JSON.parse(JSON.stringify(homePaths));
+            } else {
+              animState = "to-random";
+              targets = generateRandomTargets();
+            }
+          }
+
+          mobileAnimRAF = requestAnimationFrame(tick);
+        }
+
+        mobileAnimRAF = requestAnimationFrame(tick);
+      }
+
       // Initial render
-      render();
+      if (window.innerWidth <= 768) {
+        startMobileAnimation();
+      } else {
+        render();
+      }
 
       // Update current date
       const dateElement = document.getElementById("currentDate");
