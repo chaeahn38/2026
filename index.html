@@ -237,7 +237,10 @@
         if (window.innerWidth <= 768) {
           startMobileAnimation();
         } else {
-          if (mobileAnimRAF) { cancelAnimationFrame(mobileAnimRAF); mobileAnimRAF = null; }
+          if (mobileAnimRAF) {
+            cancelAnimationFrame(mobileAnimRAF);
+            mobileAnimRAF = null;
+          }
           render();
         }
       });
@@ -774,7 +777,7 @@
             ...pt,
             x: pt.x + (Math.random() - 0.5) * spread * 2,
             y: pt.y + (Math.random() - 0.5) * spread * 2,
-          }))
+          })),
         );
       }
 
@@ -787,7 +790,7 @@
         let targets = generateRandomTargets();
         let vels = paths.map((path) => path.map(() => ({ x: 0, y: 0 })));
 
-        const stiffness = 0.05;
+        const stiffness = 0.12;
         const damping = 0.2;
 
         function tick() {
@@ -808,7 +811,12 @@
               pt.x += v.x;
               pt.y += v.y;
 
-              if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5 || Math.abs(v.x) > 0.1 || Math.abs(v.y) > 0.1)
+              if (
+                Math.abs(dx) > 0.5 ||
+                Math.abs(dy) > 0.5 ||
+                Math.abs(v.x) > 0.1 ||
+                Math.abs(v.y) > 0.1
+              )
                 settled = false;
             }
           }
