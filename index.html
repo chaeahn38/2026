@@ -607,8 +607,8 @@
 
       const activeSpringPoints = new Map();
       let multiSpringRAF = null;
-      const SPRING_STIFFNESS = 0.005;
-      const SPRING_DAMPING = 0.05;
+      const SPRING_STIFFNESS = 0.01;
+      const SPRING_DAMPING = 0.1;
 
       function getAffected(pathIdx, pointIdx) {
         const path = paths[pathIdx];
@@ -644,7 +644,10 @@
 
       function runMultiSpring() {
         function tick() {
-          if (activeSpringPoints.size === 0) { multiSpringRAF = null; return; }
+          if (activeSpringPoints.size === 0) {
+            multiSpringRAF = null;
+            return;
+          }
 
           for (const [key, s] of activeSpringPoints) {
             const path = paths[s.pathIdx];
@@ -660,7 +663,12 @@
               path[idx].y = homePath[idx].y + s.offsetY;
             }
 
-            if (Math.abs(s.offsetX) < 0.4 && Math.abs(s.offsetY) < 0.4 && Math.abs(s.vx) < 0.15 && Math.abs(s.vy) < 0.15) {
+            if (
+              Math.abs(s.offsetX) < 0.4 &&
+              Math.abs(s.offsetY) < 0.4 &&
+              Math.abs(s.vx) < 0.15 &&
+              Math.abs(s.vy) < 0.15
+            ) {
               for (const idx of s.affected) {
                 path[idx].x = homePath[idx].x;
                 path[idx].y = homePath[idx].y;
@@ -790,8 +798,8 @@
         let targets = generateRandomTargets();
         let vels = paths.map((path) => path.map(() => ({ x: 0, y: 0 })));
 
-        const stiffness = 0.15;
-        const damping = 0.1;
+        const stiffness = 0.5;
+        const damping = 0.15;
 
         function tick() {
           let settled = true;
