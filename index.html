@@ -790,8 +790,8 @@
         let targets = generateRandomTargets();
         let vels = paths.map((path) => path.map(() => ({ x: 0, y: 0 })));
 
-        const stiffness = 0.12;
-        const damping = 0.2;
+        const stiffness = 0.15;
+        const damping = 0.1;
 
         function tick() {
           let settled = true;
