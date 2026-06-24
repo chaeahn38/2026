@@ -635,7 +635,7 @@
         let offsetY = path[pointIdx].y - homePath[pointIdx].y;
         let vx = 0,
           vy = 0;
-        const stiffness = 0.8;
+        const stiffness = 0.005;
         const damping = 0.05;
 
         function tick() {
