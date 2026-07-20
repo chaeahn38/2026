@@ -1,0 +1,692 @@
+// Site-wide: theme toggle, footer date/job message, and the interactive
+// glyph-point editor used on the homepage hero (index.html only).
+
+// SVG path data for the homepage hero glyph (hand-drawn "a" letterform)
+const originalPathData =
+  "M533.01,558.67c0,108.31-106.89,200.95-219.48,200.95-86.94,0-153.92-49.88-153.92-143.94,0-111.16,58.43-148.22,158.19-168.17l215.2-44.18v155.34ZM34.2,179.57l115.44,75.53c51.31-82.66,129.69-116.86,238-116.86,89.79,0,145.37,24.23,145.37,76.96,0,39.9-25.65,69.83-65.56,79.81l-232.3,51.31C89.79,377.67,0,456.05,0,621.37c0,151.07,104.04,266.51,276.48,266.51,109.74,0,185.27-48.46,257.96-129.69h12.83v105.46h142.52V286.46C689.78,89.79,604.27,0,387.65,0,216.63,0,92.64,57.01,34.2,179.57Z";
+
+// Canvas setup
+const svg = document.getElementById("canvas");
+const viewBoxWidth = 689.78;
+const viewBoxHeight = 887.88;
+
+function setupCanvas() {
+  const canvasWidth = window.innerWidth;
+  const canvasHeight = window.innerHeight;
+
+  svg.setAttribute("width", canvasWidth);
+  svg.setAttribute("height", canvasHeight);
+  svg.setAttribute("viewBox", `0 0 ${viewBoxWidth} ${viewBoxHeight}`);
+}
+
+if (svg) {
+  setupCanvas();
+}
+window.addEventListener("resize", () => {
+  if (!svg) return;
+  setupCanvas();
+  applyTransformations();
+  if (window.innerWidth <= 768) {
+    startMobileAnimation();
+  } else {
+    if (mobileAnimRAF) {
+      cancelAnimationFrame(mobileAnimRAF);
+      mobileAnimRAF = null;
+    }
+    render();
+  }
+});
+
+// Parse SVG path to extract points
+function parsePath(d) {
+  const paths = [];
+  let currentPath = [];
+  let currentX = 0,
+    currentY = 0;
+  let startX = 0,
+    startY = 0;
+
+  const commands = d.match(/[MLCQSTAZHVmlcqstavhz][^MLCQSTAZHVmlcqstavhz]*/gi) || [];
+
+  for (const cmd of commands) {
+    const type = cmd[0];
+    const args = cmd
+      .slice(1)
+      .trim()
+      .replace(/(\d)-/g, "$1 -")
+      .split(/[\s,]+/)
+      .filter((s) => s)
+      .map(Number);
+
+    switch (type) {
+      case "M":
+        if (currentPath.length > 0) {
+          paths.push(currentPath);
+        }
+        currentPath = [];
+        currentX = args[0];
+        currentY = args[1];
+        startX = currentX;
+        startY = currentY;
+        currentPath.push({ x: currentX, y: currentY, type: "oncurve", isStart: true });
+        break;
+
+      case "L":
+        currentX = args[0];
+        currentY = args[1];
+        currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        break;
+
+      case "l":
+        currentX += args[0];
+        currentY += args[1];
+        currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        break;
+
+      case "H":
+        currentX = args[0];
+        currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        break;
+
+      case "h":
+        currentX += args[0];
+        currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        break;
+
+      case "V":
+        currentY = args[0];
+        currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        break;
+
+      case "v":
+        currentY += args[0];
+        currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        break;
+
+      case "C":
+        for (let i = 0; i < args.length; i += 6) {
+          currentPath.push({ x: args[i], y: args[i + 1], type: "offcurve" });
+          currentPath.push({ x: args[i + 2], y: args[i + 3], type: "offcurve" });
+          currentX = args[i + 4];
+          currentY = args[i + 5];
+          currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        }
+        break;
+
+      case "c":
+        for (let i = 0; i < args.length; i += 6) {
+          currentPath.push({
+            x: currentX + args[i],
+            y: currentY + args[i + 1],
+            type: "offcurve",
+          });
+          currentPath.push({
+            x: currentX + args[i + 2],
+            y: currentY + args[i + 3],
+            type: "offcurve",
+          });
+          currentX += args[i + 4];
+          currentY += args[i + 5];
+          currentPath.push({ x: currentX, y: currentY, type: "oncurve" });
+        }
+        break;
+
+      case "Z":
+      case "z":
+        // Remove duplicate end point when it coincides with the start (closed path)
+        if (currentPath.length > 1) {
+          const last = currentPath[currentPath.length - 1];
+          const first = currentPath[0];
+          if (Math.abs(last.x - first.x) < 1.0 && Math.abs(last.y - first.y) < 1.0) {
+            currentPath.pop();
+          }
+        }
+        currentX = startX;
+        currentY = startY;
+        break;
+    }
+  }
+
+  if (currentPath.length > 0) {
+    paths.push(currentPath);
+  }
+
+  return paths;
+}
+
+// Build path string from points
+function buildPath(paths) {
+  let d = "";
+
+  for (const path of paths) {
+    if (path.length === 0) continue;
+
+    let i = 0;
+    d += `M${path[i].x.toFixed(2)},${path[i].y.toFixed(2)}`;
+    i++;
+
+    while (i < path.length) {
+      const pt = path[i];
+
+      if (pt.type === "oncurve") {
+        d += `L${pt.x.toFixed(2)},${pt.y.toFixed(2)}`;
+        i++;
+      } else if (pt.type === "offcurve") {
+        if (
+          i + 2 <= path.length &&
+          path[i + 1] &&
+          path[i + 1].type === "offcurve" &&
+          path[i + 2] &&
+          path[i + 2].type === "oncurve"
+        ) {
+          d += `C${path[i].x.toFixed(2)},${path[i].y.toFixed(2)},${path[i + 1].x.toFixed(
+            2,
+          )},${path[i + 1].y.toFixed(2)},${path[i + 2].x.toFixed(2)},${path[i + 2].y.toFixed(
+            2,
+          )}`;
+          i += 3;
+        } else if (path[i + 1] && path[i + 1].type === "offcurve" && i + 2 >= path.length) {
+          // Trailing offcurve pair — close back to start point
+          d += `C${path[i].x.toFixed(2)},${path[i].y.toFixed(2)},${path[i + 1].x.toFixed(2)},${path[i + 1].y.toFixed(2)},${path[0].x.toFixed(2)},${path[0].y.toFixed(2)}`;
+          i += 2;
+        } else {
+          i++;
+        }
+      } else {
+        i++;
+      }
+    }
+
+    d += "Z";
+  }
+
+  return d;
+}
+
+// State
+const originalPaths = parsePath(originalPathData);
+let paths = null;
+let homePaths = null;
+let mobileAnimRAF = null;
+
+function applyTransformations() {
+  // Deep copy of original paths
+  paths = JSON.parse(JSON.stringify(originalPaths));
+
+  // Scale based on screen size
+  const centerX = viewBoxWidth / 2;
+  const centerY = viewBoxHeight / 2;
+  let scale = 0.95;
+
+  // Mobile scaling (390px and below)
+  if (window.innerWidth <= 390) {
+    scale *= 0.9;
+  }
+
+  for (const path of paths) {
+    for (const pt of path) {
+      pt.x = (pt.x - centerX) * scale + centerX;
+      pt.y = (pt.y - centerY) * scale + centerY;
+    }
+  }
+
+  // Shift right on desktop only
+  if (window.innerWidth > 768) {
+    for (const path of paths) {
+      for (const pt of path) {
+        pt.x -= 20;
+      }
+    }
+  }
+
+  homePaths = JSON.parse(JSON.stringify(paths));
+}
+
+applyTransformations();
+
+let selectedPoint = null;
+let isDragging = false;
+
+function getSVGCoords(e) {
+  const pt = svg.createSVGPoint();
+  pt.x = e.clientX;
+  pt.y = e.clientY;
+  const svgPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+  return { x: svgPt.x, y: svgPt.y };
+}
+
+function movePoint(pathIdx, pointIdx, newX, newY) {
+  const pt = paths[pathIdx][pointIdx];
+  const deltaX = newX - pt.x;
+  const deltaY = newY - pt.y;
+
+  pt.x = newX;
+  pt.y = newY;
+
+  // If this is an oncurve point, move connected offcurve points
+  if (pt.type === "oncurve") {
+    const path = paths[pathIdx];
+
+    // Move previous offcurve point(s)
+    if (pointIdx > 0 && path[pointIdx - 1].type === "offcurve") {
+      path[pointIdx - 1].x += deltaX;
+      path[pointIdx - 1].y += deltaY;
+
+      // Check second previous point for cubic curves
+      if (pointIdx > 1 && path[pointIdx - 2].type === "offcurve") {
+        path[pointIdx - 2].x += deltaX;
+        path[pointIdx - 2].y += deltaY;
+      }
+    }
+
+    // Move next offcurve point(s)
+    if (pointIdx < path.length - 1 && path[pointIdx + 1].type === "offcurve") {
+      path[pointIdx + 1].x += deltaX;
+      path[pointIdx + 1].y += deltaY;
+
+      // Check second next point for cubic curves
+      if (pointIdx < path.length - 2 && path[pointIdx + 2].type === "offcurve") {
+        path[pointIdx + 2].x += deltaX;
+        path[pointIdx + 2].y += deltaY;
+      }
+    }
+  }
+}
+
+function render() {
+  svg.innerHTML = "";
+
+  // Draw filled glyph
+  const glyphPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  const pathData = buildPath(paths);
+  glyphPath.setAttribute("d", pathData);
+  glyphPath.setAttribute("class", "glyph-fill");
+  glyphPath.setAttribute("fill", "#000000");
+  svg.appendChild(glyphPath);
+
+  // Draw handle lines first (so they appear behind points)
+  for (let pathIdx = 0; pathIdx < paths.length; pathIdx++) {
+    const path = paths[pathIdx];
+
+    for (let i = 0; i < path.length; i++) {
+      const pt = path[i];
+
+      if (pt.type === "offcurve") {
+        // Find the oncurve point before this offcurve
+        let prevOncurveIdx = -1;
+        for (let j = i - 1; j >= 0; j--) {
+          if (path[j].type === "oncurve") {
+            prevOncurveIdx = j;
+            break;
+          }
+        }
+
+        // Find the oncurve point after this offcurve
+        let nextOncurveIdx = -1;
+        for (let j = i + 1; j < path.length; j++) {
+          if (path[j].type === "oncurve") {
+            nextOncurveIdx = j;
+            break;
+          }
+        }
+
+        // Draw line from previous oncurve to this offcurve (if this is first offcurve in segment)
+        if (prevOncurveIdx >= 0 && i === prevOncurveIdx + 1) {
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", path[prevOncurveIdx].x);
+          line.setAttribute("y1", path[prevOncurveIdx].y);
+          line.setAttribute("x2", pt.x);
+          line.setAttribute("y2", pt.y);
+          line.setAttribute("class", "handle-line");
+          svg.appendChild(line);
+        }
+
+        // Draw line from this offcurve to next oncurve (if this is last offcurve in segment)
+        if (
+          nextOncurveIdx >= 0 &&
+          (nextOncurveIdx === i + 1 || (path[i + 1] && path[i + 1].type === "oncurve"))
+        ) {
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", pt.x);
+          line.setAttribute("y1", pt.y);
+          line.setAttribute("x2", path[nextOncurveIdx].x);
+          line.setAttribute("y2", path[nextOncurveIdx].y);
+          line.setAttribute("class", "handle-line");
+          svg.appendChild(line);
+        }
+      }
+    }
+  }
+
+  // Draw points
+  for (let pathIdx = 0; pathIdx < paths.length; pathIdx++) {
+    const path = paths[pathIdx];
+
+    for (let i = 0; i < path.length; i++) {
+      const pt = path[i];
+      const isSelected =
+        selectedPoint && selectedPoint.pathIdx === pathIdx && selectedPoint.pointIdx === i;
+
+      const isMobile = window.innerWidth <= 768;
+
+      if (pt.type === "oncurve") {
+        const size = isMobile ? 22 : 14;
+        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute("x", pt.x - size / 2);
+        rect.setAttribute("y", pt.y - size / 2);
+        rect.setAttribute("width", size);
+        rect.setAttribute("height", size);
+        rect.setAttribute("class", "point-oncurve" + (isSelected ? " point-selected" : ""));
+        rect.setAttribute("data-path", pathIdx);
+        rect.setAttribute("data-point", i);
+        svg.appendChild(rect);
+      } else {
+        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("cx", pt.x);
+        circle.setAttribute("cy", pt.y);
+        circle.setAttribute("r", isMobile ? 14 : 7);
+        circle.setAttribute(
+          "class",
+          "point-offcurve" + (isSelected ? " point-selected" : ""),
+        );
+        circle.setAttribute("data-path", pathIdx);
+        circle.setAttribute("data-point", i);
+        svg.appendChild(circle);
+      }
+    }
+  }
+}
+
+const activeSpringPoints = new Map();
+let multiSpringRAF = null;
+const SPRING_STIFFNESS = 0.01;
+const SPRING_DAMPING = 0.1;
+
+function getAffected(pathIdx, pointIdx) {
+  const path = paths[pathIdx];
+  const affected = [pointIdx];
+  if (path[pointIdx].type === "oncurve") {
+    if (pointIdx > 0 && path[pointIdx - 1].type === "offcurve") {
+      affected.push(pointIdx - 1);
+      if (pointIdx > 1 && path[pointIdx - 2].type === "offcurve") affected.push(pointIdx - 2);
+    }
+    if (pointIdx < path.length - 1 && path[pointIdx + 1].type === "offcurve") {
+      affected.push(pointIdx + 1);
+      if (pointIdx < path.length - 2 && path[pointIdx + 2].type === "offcurve")
+        affected.push(pointIdx + 2);
+    }
+  }
+  return affected;
+}
+
+function addSpringBack(pathIdx, pointIdx) {
+  const key = `${pathIdx}-${pointIdx}`;
+  const homePath = homePaths[pathIdx];
+  const pt = paths[pathIdx][pointIdx];
+  activeSpringPoints.set(key, {
+    pathIdx,
+    affected: getAffected(pathIdx, pointIdx),
+    offsetX: pt.x - homePath[pointIdx].x,
+    offsetY: pt.y - homePath[pointIdx].y,
+    vx: 0,
+    vy: 0,
+  });
+  if (!multiSpringRAF) runMultiSpring();
+}
+
+function runMultiSpring() {
+  function tick() {
+    if (activeSpringPoints.size === 0) {
+      multiSpringRAF = null;
+      return;
+    }
+
+    for (const [key, s] of activeSpringPoints) {
+      const path = paths[s.pathIdx];
+      const homePath = homePaths[s.pathIdx];
+
+      s.vx = (s.vx - s.offsetX * SPRING_STIFFNESS) * SPRING_DAMPING;
+      s.vy = (s.vy - s.offsetY * SPRING_STIFFNESS) * SPRING_DAMPING;
+      s.offsetX += s.vx;
+      s.offsetY += s.vy;
+
+      for (const idx of s.affected) {
+        path[idx].x = homePath[idx].x + s.offsetX;
+        path[idx].y = homePath[idx].y + s.offsetY;
+      }
+
+      if (
+        Math.abs(s.offsetX) < 0.4 &&
+        Math.abs(s.offsetY) < 0.4 &&
+        Math.abs(s.vx) < 0.15 &&
+        Math.abs(s.vy) < 0.15
+      ) {
+        for (const idx of s.affected) {
+          path[idx].x = homePath[idx].x;
+          path[idx].y = homePath[idx].y;
+        }
+        activeSpringPoints.delete(key);
+      }
+    }
+
+    render();
+    multiSpringRAF = requestAnimationFrame(tick);
+  }
+  multiSpringRAF = requestAnimationFrame(tick);
+}
+
+// Mouse events
+if (svg) {
+  svg.addEventListener("mousedown", (e) => {
+    const target = e.target;
+
+    if (target.hasAttribute("data-path")) {
+      const pathIdx = parseInt(target.getAttribute("data-path"));
+      const pointIdx = parseInt(target.getAttribute("data-point"));
+      // Remove this point's spring so drag takes full control
+      activeSpringPoints.delete(`${pathIdx}-${pointIdx}`);
+
+      selectedPoint = { pathIdx, pointIdx };
+      isDragging = true;
+      render();
+      e.preventDefault();
+    } else {
+      selectedPoint = null;
+      render();
+    }
+  });
+
+  svg.addEventListener("mousemove", (e) => {
+    const coords = getSVGCoords(e);
+
+    if (isDragging && selectedPoint) {
+      movePoint(selectedPoint.pathIdx, selectedPoint.pointIdx, coords.x, coords.y);
+      render();
+    }
+  });
+
+  svg.addEventListener("mouseup", () => {
+    if (isDragging && selectedPoint) {
+      addSpringBack(selectedPoint.pathIdx, selectedPoint.pointIdx);
+    }
+    isDragging = false;
+  });
+
+  svg.addEventListener("mouseleave", () => {
+    if (isDragging && selectedPoint) {
+      addSpringBack(selectedPoint.pathIdx, selectedPoint.pointIdx);
+    }
+    isDragging = false;
+  });
+
+  // Touch events for mobile
+  svg.addEventListener(
+    "touchstart",
+    (e) => {
+      if (mobileAnimRAF) return;
+      const touch = e.touches[0];
+      const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+      if (target && target.hasAttribute("data-path")) {
+        const pathIdx = parseInt(target.getAttribute("data-path"));
+        const pointIdx = parseInt(target.getAttribute("data-point"));
+        activeSpringPoints.delete(`${pathIdx}-${pointIdx}`);
+
+        selectedPoint = { pathIdx, pointIdx };
+        isDragging = true;
+        render();
+        e.preventDefault();
+      }
+    },
+    { passive: false },
+  );
+
+  svg.addEventListener(
+    "touchmove",
+    (e) => {
+      if (mobileAnimRAF) return;
+      const touch = e.touches[0];
+      const coords = getSVGCoords(touch);
+
+      if (isDragging && selectedPoint) {
+        movePoint(selectedPoint.pathIdx, selectedPoint.pointIdx, coords.x, coords.y);
+        render();
+        e.preventDefault();
+      }
+    },
+    { passive: false },
+  );
+
+  svg.addEventListener("touchend", () => {
+    if (isDragging && selectedPoint) {
+      addSpringBack(selectedPoint.pathIdx, selectedPoint.pointIdx);
+    }
+    isDragging = false;
+  });
+}
+
+// Theme toggle — persisted in localStorage so it survives page navigation.
+// The inline snippet at the top of <body> applies a saved "dark" theme
+// immediately (before paint) so there's no flash of the light theme; this
+// just keeps the icon/localStorage in sync on click.
+const themeIcon = document.getElementById("themeIcon");
+const themeBtn = document.getElementById("themeBtn");
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+    themeIcon.src = isDark ? "/asset/icon/theme-toggle-dark.svg" : "/asset/icon/theme-toggle-light.svg";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+}
+
+function generateRandomTargets() {
+  const spread = 180;
+  return homePaths.map((path) =>
+    path.map((pt) => ({
+      ...pt,
+      x: pt.x + (Math.random() - 0.5) * spread * 2,
+      y: pt.y + (Math.random() - 0.5) * spread * 2,
+    })),
+  );
+}
+
+function startMobileAnimation() {
+  if (mobileAnimRAF) cancelAnimationFrame(mobileAnimRAF);
+
+  paths = JSON.parse(JSON.stringify(homePaths));
+
+  let animState = "to-random";
+  let targets = generateRandomTargets();
+  let vels = paths.map((path) => path.map(() => ({ x: 0, y: 0 })));
+
+  const stiffness = 0.5;
+  const damping = 0.15;
+
+  function tick() {
+    let settled = true;
+
+    for (let pi = 0; pi < paths.length; pi++) {
+      for (let i = 0; i < paths[pi].length; i++) {
+        const pt = paths[pi][i];
+        const tgt = targets[pi][i];
+        const v = vels[pi][i];
+
+        const dx = pt.x - tgt.x;
+        const dy = pt.y - tgt.y;
+
+        v.x = (v.x - dx * stiffness) * damping;
+        v.y = (v.y - dy * stiffness) * damping;
+
+        pt.x += v.x;
+        pt.y += v.y;
+
+        if (
+          Math.abs(dx) > 0.5 ||
+          Math.abs(dy) > 0.5 ||
+          Math.abs(v.x) > 0.1 ||
+          Math.abs(v.y) > 0.1
+        )
+          settled = false;
+      }
+    }
+
+    render();
+
+    if (settled) {
+      vels = paths.map((path) => path.map(() => ({ x: 0, y: 0 })));
+      if (animState === "to-random") {
+        animState = "to-home";
+        targets = JSON.parse(JSON.stringify(homePaths));
+      } else {
+        animState = "to-random";
+        targets = generateRandomTargets();
+      }
+    }
+
+    mobileAnimRAF = requestAnimationFrame(tick);
+  }
+
+  mobileAnimRAF = requestAnimationFrame(tick);
+}
+
+// Initial render
+if (svg) {
+  if (window.innerWidth <= 768) {
+    startMobileAnimation();
+  } else {
+    render();
+  }
+}
+
+// Footer job-search message (edit this string to update it across all pages)
+const jobMessageElement = document.getElementById("jobMessage");
+if (jobMessageElement) {
+  jobMessageElement.textContent = "Chae is looking for new job!";
+}
+
+// Update current date
+const dateElement = document.getElementById("currentDate");
+const today = new Date();
+
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const dayName = days[today.getDay()];
+const day = today.getDate();
+const monthName = months[today.getMonth()];
+const year = today.getFullYear();
+
+dateElement.textContent = `Today is ${dayName}, ${day} ${monthName} ${year}`;

@@ -1,0 +1,687 @@
+/* ==========================================================================
+   Page Layout & Slide Containers
+   The page is 4 full-screen slides (.font-style, .font-variable,
+   .font-image, .font-information) stacked in a scrollable .font-preview;
+   js/type-slides.js tracks which one is in view.
+   ========================================================================== */
+body {
+  margin: 0;
+}
+
+.content {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+  width: auto;
+  margin: 0;
+}
+
+.font-preview {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+body.image-slide-active .theme-btn {
+  display: none;
+}
+
+body.dark .sample-text {
+  color: var(--white);
+}
+
+.font-style,
+.font-image,
+.font-information {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.font-style {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.font-variable {
+  min-height: 100vh;
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Type in Use — Image Slider & Dot Indicators
+   ========================================================================== */
+/* Forced white even in dark mode: the images have gaps between them (and
+   don't all fill the frame edge-to-edge), so a dark background showed as
+   black gaps between/around them. */
+body.dark .font-image {
+  background: var(--white);
+}
+
+.img-slider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor:
+    url("/asset/icon/carousel-arrow-left.svg") 28 19,
+    auto;
+}
+
+.img-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.img-slider.cursor-right {
+  cursor:
+    url("/asset/icon/carousel-arrow-right.svg") 28 19,
+    auto;
+}
+
+.img-slider.dragging {
+  cursor: grabbing;
+}
+
+.img-slider img {
+  flex: none;
+  height: 120vh;
+  width: auto;
+  -webkit-user-drag: none;
+}
+
+.img-slider-dots {
+  display: none;
+}
+
+/* ==========================================================================
+   Styles List (Styles slide)
+   ========================================================================== */
+.font-style p {
+  text-align: center;
+  font-family: "Terra";
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Style Preview Sample
+   ========================================================================== */
+.style-preview-sample {
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.style-preview-sample + .style-preview-sample {
+  margin-top: 1.5rem;
+}
+
+.style-preview-sample .sample-text {
+  font-family: "Terra";
+  font-size: calc(2.5rem * var(--sample-scale, 1));
+  margin: 3rem 0;
+  width: min(75vw, 90rem);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Variable Font Weight Animation (Variable slide)
+   ========================================================================== */
+.font-variable .sample-text {
+  font-family: "Terra Upright";
+  font-size: calc(2.5rem * var(--sample-scale, 1));
+  margin: 3rem 0;
+  width: min(75vw, 90rem);
+  text-align: center;
+  animation: wght-breathe 3s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+}
+
+@keyframes wght-breathe {
+  0%,
+  100% {
+    font-weight: 300;
+  }
+  50% {
+    font-weight: 700;
+  }
+}
+
+.font-variable .sample-text em,
+.font-variable .sample-text i {
+  font-family: "Terra Italic";
+  font-style: normal;
+}
+
+/* ==========================================================================
+   Style Picker (font-style dropdown, align buttons, size slider)
+   ========================================================================== */
+.weight-para {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.font-style-change {
+  position: relative;
+}
+
+.font-style-change-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--fg);
+}
+
+.font-style-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.25rem;
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  list-style: none;
+  padding: 0;
+  display: none;
+  z-index: 20;
+}
+
+.font-style-dropdown.open {
+  display: block;
+}
+
+.font-style-dropdown li button {
+  display: block;
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.weight-para input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 7rem;
+  height: 0.1rem;
+  border-radius: 999px;
+  background: var(--tertiary-grey);
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.weight-para input[type="range"]:hover,
+.weight-para input[type="range"]:focus-visible {
+  opacity: 1;
+}
+
+.weight-para input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  border: 0.13rem solid var(--tertiary-grey);
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.weight-para input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 999px;
+  background: none;
+}
+
+.weight-para input[type="range"]::-moz-range-thumb {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+.weight-para input[type="range"]:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+.align-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.align-left,
+.align-mid,
+.align-right {
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.align-icon {
+  width: 1.1rem;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  display: block;
+  opacity: 0.6;
+}
+
+.align-group button.active .align-icon {
+  opacity: 1;
+}
+
+.align-group button.active .align-icon rect {
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+/* ==========================================================================
+   Random Sample Text (click to swap line, drag to edit — js/type-slides.js)
+   ========================================================================== */
+.sample-text {
+  line-height: 1.1;
+}
+
+.sample-text[contenteditable="true"] {
+  outline: none;
+  cursor: text;
+}
+
+.random-text {
+  cursor: pointer;
+}
+
+.random-text .sample-text {
+  display: none;
+}
+
+.random-text .sample-text.active {
+  display: block;
+}
+
+/* ==========================================================================
+   Per-Style Font Weight/Style Presets
+   ========================================================================== */
+#terra-light-preview .sample-text {
+  font-weight: 300;
+  font-style: normal;
+}
+
+#terra-light-italic-preview .sample-text {
+  font-weight: 300;
+  font-style: italic;
+}
+
+#terra-regular-preview .sample-text {
+  font-weight: 400;
+  font-style: normal;
+}
+
+#terra-regular-italic-preview .sample-text {
+  font-weight: 400;
+  font-style: italic;
+}
+
+#terra-medium-preview .sample-text {
+  font-weight: 500;
+  font-style: normal;
+}
+
+#terra-medium-italic-preview .sample-text {
+  font-weight: 500;
+  font-style: italic;
+}
+
+#terra-bold-preview .sample-text {
+  font-weight: 700;
+  font-style: normal;
+}
+
+#terra-bold-italic-preview .sample-text {
+  font-weight: 700;
+  font-style: italic;
+}
+
+#terra-black-preview .sample-text {
+  font-weight: 900;
+  font-style: normal;
+}
+
+#terra-black-italic-preview .sample-text {
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Information Slide
+   ========================================================================== */
+.info-fulltext {
+  width: 70vw;
+  color: var(--primary-grey);
+  font-size: 1.2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+body.dark .info-fulltext p {
+  color: var(--white);
+}
+
+.info-fulltext p {
+  flex: 1;
+}
+
+.info-subtext {
+  width: 70vw;
+  margin-top: 2rem;
+  color: var(--secondary-grey);
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-subtext button {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  color: var(--fg);
+}
+
+#info-lang-toggle {
+  cursor: pointer;
+}
+
+#info-lang-list {
+  display: none;
+}
+
+#info-lang-list.open {
+  display: block;
+}
+
+/* Footer sits in normal flow after the Information slide instead of being
+   fixed on screen — reached by scrolling to the very end of .font-preview.
+   body has margin: 0 on this page (for full-bleed slides), so the footer
+   needs its own horizontal padding to match the 1rem inset every other
+   page gets for free from body's margin. */
+footer {
+  position: static;
+  margin: 4rem 0 2rem;
+  padding: 0 1rem;
+}
+
+/* ==========================================================================
+   Fixed Nav (font-info) & Scroll-to-Top Button
+   ========================================================================== */
+.font-info {
+  position: fixed;
+  left: max(1rem, 1vw);
+  top: 45%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  z-index: 10;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  left: max(1rem, 1vw);
+  top: calc(46% - 2rem);
+  display: none;
+  padding: 0;
+  z-index: 10;
+}
+
+.scroll-top-btn img {
+  display: block;
+  width: 0.8rem;
+  height: auto;
+}
+
+body.scrolled-past-styles .scroll-top-btn {
+  display: inline-flex;
+}
+
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--tertiary-grey);
+}
+
+.font-info button.active {
+  font-weight: 600;
+}
+
+body.dark .font-info button {
+  color: var(--secondary-grey);
+}
+
+body.dark .font-info button.active {
+  color: var(--white);
+}
+
+body.dark.image-slide-active .font-info button {
+  color: var(--black);
+}
+
+/* ==========================================================================
+   Styles List, continued — hover dimming & per-item weight/style
+   ========================================================================== */
+.font-style:hover {
+  color: var(--tertiary-grey);
+}
+
+.font-style p:hover {
+  color: var(--fg);
+}
+
+.font-style p:nth-child(1) {
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-style p:nth-child(2) {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.font-style p:nth-child(3) {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-style p:nth-child(4) {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.font-style p:nth-child(5) {
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-style p:nth-child(6) {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.font-style p:nth-child(7) {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-style p:nth-child(8) {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.font-style p:nth-child(9) {
+  font-weight: 900;
+  font-style: normal;
+}
+
+.font-style p:nth-child(10) {
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Mobile Responsive
+   ========================================================================== */
+@media (max-width: 850px) {
+  :root {
+    --sample-scale: 0.5;
+  }
+
+  /* 1. font-info nav gone; navigate by scrolling only */
+  .font-info {
+    display: none;
+  }
+
+  /* 2. style list font size scaled down to match */
+  .font-style p {
+    font-size: 1.75rem;
+  }
+
+  /* 3 & 4. parameter controls gone; only the style-change label remains */
+  .dropdown-arrow,
+  .font-style-dropdown,
+  .font-style-dropdown.open,
+  .edit-sample-btn,
+  .align-group,
+  .weight-para input[type="range"]:not(.wght-axis) {
+    display: none;
+  }
+
+  /* 6. Type in use images fill the screen width, swipe snaps one at a time.
+     .font-image's content can now run taller than 100vh, so let it flow
+     instead of clipping (that would hide the dots below a tall image). */
+  .font-image {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .img-slider {
+    gap: 0;
+    scroll-snap-type: x mandatory;
+  }
+
+  .img-slider img {
+    width: 100vw;
+    height: auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .img-slider-dots {
+    display: block;
+    overflow: hidden;
+    width: calc(5 * 0.4rem + 4 * 0.5rem);
+    margin: 1rem 0;
+  }
+
+  .img-slider-dots-track {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.25s ease;
+  }
+
+  .img-slider-dot {
+    flex: none;
+    width: 0.4rem;
+    height: 0.4rem;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--tertiary-grey);
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  .img-slider-dot.active {
+    background: var(--fg);
+  }
+
+  /* .font-image's background is forced white even in dark mode (see top of
+     file), so the active dot needs to stay black here instead of --fg's
+     white — otherwise it disappears against the white background. */
+  body.dark .img-slider-dot.active {
+    background: var(--black);
+  }
+
+  /* 7. Information full text as a single column; content now runs taller than
+     100vh, so let it flow instead of being vertically centered and clipped */
+  .font-information {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    justify-content: flex-start;
+    padding-top: 10rem;
+  }
+
+  .info-fulltext {
+    flex-direction: column;
+  }
+
+  /* No toggle on mobile: "58 languages" is plain text and the language
+     list stays hidden no matter what — same specificity as #info-lang-list.open
+     above, but wins by coming later, so the .open state has no effect here. */
+  #info-lang-toggle {
+    cursor: default;
+  }
+
+  #info-lang-list,
+  #info-lang-list.open {
+    display: none;
+  }
+
+  /* 8. footer: only the copyright mark remains, centered on one line */
+  .footer-content .message {
+    display: none;
+  }
+
+  .footer-content {
+    justify-content: center;
+  }
+
+  .footer-content .right-mark {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-content .right-mark p {
+    white-space: nowrap;
+  }
+}

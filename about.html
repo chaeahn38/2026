@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chae Ahn</title>
+    <script src="js/access-gate.js"></script>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/about.css" />
+  </head>
+  <body>
+    <!-- ============ HEADER: SITE NAV ============ -->
+    <header>
+      <p><a href="/index.html">Chae Ahn</a></p>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/typefaces-index.html">Typefaces</a></li>
+          <li><a href="/projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============ THEME TOGGLE ============ -->
+    <button class="theme-btn" id="themeBtn">
+      <img src="asset/icon/theme-toggle-light.svg" id="themeIcon" alt="" />
+    </button>
+    <script>
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        document.getElementById("themeIcon").src = "/asset/icon/theme-toggle-dark.svg";
+      }
+    </script>
+
+    <!-- ============ MAIN CONTENT: progressively-revealed intro ============ -->
+    <main class="content">
+
+      <p class="intro-text">
+        <span><a data-o="1" href="#">Hello</a>.</span> <span data-ob="1">How are <a data-o="2">you</a>?</span> <span data-ob="2">We need to <a data-o="3">talk</a>.</span>
+      <span data-ob="3">You can <a data-o="4" href="mailto:chaeyunahn@gmail.com">mail</a> me.</span>
+      <span data-ob="4">Don't hesitate. Just <a data-o="5" href="https://www.instagram.com/chaeyunahn" target="_blank">casually</a>. We will get to know each other.</span>
+      <span>My name is <a data-o="6">Chae</a>.</span>
+      <span data-ob="6">Not like chai tea, but a longer "<a data-o="7" >ay</a>" sound.</span>
+      <span data-ob="7">A high school history teacher used to call me <i>Che Guevara</i>, <a data-o="8">a nickname</a> I never liked it, but if that helps.</span>
+      <span data-ob="8">But I have a proper <a data-o="9">name</a>.</span>
+      <span data-ob="9"><a data-o="10">Chae Yun Ahn</a>. Both my given and family names, in full, were chosen by my grandfather.</span>
+      <span data-ob="10"><a data-o="11">I</a> was born in <a data-o="14">Bangkok</a>, raised in <a data-o="15">Indonesia</a>, educated in <a data-o="16">Lausanne</a>, and rooted in Seoul.</span>
+      <span data-ob="11">Quite international, but there are many places remained unvisited. I hope to reach <a data-o="12" href="">them</a> eventually.</span>
+      <span data-ob="12">Mongolia, Scotland, Poland, Czechia and many places.</span>
+      <span data-ob="14">I draw Thai script this year, mentored by Boom. I am interested in other scripts.</span>
+      <span data-ob="15">Having grown up in the tropics, I bloom in bright summers and dim in dark winters.</span>
+      <span data-ob="16">Lausanne was my first European city, where I studied masters and swam in the <a data-o="17" href="https://maps.app.goo.gl/MRo1xRmM7cQ3aPQx6" target="_blank">lake Geneva</a>.</span>
+      <span>I make <a data-o="18">typefaces</a>.</span>
+      <span data-ob="18">I studied <a data-o="19" href="https://ecal.ch/en/courses-and-research/master/type-design/" target="_blank">Type Design</a> at ECAL, where I finally found <a data-o="23">a field</a> I'd long searched for.</span>
+      <span data-ob="19">For two years, I made <a data-o="20"href="/typefaces-index.html" target="_blank">typefaces</a> and <a data-o="21" href="/projects.html" target="_blank">coding projects</a>, I am currently writing <a data-o="22" href="/thesis.html" target="_blank">a thesis</a> on Hangul cursive and handwriting style.</span>
+      <span data-ob="22">My dissertation comes from my interest since I draw both Latin and Hangul. I like to draw on paper with broad-nib pens and Hangul brushes</span>
+      <span data-ob="23">I like to look at the world through the <a data-o="24">lens</a> of typography.</span>
+      <span data-ob="24">Gerard Unger's <i>While You're Reading</i> opened another <a data-o="25">door</a> for me.</span>
+      <span data-ob="25">If you're a fan of that book, we'll have a lot to <a data-o="26">talk</a> about.</span>
+      <span data-ob="26">We can talk about jazz, design, and <a data-o="27">running</a>.</span>
+      <span data-ob="27">I run <a data-o="28">every day</a> to clear my mind.</span>
+      <span>I also <a data-o="29">code</a>.</span>
+      <span data-ob="29">Coding is another form of writing, one that opens doors to <a data-o="32">friends</a> and <a data-o="30">community</a>.</span>
+      <span data-ob="30">I host <a data-o="31" href="https://html-day.chaeahn.com/" target="_blank">HTML Day</a> in Lausanne.</span>
+      <span data-ob="32">I love writing letters and sending digital gifts. A small, beautiful poetry that <a data-o="33">connects</a> me to the world.</span>
+      <span data-ob="33">This introduction was written in <a data-o="34"href="https://github.com/chaeahn38" target="_blank">GitHub</a> and typesetted in <a data-o="35"href="/typefaces/Grotesk-215.html" target="_blank">Grotesk 215</a>.</span>
+    
+      </p>
+    
+      <p class="ext-link">
+        <a href="/chaeahn-resume.pdf" target="_blank">Resume</a>
+        <a href="https://www.linkedin.com/in/chaeyunahn/" target="_blank">LinkedIn</a>
+        <a href="www.instagram.com/chaeyunahn" target="_blank">Instagram</a>
+        <a href="https://www.are.na/chae-ahn/channels" target="_blank">Arena</a>
+        <a href="https://github.com/chaeahn38" target="_blank">GitHub</a>
+      </p>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="footer-content">
+        <div class="message">
+          <p><i id="jobMessage"></i></p>
+          <p class="date-display" id="currentDate">Today is</p>
+        </div>
+        <div class="right-mark">
+          <p>©Chae Ahn, 2026. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script> 
+    <script src="js/about.js"></script>
+  </body>
+
+</html>

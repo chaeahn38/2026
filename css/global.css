@@ -1,0 +1,323 @@
+/* ==========================================================================
+   Reset & Custom Properties
+   Loaded on every page. Light/dark theme colors live in --bg/--fg, flipped
+   by body.dark (toggled in js/script.js).
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --bg: var(--white);
+  --fg: var(--black);
+  --darkmode-blue: #377dff;
+  --primary-red: #ff6b6b;
+  --primary-blue: #00f;
+  --primary-grey: #262626;
+  --secondary-grey: #666666;
+  --tertiary-grey: #8f8f8f;
+}
+
+/* ==========================================================================
+   Global Elements
+   ========================================================================== */
+body {
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  font-family: sans-serif;
+  overflow: hidden;
+  margin: 0 1rem;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Header / Site Nav
+   ========================================================================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 1rem;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  flex-direction: column;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+header p {
+  margin-bottom: 1rem;
+  cursor: default;
+  font-weight: 600;
+}
+
+header p a {
+  text-decoration: none;
+}
+
+header a:hover {
+  color: var(--primary-blue);
+}
+
+.nav-menu {
+  display: flex;
+  font-size: 1.2rem;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.nav-menu li {
+  text-decoration: none;
+  list-style: none;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 10;
+  font-size: 0.9rem;
+  color: var(--primary-grey);
+  cursor: default;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--secondary-grey);
+}
+
+footer p {
+  margin-bottom: 0.2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-content .message {
+  width: 25%;
+}
+
+.footer-content .right-mark {
+  width: 25%;
+  text-align: right;
+}
+
+/* ==========================================================================
+   Theme Toggle Button
+   ========================================================================== */
+.theme-btn {
+  position: fixed;
+  right: max(1rem, 1vw);
+  top: 48%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .theme-btn {
+    top: 1rem;
+    transform: none;
+  }
+
+  .footer-content .message {
+    display: none;
+  }
+
+  .footer-content {
+    justify-content: center;
+  }
+
+  .footer-content .right-mark {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-content .right-mark p {
+    white-space: nowrap;
+  }
+}
+
+.theme-btn img {
+  display: block;
+  width: 24px;
+  height: auto;
+  transition: transform 0.15s ease;
+}
+
+.theme-btn:hover img {
+  transform: scaleX(-1);
+}
+
+/* ==========================================================================
+   Glyph Editor (index.html hero — interactive point editor, js/script.js)
+   ========================================================================== */
+.editor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg#canvas {
+  background: var(--bg);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.glyph-fill {
+  fill: var(--fg);
+  fill-rule: evenodd;
+}
+
+.handle-line {
+  stroke: var(--tertiary-grey);
+  stroke-width: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* on-curve point (square) */
+.point-oncurve {
+  fill: var(--tertiary-grey);
+  stroke: var(--secondary-grey);
+  stroke-width: 1.5;
+  cursor: move;
+}
+
+.point-oncurve:hover {
+  fill: var(--secondary-grey);
+  stroke: var(--tertiary-grey);
+}
+
+/* off-curve point (circle) */
+.point-offcurve {
+  fill: transparent;
+  stroke: var(--tertiary-grey);
+  stroke-width: 1.5;
+  cursor: move;
+}
+
+.point-offcurve:hover {
+  fill: var(--tertiary-grey);
+  stroke: var(--secondary-grey);
+}
+
+.point-selected {
+  fill: var(--primary-red) !important;
+  stroke: var(--fg) !important;
+}
+
+/* ==========================================================================
+   Dark Mode Overrides
+   ========================================================================== */
+body.dark {
+  --bg: var(--black);
+  --fg: var(--white);
+  --primary-blue: var(--darkmode-blue);
+}
+
+body.dark .handle-line {
+  stroke: var(--secondary-grey);
+}
+
+body.dark .point-oncurve {
+  fill: var(--secondary-grey);
+  stroke: var(--tertiary-grey);
+}
+
+body.dark .point-oncurve:hover {
+  fill: var(--tertiary-grey);
+  stroke: var(--secondary-grey);
+}
+
+body.dark .point-offcurve {
+  stroke: var(--secondary-grey);
+}
+
+body.dark .point-offcurve:hover {
+  fill: var(--secondary-grey);
+}
+
+body.dark p,
+body.dark a {
+  color: var(--tertiary-grey);
+}
+body.dark a:hover {
+  color: var(--fg);
+}
+
+/* Higher specificity than body.dark a:hover above, so the header nav's
+   blue hover isn't swallowed by the generic dark-mode hover color. */
+body.dark header a:hover {
+  color: var(--primary-blue);
+}
+
+/* ==========================================================================
+   Access Gate (js/access-gate.js) — pre-launch password prompt for pages
+   not ready for public viewing. See the comment at the top of that file for
+   what this can and can't actually protect.
+   ========================================================================== */
+.access-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.access-gate-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.access-gate-form input {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--fg);
+  background: var(--bg);
+  color: var(--fg);
+  text-align: center;
+}
+
+.access-gate-form button {
+  cursor: pointer;
+}
+
+.access-gate-error {
+  color: var(--primary-red);
+}

@@ -1,2 +1,7 @@
 .claude/
 .vscode/
+.DS_Store
+
+# Original installable font masters (.otf/.ttf) — never deployed. Only the
+# converted .woff2 web fonts in typefaces/font/Terra/ are served/committed.
+typefaces/font/*/originals/

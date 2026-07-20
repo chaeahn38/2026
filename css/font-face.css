@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Terra type family — static-weight instances plus the upright/italic
+   variable-font instances used for the weight animation on terra.html
+
+   Served as WOFF2 only (not the original .otf/.ttf masters): compressed for
+   the web, and not something a visitor can just double-click and install as
+   a system font the way a raw .otf/.ttf can. This is a deterrent, not real
+   DRM — anyone who really wants the font can still convert a WOFF2 back to
+   OTF, but it's a meaningfully higher bar than handing out the ready-to-
+   install file directly.
+   ========================================================================== */
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/Terra-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/Terra-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/Terra-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/Terra-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/Terra-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/TerraItalic-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/TerraItalic-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/TerraItalic-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/TerraItalic-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Terra";
+  src: url("/typefaces/font/Terra/TerraItalic-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Terra Upright";
+  src: url("/typefaces/font/Terra/TerraVF.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Terra Italic";
+  src: url("/typefaces/font/Terra/TerraItalicVF.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+}
