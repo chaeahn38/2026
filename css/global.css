@@ -51,7 +51,7 @@ header {
   justify-content: space-between;
   z-index: 10;
   margin-top: 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   flex-direction: column;
   width: fit-content;
   white-space: nowrap;
@@ -73,7 +73,7 @@ header a:hover {
 
 .nav-menu {
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1rem;
   flex-direction: column;
   gap: 0.4rem;
 }
@@ -163,7 +163,7 @@ footer p {
 
 .theme-btn img {
   display: block;
-  width: 24px;
+  width: 20px;
   height: auto;
   transition: transform 0.15s ease;
 }

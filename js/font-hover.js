@@ -1,45 +1,77 @@
-// Terra type-name hover: cycle random weight/style every 0.2s
-const terraContainer = document.getElementById("terra");
-const terraName = terraContainer && terraContainer.querySelector(".typeface-name");
-if (terraContainer && terraName) {
-  const terraWeights = [300, 400, 500, 700, 900];
-  const terraStyles = ["normal", "italic"];
-  const FADE_MS = 150;
-  let terraInterval = null;
-  let fadeTimeout = null;
-  let lastWeight = null;
-  let lastStyle = null;
+// Typeface-card hover: cycle a random look every 1s while hovered. Opt in per
+// card on the .typeface-card, plus --typeface-font (see typefaces-index.html):
+//   - data-weights / data-styles (comma-separated) for typefaces that vary by
+//     weight/italic, e.g. Terra, Espinosa.
+//   - data-families (comma-separated font-family names) for typefaces that
+//     vary by family instead, e.g. Sinfonie's optical-size cuts.
+// A card can use either or both — no changes needed here for a new typeface.
+const FADE_MS = 150;
+const CYCLE_MS = 500;
 
-  function pickTerraStyle() {
-    terraName.style.opacity = "0";
-    fadeTimeout = setTimeout(() => {
-      let weight, style;
-      do {
-        weight = terraWeights[Math.floor(Math.random() * terraWeights.length)];
-        style = terraStyles[Math.floor(Math.random() * terraStyles.length)];
-      } while (weight === lastWeight && style === lastStyle);
-      lastWeight = weight;
-      lastStyle = style;
-      terraName.style.fontWeight = weight;
-      terraName.style.fontStyle = style;
-      terraName.style.opacity = "1";
-    }, FADE_MS);
-  }
+document
+  .querySelectorAll(".typeface-card[data-weights], .typeface-card[data-families]")
+  .forEach((card) => {
+    const name = card.querySelector(".typeface-name");
+    if (!name) return;
 
-  terraContainer.addEventListener("mouseenter", () => {
-    pickTerraStyle();
-    terraInterval = setInterval(pickTerraStyle, 1000);
+    const weights = card.dataset.weights
+      ? card.dataset.weights.split(",").map((w) => w.trim())
+      : null;
+    const styles = card.dataset.weights
+      ? (card.dataset.styles || "normal").split(",").map((s) => s.trim())
+      : null;
+    const families = card.dataset.families
+      ? card.dataset.families.split(",").map((f) => f.trim())
+      : null;
+    const comboCount =
+      (weights ? weights.length * styles.length : 1) * (families ? families.length : 1);
+
+    let cycleInterval = null;
+    let fadeTimeout = null;
+    let lastWeight = null;
+    let lastStyle = null;
+    let lastFamily = null;
+
+    function pickStyle() {
+      name.style.opacity = "0";
+      fadeTimeout = setTimeout(() => {
+        let weight, style, family;
+        do {
+          weight = weights ? weights[Math.floor(Math.random() * weights.length)] : null;
+          style = styles ? styles[Math.floor(Math.random() * styles.length)] : null;
+          family = families ? families[Math.floor(Math.random() * families.length)] : null;
+        } while (
+          comboCount > 1 &&
+          weight === lastWeight &&
+          style === lastStyle &&
+          family === lastFamily
+        );
+        lastWeight = weight;
+        lastStyle = style;
+        lastFamily = family;
+        if (weight !== null) name.style.fontWeight = weight;
+        if (style !== null) name.style.fontStyle = style;
+        if (family !== null) name.style.fontFamily = family;
+        name.style.opacity = "1";
+      }, FADE_MS);
+    }
+
+    card.addEventListener("mouseenter", () => {
+      pickStyle();
+      cycleInterval = setInterval(pickStyle, CYCLE_MS);
+    });
+
+    card.addEventListener("mouseleave", () => {
+      clearInterval(cycleInterval);
+      clearTimeout(fadeTimeout);
+      cycleInterval = null;
+      fadeTimeout = null;
+      lastWeight = null;
+      lastStyle = null;
+      lastFamily = null;
+      name.style.fontWeight = "";
+      name.style.fontStyle = "";
+      name.style.fontFamily = "";
+      name.style.opacity = "1";
+    });
   });
-
-  terraContainer.addEventListener("mouseleave", () => {
-    clearInterval(terraInterval);
-    clearTimeout(fadeTimeout);
-    terraInterval = null;
-    fadeTimeout = null;
-    lastWeight = null;
-    lastStyle = null;
-    terraName.style.fontWeight = "";
-    terraName.style.fontStyle = "";
-    terraName.style.opacity = "1";
-  });
-}

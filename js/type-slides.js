@@ -1,6 +1,6 @@
-// Typeface detail page (typefaces/terra.html): slide navigation, the image
-// carousel with dot indicators, style-picker interactions, and sample-text
-// editing/randomization.
+// Typeface detail pages (typefaces/terra.html, espinosa.html, ...): slide
+// navigation, the image carousel with dot indicators, style-picker
+// interactions, and sample-text editing/randomization.
 
 // Information slide: click "58 languages" to reveal the full language list.
 // On mobile the list is force-hidden by CSS regardless of this class, so the
@@ -109,20 +109,10 @@ document.querySelectorAll(".align-group").forEach((group) => {
   if (defaultBtn) setActive(defaultBtn);
 });
 
-// Font-style dropdown: click to open, click an item to restyle this preview in place
-const terraStyleMap = {
-  "terra-light": { weight: 300, style: "normal" },
-  "terra-light-italic": { weight: 300, style: "italic" },
-  "terra-regular": { weight: 400, style: "normal" },
-  "terra-regular-italic": { weight: 400, style: "italic" },
-  "terra-medium": { weight: 500, style: "normal" },
-  "terra-medium-italic": { weight: 500, style: "italic" },
-  "terra-bold": { weight: 700, style: "normal" },
-  "terra-bold-italic": { weight: 700, style: "italic" },
-  "terra-black": { weight: 900, style: "normal" },
-  "terra-black-italic": { weight: 900, style: "italic" },
-};
-
+// Font-style dropdown: click to open, click an item to restyle this preview in place.
+// Each dropdown item's data-style points at the id of its .font-style <p>, which
+// carries the actual data-weight/data-font-style to apply — so this works for any
+// typeface's style list without a hardcoded per-typeface weight/style map.
 document.querySelectorAll(".font-style-change").forEach((wrapper) => {
   const toggleBtn = wrapper.querySelector(".font-style-change-btn");
   const label = wrapper.querySelector(".font-style-change-label");
@@ -142,11 +132,12 @@ document.querySelectorAll(".font-style-change").forEach((wrapper) => {
 
   dropdown.querySelectorAll("button[data-style]").forEach((item) => {
     item.addEventListener("click", () => {
-      const styleInfo = terraStyleMap[item.dataset.style];
+      const styleEl = document.getElementById(item.dataset.style);
       const sampleText = getVisibleSampleText(container);
-      if (sampleText && styleInfo) {
-        sampleText.style.fontWeight = styleInfo.weight;
-        sampleText.style.fontStyle = styleInfo.style;
+      if (sampleText && styleEl) {
+        sampleText.style.fontWeight = styleEl.dataset.weight;
+        sampleText.style.fontStyle = styleEl.dataset.fontStyle;
+        sampleText.style.fontFamily = styleEl.dataset.family || "";
       }
       label.textContent = item.textContent;
       closeDropdown();
@@ -163,8 +154,15 @@ document.querySelectorAll(".font-style-change").forEach((wrapper) => {
 const originalSampleText = new WeakMap();
 document.querySelectorAll(".sample-text").forEach((p) => originalSampleText.set(p, p.textContent));
 
-// Horizontal mouse position over a random-text block also acts as a weight slider:
-// left edge = mouseWeightMin, right edge = mouseWeightMax
+// Horizontal mouse position over a random-text block also acts as a weight slider
+// (left edge = mouseWeightMin, right edge = mouseWeightMax) — but only for typefaces
+// whose style list actually spans more than one weight (so the static faces have
+// something to switch between). Single-weight families (e.g. Espinosa's one weight,
+// Sinfonie's optical-size cuts which are each a fixed weight) skip this entirely.
+const styleWeights = new Set(
+  Array.from(document.querySelectorAll(".font-style p[data-weight]")).map((p) => p.dataset.weight),
+);
+const hasWeightRange = styleWeights.size > 1;
 const mouseWeightMin = 100;
 const mouseWeightMax = 900;
 
@@ -175,7 +173,7 @@ document.querySelectorAll(".random-text").forEach((group) => {
   const container = group.closest(".style-preview-sample, .font-variable");
   const editBtn = container?.querySelector(".edit-sample-btn");
 
-  let current = texts[0];
+  let current = texts[Math.floor(Math.random() * texts.length)];
   current.classList.add("active");
 
   group.addEventListener("click", (e) => {
@@ -195,8 +193,8 @@ document.querySelectorAll(".random-text").forEach((group) => {
     current = next;
   });
 
-  // Terra Variable's weight is driven by its own looping CSS animation instead
-  if (container?.classList.contains("font-variable")) return;
+  // The Variable slide's weight is driven by its own looping CSS animation instead
+  if (!hasWeightRange || container?.classList.contains("font-variable")) return;
 
   group.addEventListener("mousemove", (e) => {
     if (current.isContentEditable) return;
@@ -244,20 +242,59 @@ document.querySelectorAll(".img-slider").forEach((slider) => {
 
   images.forEach((img) => img.addEventListener("dragstart", (e) => e.preventDefault()));
 
+  // Mouse wheel / trackpad scroll over the slider must never move the images —
+  // only the click/drag-to-snap interaction below does that. But the wheel
+  // event's default action is what drives normal page scroll too, so instead
+  // of just letting it fall through (which would pan the slider horizontally)
+  // or blocking it outright (which would also swallow vertical page scroll),
+  // preventDefault and replay the vertical component onto the page manually.
+  slider.addEventListener(
+    "wheel",
+    (e) => {
+      e.preventDefault();
+      if (slidesContainer) slidesContainer.scrollTop += e.deltaY;
+    },
+    { passive: false },
+  );
+
   const DRAG_THRESHOLD = 40; // px of movement needed to advance to the next/previous image
   const CLICK_THRESHOLD = 5; // px — at or below this, treat the release as a click, not a drag
+
+  // Every image snaps centered in the viewport (not flush against an edge) —
+  // the scroll target is the image's own midpoint minus half the viewport width.
+  const centerScrollLeft = (img) => img.offsetLeft + img.offsetWidth / 2 - slider.clientWidth / 2;
 
   const closestIndex = (scrollLeft) =>
     images.reduce(
       (closest, img, i) =>
-        Math.abs(img.offsetLeft - scrollLeft) < Math.abs(images[closest].offsetLeft - scrollLeft) ? i : closest,
+        Math.abs(centerScrollLeft(img) - scrollLeft) < Math.abs(centerScrollLeft(images[closest]) - scrollLeft)
+          ? i
+          : closest,
       0,
     );
 
   const snapTo = (index) => {
     const clamped = Math.min(images.length - 1, Math.max(0, index));
-    slider.scrollTo({ left: images[clamped].offsetLeft, behavior: "smooth" });
+    slider.scrollTo({ left: centerScrollLeft(images[clamped]), behavior: "smooth" });
   };
+
+  // The first/last image need room to scroll into on either side to reach dead
+  // center too — there's nothing before the first or after the last to scroll
+  // past otherwise — so pad the strip on both ends for whatever's needed.
+  const padEdges = () => {
+    const idx = closestIndex(slider.scrollLeft);
+    const first = images[0];
+    const last = images[images.length - 1];
+    slider.style.paddingLeft = `${Math.max(0, (slider.clientWidth - first.offsetWidth) / 2)}px`;
+    slider.style.paddingRight = `${Math.max(0, (slider.clientWidth - last.offsetWidth) / 2)}px`;
+    slider.scrollLeft = centerScrollLeft(images[idx]);
+  };
+
+  const whenReady = (img, cb) => (img.complete ? cb() : img.addEventListener("load", cb, { once: true }));
+  const lastImage = images[images.length - 1];
+  whenReady(images[0], padEdges);
+  if (lastImage !== images[0]) whenReady(lastImage, padEdges);
+  window.addEventListener("resize", padEdges);
 
   // Dot indicators below the slider: an Instagram-style sliding window that only
   // ever shows VISIBLE_DOTS dots, shrinking the ones near the edge of the window

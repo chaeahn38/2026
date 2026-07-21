@@ -92,3 +92,68 @@
   font-weight: 300 700;
   font-style: normal;
 }
+
+/* ------------------Espinosa------------------ */
+
+@font-face {
+  font-family: "Espinosa";
+  src: url("/typefaces/font/Espinosa/Espinosa-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Espinosa";
+  src: url("/typefaces/font/Espinosa/Espinosa-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ------------------Sinfonie------------------
+   No weight axis and no italic — Sinfonie varies by optical size instead
+   (Title/Head/Subhead/Body/Caption, largest to smallest). Each static cut
+   gets its own family name since CSS has no selector for optical size on
+   static faces; "Sinfonie Variable" carries the opsz axis (10-50) for the
+   live preview on the Variable slide. */
+
+@font-face {
+  font-family: "Sinfonie Title";
+  src: url("/typefaces/font/Sinfonie/Sinfonie-01-Title.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sinfonie Head";
+  src: url("/typefaces/font/Sinfonie/Sinfonie-02-Head.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sinfonie Subhead";
+  src: url("/typefaces/font/Sinfonie/Sinfonie-03-Subhead.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sinfonie Body";
+  src: url("/typefaces/font/Sinfonie/Sinfonie-04-Body.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sinfonie Caption";
+  src: url("/typefaces/font/Sinfonie/Sinfonie-05-Caption.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sinfonie Variable";
+  src: url("/typefaces/font/Sinfonie/SinfonieVF.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}

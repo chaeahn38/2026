@@ -1,8 +1,14 @@
 /* ==========================================================================
-   Page Layout & Slide Containers
-   The page is 4 full-screen slides (.font-style, .font-variable,
-   .font-image, .font-information) stacked in a scrollable .font-preview;
-   js/type-slides.js tracks which one is in view.
+   Shared layout for every typeface detail page (terra.html, espinosa.html,
+   and future typeface pages). Each page is 3-4 full-screen slides
+   (.font-style, optionally .font-variable for typefaces with a variable-
+   weight axis, .font-image, .font-information) stacked in a scrollable
+   .font-preview; js/type-slides.js tracks which one is in view.
+
+   Font families aren't hardcoded here — each page sets --type-family (and,
+   if it has a Variable slide, --type-family-variable /
+   --type-family-variable-italic) inline on .font-preview. See terra.html
+   for the reference example.
    ========================================================================== */
 body {
   margin: 0;
@@ -57,11 +63,17 @@ body.dark .sample-text {
 /* ==========================================================================
    Type in Use — Image Slider & Dot Indicators
    ========================================================================== */
-/* Forced white even in dark mode: the images have gaps between them (and
-   don't all fill the frame edge-to-edge), so a dark background showed as
-   black gaps between/around them. */
+/* Defaults to the images' own background (set per-page via --img-slide-bg,
+   e.g. sinfonie.html) so the gaps between/around them (they don't all fill
+   the frame edge-to-edge) blend in instead of showing the page background.
+   Forced to white in dark mode when a typeface doesn't set one, since a dark
+   page background would otherwise show as black gaps. */
+.font-image {
+  background: var(--img-slide-bg, transparent);
+}
+
 body.dark .font-image {
-  background: var(--white);
+  background: var(--img-slide-bg, var(--white));
 }
 
 .img-slider {
@@ -93,7 +105,7 @@ body.dark .font-image {
 
 .img-slider img {
   flex: none;
-  height: 120vh;
+  height: var(--img-slide-height, 120vh);
   width: auto;
   -webkit-user-drag: none;
 }
@@ -107,8 +119,8 @@ body.dark .font-image {
    ========================================================================== */
 .font-style p {
   text-align: center;
-  font-family: "Terra";
-  font-size: 3.5rem;
+  font-family: var(--type-family);
+  font-size: calc(3.5rem * var(--sample-scale, 1));
   line-height: 1.2;
   margin: 0;
   cursor: pointer;
@@ -131,7 +143,7 @@ body.dark .font-image {
 }
 
 .style-preview-sample .sample-text {
-  font-family: "Terra";
+  font-family: var(--type-family);
   font-size: calc(2.5rem * var(--sample-scale, 1));
   margin: 3rem 0;
   width: min(75vw, 90rem);
@@ -142,7 +154,7 @@ body.dark .font-image {
    Variable Font Weight Animation (Variable slide)
    ========================================================================== */
 .font-variable .sample-text {
-  font-family: "Terra Upright";
+  font-family: var(--type-family-variable, var(--type-family));
   font-size: calc(2.5rem * var(--sample-scale, 1));
   margin: 3rem 0;
   width: min(75vw, 90rem);
@@ -160,9 +172,26 @@ body.dark .font-image {
   }
 }
 
+/* Typefaces whose Variable slide has no weight axis animate a different one
+   instead — opt in via data-axis on .font-variable (see sinfonie.html, whose
+   Variable font only has an optical-size axis). */
+.font-variable[data-axis="opsz"] .sample-text {
+  animation-name: opsz-breathe;
+}
+
+@keyframes opsz-breathe {
+  0%,
+  100% {
+    font-variation-settings: "opsz" 10;
+  }
+  50% {
+    font-variation-settings: "opsz" 50;
+  }
+}
+
 .font-variable .sample-text em,
 .font-variable .sample-text i {
-  font-family: "Terra Italic";
+  font-family: var(--type-family-variable-italic, var(--type-family));
   font-style: normal;
 }
 
@@ -301,7 +330,7 @@ body.dark .font-image {
    Random Sample Text (click to swap line, drag to edit — js/type-slides.js)
    ========================================================================== */
 .sample-text {
-  line-height: 1.1;
+  line-height: 1.3;
 }
 
 .sample-text[contenteditable="true"] {
@@ -323,54 +352,39 @@ body.dark .font-image {
 
 /* ==========================================================================
    Per-Style Font Weight/Style Presets
+
+   Driven by data-weight/data-font-style attributes on the style-list <p>
+   (.font-style) and its matching .style-preview-sample block, instead of
+   per-typeface IDs — so a new typeface just tags its markup with these
+   attributes and needs no CSS changes here. See terra.html/espinosa.html.
    ========================================================================== */
-#terra-light-preview .sample-text {
+.font-style p[data-weight="300"],
+.style-preview-sample[data-weight="300"] .sample-text {
   font-weight: 300;
-  font-style: normal;
 }
 
-#terra-light-italic-preview .sample-text {
-  font-weight: 300;
-  font-style: italic;
-}
-
-#terra-regular-preview .sample-text {
+.font-style p[data-weight="400"],
+.style-preview-sample[data-weight="400"] .sample-text {
   font-weight: 400;
-  font-style: normal;
 }
 
-#terra-regular-italic-preview .sample-text {
-  font-weight: 400;
-  font-style: italic;
-}
-
-#terra-medium-preview .sample-text {
+.font-style p[data-weight="500"],
+.style-preview-sample[data-weight="500"] .sample-text {
   font-weight: 500;
-  font-style: normal;
 }
 
-#terra-medium-italic-preview .sample-text {
-  font-weight: 500;
-  font-style: italic;
-}
-
-#terra-bold-preview .sample-text {
+.font-style p[data-weight="700"],
+.style-preview-sample[data-weight="700"] .sample-text {
   font-weight: 700;
-  font-style: normal;
 }
 
-#terra-bold-italic-preview .sample-text {
-  font-weight: 700;
-  font-style: italic;
-}
-
-#terra-black-preview .sample-text {
+.font-style p[data-weight="900"],
+.style-preview-sample[data-weight="900"] .sample-text {
   font-weight: 900;
-  font-style: normal;
 }
 
-#terra-black-italic-preview .sample-text {
-  font-weight: 900;
+.font-style p[data-font-style="italic"],
+.style-preview-sample[data-font-style="italic"] .sample-text {
   font-style: italic;
 }
 
@@ -380,7 +394,7 @@ body.dark .font-image {
 .info-fulltext {
   width: 70vw;
   color: var(--primary-grey);
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   gap: 2rem;
 }
@@ -495,7 +509,7 @@ body.dark.image-slide-active .font-info button {
 }
 
 /* ==========================================================================
-   Styles List, continued — hover dimming & per-item weight/style
+   Styles List, continued — hover dimming
    ========================================================================== */
 .font-style:hover {
   color: var(--tertiary-grey);
@@ -503,56 +517,6 @@ body.dark.image-slide-active .font-info button {
 
 .font-style p:hover {
   color: var(--fg);
-}
-
-.font-style p:nth-child(1) {
-  font-weight: 300;
-  font-style: normal;
-}
-
-.font-style p:nth-child(2) {
-  font-weight: 300;
-  font-style: italic;
-}
-
-.font-style p:nth-child(3) {
-  font-weight: 400;
-  font-style: normal;
-}
-
-.font-style p:nth-child(4) {
-  font-weight: 400;
-  font-style: italic;
-}
-
-.font-style p:nth-child(5) {
-  font-weight: 500;
-  font-style: normal;
-}
-
-.font-style p:nth-child(6) {
-  font-weight: 500;
-  font-style: italic;
-}
-
-.font-style p:nth-child(7) {
-  font-weight: 700;
-  font-style: normal;
-}
-
-.font-style p:nth-child(8) {
-  font-weight: 700;
-  font-style: italic;
-}
-
-.font-style p:nth-child(9) {
-  font-weight: 900;
-  font-style: normal;
-}
-
-.font-style p:nth-child(10) {
-  font-weight: 900;
-  font-style: italic;
 }
 
 /* ==========================================================================
@@ -568,12 +532,7 @@ body.dark.image-slide-active .font-info button {
     display: none;
   }
 
-  /* 2. style list font size scaled down to match */
-  .font-style p {
-    font-size: 1.75rem;
-  }
-
-  /* 3 & 4. parameter controls gone; only the style-change label remains */
+  /* 2 & 3. parameter controls gone; only the style-change label remains */
   .dropdown-arrow,
   .font-style-dropdown,
   .font-style-dropdown.open,
@@ -583,7 +542,7 @@ body.dark.image-slide-active .font-info button {
     display: none;
   }
 
-  /* 6. Type in use images fill the screen width, swipe snaps one at a time.
+  /* 4. Type in use images fill the screen width, swipe snaps one at a time.
      .font-image's content can now run taller than 100vh, so let it flow
      instead of clipping (that would hide the dots below a tall image). */
   .font-image {
@@ -641,7 +600,7 @@ body.dark.image-slide-active .font-info button {
     background: var(--black);
   }
 
-  /* 7. Information full text as a single column; content now runs taller than
+  /* 5. Information full text as a single column; content now runs taller than
      100vh, so let it flow instead of being vertically centered and clipped */
   .font-information {
     height: auto;
