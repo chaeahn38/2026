@@ -5,8 +5,13 @@
 //   - data-families (comma-separated font-family names) for typefaces that
 //     vary by family instead, e.g. Sinfonie's optical-size cuts.
 // A card can use either or both — no changes needed here for a new typeface.
-const FADE_MS = 150;
-const CYCLE_MS = 500;
+// Touch devices have no real hover state to trigger this on, so instead of
+// waiting for mouseenter/mouseleave, every card just auto-plays continuously —
+// but running non-stop at the same pace as the hover version feels frantic,
+// so mobile runs at half speed (double the timings).
+const isTouch = window.matchMedia("(hover: none)").matches;
+const FADE_MS = isTouch ? 300 : 150;
+const CYCLE_MS = isTouch ? 1000 : 500;
 
 document
   .querySelectorAll(".typeface-card[data-weights], .typeface-card[data-families]")
@@ -54,6 +59,12 @@ document
         if (family !== null) name.style.fontFamily = family;
         name.style.opacity = "1";
       }, FADE_MS);
+    }
+
+    if (isTouch) {
+      pickStyle();
+      cycleInterval = setInterval(pickStyle, CYCLE_MS);
+      return;
     }
 
     card.addEventListener("mouseenter", () => {

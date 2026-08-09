@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chae Ahn</title>
+    <script src="/js/access-gate.js"></script>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/font-face.css">
+    <link rel="stylesheet" href="/css/typeface-detail.css">
+</head>
+<body>
+    <!-- ============ HEADER: SITE NAV ============ -->
+    <header>
+   <p><a href="/index.html">Chae Ahn</a></p>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/html/about.html">About</a></li>
+          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
+          <li><a href="/html/projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+      <img src="/asset/icon/scroll-to-top.svg" alt="">
+    </button>
+
+    <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============ -->
+    <div class="font-info">
+      <button data-target="styles-slide">Styles</button>
+      <button data-target="variable-slide">Variable</button>
+      <button data-target="image-slide">Type in use</button>
+      <button data-target="information">Information</button>
+    </div>
+
+    <!-- ============ MAIN CONTENT: 4 full-screen slides ============ -->
+    <main class="content">
+
+
+      <div class="font-preview" style="--type-family: 'Sinfonie Title'; --type-family-variable: 'Sinfonie Variable';">
+
+        <!-- ============ SLIDE 1: STYLES LIST ============
+             Sinfonie has no weight or italic axis — it varies by optical size
+             instead (Title down to Caption, largest to smallest), each a
+             separate static font-family (see css/font-face.css). -->
+        <div class="font-style" id="styles-slide">
+          <p id="sinfonie-title" data-weight="400" data-font-style="normal" data-family="Sinfonie Title" style="font-family: 'Sinfonie Title'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Title Display</p>
+          <p id="sinfonie-head" data-weight="400" data-font-style="normal" data-family="Sinfonie Head" style="font-family: 'Sinfonie Head'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Heading Display</p>
+          <p id="sinfonie-subhead" data-weight="400" data-font-style="normal" data-family="Sinfonie Subhead" style="font-family: 'Sinfonie Subhead'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Subheading Display</p>
+          <p id="sinfonie-body" data-weight="400" data-font-style="normal" data-family="Sinfonie Body" style="font-family: 'Sinfonie Body'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Body Text</p>
+          <p id="sinfonie-caption" data-weight="400" data-font-style="normal" data-family="Sinfonie Caption" style="font-family: 'Sinfonie Caption'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Caption Text</p>
+        </div>
+
+        <!-- ============ STYLE PREVIEWS (5 blocks, one per Sinfonie optical size) ============ -->
+        <div class="style-preview-sample" id="sinfonie-title-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Title';">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Sinfonie Title Display</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
+                  <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
+                  <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
+                  <li><button data-style="sinfonie-body">Sinfonie Body Text</button></li>
+                  <li><button data-style="sinfonie-caption">Sinfonie Caption Text</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+                    <div class="random-text">
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Arvo Pärt, Spiegel im Spiegel, 1978</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Georg Friedrich Handel, Messiah, 1741</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Claude Debussy, Clair de Lune, 1905</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Jean Sibelius, Finlandia, 1899</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Igor Stravinsky, The Rite of Spring, 1913</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Ella Fitzgerald, Summertime, 1958</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">John Coltrane, A Love Supreme, 1965</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Clara Schumann, Piano Trio in G minor, 1846</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="sinfonie-head-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Head';">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Sinfonie Heading Display</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
+                  <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
+                  <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
+                  <li><button data-style="sinfonie-body">Sinfonie Body Text</button></li>
+                  <li><button data-style="sinfonie-caption">Sinfonie Caption Text</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+                    <div class="random-text">
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Maria Callas, Casta Diva, 1954</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Camille Saint-Saëns, Carnival of the Animals, 1886</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Richard Wagner, Tristan und Isolde, 1865</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Pyotr Ilyich Tchaikovsky, Swan Lake, 1876</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Dmitri Shostakovich, String Quartet No. 8, 1960</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Giuseppe Verdi, La Traviata, 1853</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Louis Armstrong, What a Wonderful World, 1967</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Nadia Boulanger, teaching studio, Paris, 1921</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="sinfonie-subhead-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Subhead';">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Sinfonie Subheading Display</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
+                  <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
+                  <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
+                  <li><button data-style="sinfonie-body">Sinfonie Body Text</button></li>
+                  <li><button data-style="sinfonie-caption">Sinfonie Caption Text</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+                    <div class="random-text">
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Erik Satie, Gymnopédie No. 1, 1888</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Leonard Bernstein, West Side Story, 1957</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Fanny Mendelssohn, Das Jahr, 1841</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Amy Beach, Gaelic Symphony, 1896</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Béla Bartók, field recordings, Transylvania, 1907</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Florence Price, Symphony No. 1, 1933</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Bessie Smith, Downhearted Blues, 1923</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Kurt Weill, Die Dreigroschenoper, 1928</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="sinfonie-body-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Body';">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Sinfonie Body Text</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
+                  <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
+                  <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
+                  <li><button data-style="sinfonie-body">Sinfonie Body Text</button></li>
+                  <li><button data-style="sinfonie-caption">Sinfonie Caption Text</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+                    <div class="random-text">
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">The rehearsal ran long, but no one thought to say so out loud.</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The choirboy's voice broke mid-solo, and the congregation pretended not to notice.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She wrote the melody first and the words after, which her teacher always said was backward, though it was the only way she ever finished anything.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The record skipped on the same note every time, and eventually it became the note they waited for.</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The silence after the final chord lasted longer than the piece itself.</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">He tuned the guitar by ear, never trusting the tuner, not even once.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The brass section came in a measure early at the wedding, and the bride, for reasons no one quite understood, began to cry.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept time with her foot, though no one could see it under the piano.</p>
+            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Written during Antonín Dvořák's residency in the United States, the Symphony No. 9 draws on the melodic character of African American spirituals and Native American music the composer encountered abroad, filtered through a distinctly Bohemian sense of harmony and orchestral color. Its themes, by turns yearning and triumphant, have since become so familiar that audiences often forget how strange and searching the piece must have sounded at its 1893 premiere.</p>
+            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Clara Wieck Schumann began performing publicly at the age of nine and was, by her late teens, among the most celebrated pianists in Europe, admired by audiences who often had no idea she also composed. Married to Robert Schumann and later a close friend and champion of Johannes Brahms, she continued to concertize for decades after her husband's death, supporting her family through a touring career that spanned nearly six decades.</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="sinfonie-caption-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Caption';">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Sinfonie Caption Text</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
+                  <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
+                  <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
+                  <li><button data-style="sinfonie-body">Sinfonie Body Text</button></li>
+                  <li><button data-style="sinfonie-caption">Sinfonie Caption Text</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+                    <div class="random-text">
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">The trumpet came in a beat late, and somehow it sounded intentional.</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The choir rehearsed in the basement, where the acoustics, everyone agreed, were somehow better.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept his father's violin in its case for twenty years before he finally learned to play it, badly, and beautifully, all at once.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The organist played through the blackout, by memory, until the lights came back.</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The same eight bars, repeated so often, began to feel like a question.</p>
+            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She could never remember the words to the anthem, only the tune.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">The orchestra disbanded the year the hall was condemned, though a few of them kept meeting anyway, in someone's living room, out of habit.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">No one clapped until the conductor's hands came down.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Maurice Ravel described Boléro as an experiment in orchestration rather than composition: a single melody, repeated without development, passed gradually across the orchestra's sections while a snare drum keeps an unbroken rhythm underneath. He is said to have been surprised by its enormous popularity, noting once that most orchestras don't want to play it, considering it to contain no actual music.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Duke Ellington led his orchestra for nearly fifty years, writing and arranging thousands of compositions that blurred the line between jazz and concert music long before critics had a name for it. He preferred the term "American Music" to any narrower label, and continued composing new works, including a series of sacred concerts, until the final months of his life.</p>
+          </div>
+        </div>
+
+        <!-- ============ SLIDE 2: VARIABLE FONT ============
+             Sinfonie Variable's only axis is optical size (opsz 10-50), not
+             weight — see .font-variable[data-axis="opsz"] in
+             css/typeface-detail.css for the breathing animation this drives. -->
+        <div class="font-variable" id="variable-slide" data-axis="opsz">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Sinfonie Variable</span>
+                </button>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="random-text">
+<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Ludwig van Beethoven, Symphony No. 7, 1812</p>
+<p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Johannes Brahms, Symphony No. 4, 1885</p>
+<p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Antonio Vivaldi, The Four Seasons, 1725</p>
+<p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Wolfgang Amadeus Mozart, Requiem in D minor, 1791</p>
+<p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Frédéric Chopin, Nocturne in E-flat major, 1832</p>
+<p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Gustav Mahler, Symphony No. 5, 1902</p>
+<p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Nina Simone, Feeling Good, 1965</p>
+<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Miles Davis, So What, 1959</p>
+<p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Billie Holiday, Strange Fruit, 1939</p>
+<p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Giacomo Puccini, Nessun Dorma, 1926</p>
+<p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Sergei Rachmaninoff, Piano Concerto No. 2, 1901</p>
+<p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Johann Sebastian Bach, Goldberg Variations, 1741</p>
+<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Thelonious Monk, 'Round Midnight, 1944</p>
+</div>
+          </div>
+
+        <!-- ============ SLIDE 3: TYPE IN USE ============
+             TODO: no Sinfonie specimen images yet — add them to
+             typefaces/img/Sinfonie/ and list them here, same as
+             terra.html/espinosa.html. -->
+        <div class="font-image" id="image-slide" style="--img-slide-height: 120vh; --img-slide-bg: #e8ebe9;">
+          <div class="img-slider">
+            <img src="/typefaces/img/Sinfonie/Sinfonie00.png" alt="">
+            <img src="/typefaces/img/Sinfonie/Sinfonie01.png" alt="">
+            <img src="/typefaces/img/Sinfonie/Sinfonie02.png" alt="">
+            <img src="/typefaces/img/Sinfonie/Sinfonie03.png" alt="">
+            <img src="/typefaces/img/Sinfonie/Sinfonie04.png" alt="">
+            <img src="/typefaces/img/Sinfonie/Sinfonie05.png" alt="">
+            <img src="/typefaces/img/Sinfonie/Sinfonie06.png" alt="">
+            <img src="/typefaces/img/Sinfonie/Sinfonie07.png" alt="">
+          </div>
+          <div class="img-slider-dots"></div>
+
+        </div>
+
+        <!-- ============ SLIDE 4: INFORMATION ============
+             TODO: placeholder copy below — needs the real design rationale,
+             mentor, and language coverage for Sinfonie. -->
+        <div class="font-information" id="information">
+          <div class="info-fulltext">
+            <p>Sinfonie is a serif typeface designed for the Philharmonic Society,
+the pseudo philharmonic orchestra. The condensed proportions of
+typeface and its tall x-height reflect the verticality of a concert hall,
+structured, upright, and precisely tuned. The design is built around
+the principle of optical sizing: each variant is drawn independently to
+serve its specific context, from large-scale titles to small program notes.</p>
+<p>At display sizes, Sinfonie Title carries extreme contrast and tightly
+condensed letterforms, producing sharp visual tension suited to posters
+and headlines. As the size decreases through Head, Subhead, Body,
+and Caption, the contrast gradually softens, the x-height moderates,
+and the proportions open to maintain clarity. Sinfonie Caption,
+the smallest optical size, is drawn with low contrast and balanced
+widths, prioritizing legibility in the conditions where it will most often
+be read at the dimly lit seats of a concert hall.</p>
+          </div>
+          <div class="info-subtext">
+            <p id="info-styles-count">5 Styles</p>
+            <p id="info-lang-toggle">70 languages</p>
+            <p id="info-lang-list">Afrikaans, Albanian, Asu, Basque, Bemba, Bena, Breton, Chiga, Cornish, Czech, Dutch, Embu, English, Estonian, Filipino, Finnish, Friulian, Galician, German, Gusii, Indonesian, Irish, Italian, Kabuverdianu, Kalenjin, Kamba, Kikuyu, Kinyarwanda, Luo, Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde, Malagasy, Manx, Meru, Morisyen, North Ndebele, Nyankole, Oromo, Portuguese, Quechua, Romansh, Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena, Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish, Swahili, Swedish, Swiss German, Taita, Teso, Turkish, Uzbek (Latin), Volapük, Vunjo, Walser, Zulu</p>
+            <p id="info-designer">Designed by Chae Ahn at ECAL</p>
+            <p id="info-mentor">Mentored by Kai Bernau</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/type-slides.js"></script>
+</body>
+</html>

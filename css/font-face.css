@@ -157,3 +157,254 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* ------------------Actosk------------------ */
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-ThinItalic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-ExtralightItalic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-RegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-SemiBoldItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-ExtraBoldItalic.woff2") format("woff2");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk";
+  src: url("/typefaces/font/Actosk/Actosk-BlackItalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Actosk Variable";
+  src: url("/typefaces/font/Actosk/ActoskVF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Actosk Variable";
+  src: url("/typefaces/font/Actosk/ActoskVF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+/* ------------------Marelle------------------
+   Single weight, no italic, no Variable axis. Designed for early alphabet
+   learning, so it only draws lowercase letters (plus a handful of accented
+   lowercase glyphs and basic punctuation) — no uppercase, no digits past 4.
+   marelle.html forces every sample line to render lowercase regardless of
+   how it's typed (see [data-lowercase-only] in typeface-detail.css), since
+   there's no uppercase glyph for the font to fall back on otherwise. */
+
+@font-face {
+  font-family: "Marelle";
+  src: url("/typefaces/font/Marelle/Marelle-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ------------------Eriksson------------------
+   Swedish monospace, no italic. Variable font only covers the 400-800 range
+   (Light 300 has no VF instance, static-only). */
+
+@font-face {
+  font-family: "Eriksson";
+  src: url("/typefaces/font/Eriksson/Eriksson-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Eriksson";
+  src: url("/typefaces/font/Eriksson/Eriksson-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Eriksson";
+  src: url("/typefaces/font/Eriksson/Eriksson-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Eriksson";
+  src: url("/typefaces/font/Eriksson/Eriksson-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Eriksson";
+  src: url("/typefaces/font/Eriksson/Eriksson-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Eriksson Variable";
+  src: url("/typefaces/font/Eriksson/ErikssonVF.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+}
+
+/* ------------------Score------------------
+   No weight axis, no italic, no Variable — 4 stylistic cuts instead (Regular/
+   Bold/Dots/Tube), same "one family name per cut" approach as Sinfonie's
+   optical sizes, since CSS has no selector for arbitrary style variants on
+   static faces. Glyph set is uppercase + lowercase Latin plus space ! , . ?
+   only — no digits, despite the name, and no other punctuation. */
+
+@font-face {
+  font-family: "Score Regular";
+  src: url("/typefaces/font/Score/Score-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Score Bold";
+  src: url("/typefaces/font/Score/Score-Bold.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Score Dots";
+  src: url("/typefaces/font/Score/Score-Dots.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Score Tube";
+  src: url("/typefaces/font/Score/Score-Tube.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ------------------Calle------------------
+   Single weight, no italic, no Variable axis. Full French accented set
+   (àâäæçéèêëîïôöùûüÿœ etc., upper and lower) plus curly and straight
+   apostrophes — built for the French correspondence-style sample copy on
+   calle.html. */
+
+@font-face {
+  font-family: "Calle";
+  src: url("/typefaces/font/Calle/Calle-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}

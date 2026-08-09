@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chae Ahn</title>
+    <script src="/js/access-gate.js"></script>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/font-face.css">
+    <link rel="stylesheet" href="/css/typeface-detail.css">
+</head>
+<body>
+    <!-- ============ HEADER: SITE NAV ============ -->
+    <header>
+   <p><a href="/index.html">Chae Ahn</a></p>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/html/about.html">About</a></li>
+          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
+          <li><a href="/html/projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+      <img src="/asset/icon/scroll-to-top.svg" alt="">
+    </button>
+
+    <!-- ============ SLIDE NAV (jumps between the 3 slides below) ============
+         No Variable button: Calle is a single static weight, no VF. -->
+    <div class="font-info">
+      <button data-target="styles-slide">Styles</button>
+      <button data-target="image-slide">Type in use</button>
+      <button data-target="information">Information</button>
+    </div>
+
+    <!-- ============ MAIN CONTENT: 3 full-screen slides ============ -->
+    <main class="content">
+
+
+      <div class="font-preview" style="--type-family: 'Calle';">
+
+        <!-- ============ SLIDE 1: STYLES LIST ============
+             Single weight, no italic — one entry only. -->
+        <div class="font-style" id="styles-slide">
+          <p id="calle-regular" data-weight="400" data-font-style="normal" style="font-size: calc(8rem * var(--sample-scale, 1));">Calle</p>
+        </div>
+
+        <!-- ============ STYLE PREVIEW (1 block — only style Calle has) ============
+             Sample copy is a set of 20 French correspondence lines — chosen
+             for the accented character coverage and the curly/straight
+             apostrophes the font was built to carry (see css/font-face.css). -->
+        <div class="style-preview-sample" id="calle-regular-preview" data-weight="400" data-font-style="normal">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Calle</span>
+                </button>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="random-text">
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Je voulais vous écrire depuis longtemps, mais les mots hésitaient à venir.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Il y a des silences qui parlent plus fort que n'importe quelle phrase.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Je croyais que le temps suffirait à apaiser ce que je n'ose pas nommer.</p>
+            <p class="sample-text" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Votre absence a une texture, presque une odeur, qui reste sur mes mains.</p>
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">J'ai tenu ma promesse, même si elle me coûtait chaque jour un peu plus.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">On ne guérit pas d'une inquiétude en fuyant vers une autre.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Je vous écris ceci comme on écrit à quelqu'un qu'on ne veut pas perdre tout à fait.</p>
+            <p class="sample-text" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Ce que je ressens n'a pas de nom simple, alors je le laisse sans nom.</p>
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Vous m'avez appris une tendresse que je ne savais pas garder.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Il y a une différence entre se taire et n'avoir rien à dire.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">J'ai cherché ailleurs ce qui, je le sais maintenant, était déjà entre nous.</p>
+            <p class="sample-text" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Cette lettre n'est pas une explication, c'est un aveu qui prend son temps.</p>
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Je respire mal depuis que je sais ce que je dois vous dire.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Rien de ce que j'ai vécu ailleurs ne vous ressemblait.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">On croit fuir son angoisse, on ne fait que la porter plus loin.</p>
+            <p class="sample-text" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Je n'écris pas pour me faire pardonner, j'écris pour rester honnête.</p>
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Votre amour était le plus grand que j'aie connu, et cela ne suffit pas à me sauver de moi-même.</p>
+            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Chaque mot que je pose ici tremble un peu, comme une main qui hésite.</p>
+            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Il faudrait pouvoir dire les choses sans les briser en les disant.</p>
+            <p class="sample-text" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Je vous écris cela, encore et encore, comme on continue une phrase qu'on ne sait pas finir.</p>
+          </div>
+        </div>
+
+        <!-- ============ SLIDE 2: TYPE IN USE ============ -->
+        <div class="font-image" id="image-slide" style="--img-slide-height: 90vh;">
+          <div class="img-slider">
+            <img src="/typefaces/img/Calle/Sophie-Calle-Letter.png" alt="">
+            <img src="/typefaces/img/Calle/Time_Workshop-6.jpg" alt="">
+            <img src="/typefaces/img/Calle/Time_Workshop-21.jpg" alt="">
+          </div>
+          <div class="img-slider-dots"></div>
+
+        </div>
+
+        <!-- ============ SLIDE 3: INFORMATION ============
+             TODO: placeholder copy below — needs the real design rationale
+             and mentor for Calle. -->
+        <div class="font-information" id="information">
+          <div class="info-fulltext">
+            <p>Calle takes its name from Sophie Calle, the French artist whose work turns confession, absence, and correspondence into form — letters read aloud, private feelings put on public display. The typeface carries a full French accented set built for that kind of writing: the hesitations, the unsent letters, the sentences that circle what they cannot quite name. [Expand with the real design rationale.]</p>
+          </div>
+          <div class="info-subtext">
+            <p id="info-styles-count">1 Style</p>
+            <p id="info-glyph-count">132 Glyphs</p>
+            <p id="info-lang-toggle">Full French accented character set</p>
+            <p id="info-designer">Designed by Chae Ahn</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/type-slides.js"></script>
+</body>
+</html>

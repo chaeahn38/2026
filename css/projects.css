@@ -1,0 +1,54 @@
+body {
+  overflow-y: auto;
+}
+
+.content {
+  margin-top: 15rem;
+  display: block;
+  transform: translate(20rem, 4rem);
+  width: 60%;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+li a,
+a.clicked,
+.ext-link a {
+  text-decoration: none;
+}
+
+.ext-link {
+  padding-bottom: 12rem;
+}
+
+/* //------Project List-----// */
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.project-title {
+  color: var(--tertiary-grey);
+}
+
+.project-info,
+.project-info a {
+  color: var(--tertiary-grey);
+}
+
+a {
+  text-decoration: none;
+}
+
+.project-link a:hover {
+  color: orange;
+}

@@ -5,7 +5,7 @@
 // which stops casual visitors, not anyone who opens dev tools. The password
 // itself is compared as a SHA-256 hash rather than stored in plaintext here.
 (() => {
-  const PASSWORD_HASH = "79225c61a78196bea88e97d35aaec85c36f8bc29f24ace6b3af0f246f500ad75";
+  const PASSWORD_HASH = "24f72b4b9b2c88dbab71cc20d37ef895da8275e2a507d07ea2a7e8d0015c909d";
   const STORAGE_KEY = "site-access-granted";
 
   if (sessionStorage.getItem(STORAGE_KEY) === "granted") return;

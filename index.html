@@ -4,31 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chae Ahn</title>
+    <link rel="stylesheet" href="css/font-face.css" />
     <link rel="stylesheet" href="css/global.css" />
   </head>
   <body>
     <!-- ============ HEADER: SITE NAV ============ -->
     <header>
-      <p>Chae Ahn</p>
+      <p><a href="#">Chae Ahn</a></p>
       <nav>
         <ul class="nav-menu">
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/typefaces-index.html">Typefaces</a></li>
-          <li><a href="/projects.html">Projects</a></li>
+          <li><a href="/html/about.html">About</a></li>
+          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
+          <li><a href="/html/projects.html">Projects</a></li>
         </ul>
       </nav>
     </header>
-
-    <!-- ============ THEME TOGGLE ============ -->
-    <button class="theme-btn" id="themeBtn">
-      <img src="asset/icon/theme-toggle-light.svg" id="themeIcon" alt="" />
-    </button>
-    <script>
-      if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
-        document.getElementById("themeIcon").src = "/asset/icon/theme-toggle-dark.svg";
-      }
-    </script>
 
     <!-- ============ MAIN CONTENT: interactive hero glyph ============ -->
     <main class="content">
@@ -36,19 +26,6 @@
         <svg id="canvas"></svg>
       </div>
     </main>
-
-    <!-- ============ FOOTER ============ -->
-    <footer>
-      <div class="footer-content">
-        <div class="message">
-          <p><i id="jobMessage"></i></p>
-          <p class="date-display" id="currentDate">Today is</p>
-        </div>
-        <div class="right-mark">
-          <p>©Chae Ahn, 2026. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
 
     <script src="js/script.js"></script>
   </body>

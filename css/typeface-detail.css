@@ -27,14 +27,6 @@ body {
   overflow-y: scroll;
 }
 
-body.image-slide-active .theme-btn {
-  display: none;
-}
-
-body.dark .sample-text {
-  color: var(--white);
-}
-
 .font-style,
 .font-image,
 .font-information {
@@ -65,15 +57,9 @@ body.dark .sample-text {
    ========================================================================== */
 /* Defaults to the images' own background (set per-page via --img-slide-bg,
    e.g. sinfonie.html) so the gaps between/around them (they don't all fill
-   the frame edge-to-edge) blend in instead of showing the page background.
-   Forced to white in dark mode when a typeface doesn't set one, since a dark
-   page background would otherwise show as black gaps. */
+   the frame edge-to-edge) blend in instead of showing the page background. */
 .font-image {
   background: var(--img-slide-bg, transparent);
-}
-
-body.dark .font-image {
-  background: var(--img-slide-bg, var(--white));
 }
 
 .img-slider {
@@ -84,6 +70,10 @@ body.dark .font-image {
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  /* Tells touch browsers this element only pans horizontally, so a swipe
+     here doesn't get resolved as the page's vertical scroll instead — without
+     this, dragging the slider on a touchscreen can be unreliable. */
+  touch-action: pan-x;
   cursor:
     url("/asset/icon/carousel-arrow-left.svg") 28 19,
     auto;
@@ -186,6 +176,18 @@ body.dark .font-image {
   }
   50% {
     font-variation-settings: "opsz" 50;
+  }
+}
+
+/* Hover-capable devices (mouse/trackpad) drive the variable axis live from
+   horizontal mouse position instead (see type-slides.js) — the automatic
+   loop is only for touch devices, which have no hover to do that with.
+   Repeats the [data-axis="opsz"] selector to match its specificity — otherwise
+   that rule's own animation-name would keep winning over this reset. */
+@media (hover: hover) {
+  .font-variable .sample-text,
+  .font-variable[data-axis="opsz"] .sample-text {
+    animation: none;
   }
 }
 
@@ -353,39 +355,26 @@ body.dark .font-image {
 /* ==========================================================================
    Per-Style Font Weight/Style Presets
 
+   font-weight itself is set from data-weight in JS (see type-slides.js) since
+   CSS attribute selectors can't match arbitrary numeric values — only
+   font-style stays here, as normal/italic are the only two possible values.
    Driven by data-weight/data-font-style attributes on the style-list <p>
    (.font-style) and its matching .style-preview-sample block, instead of
    per-typeface IDs — so a new typeface just tags its markup with these
    attributes and needs no CSS changes here. See terra.html/espinosa.html.
    ========================================================================== */
-.font-style p[data-weight="300"],
-.style-preview-sample[data-weight="300"] .sample-text {
-  font-weight: 300;
-}
-
-.font-style p[data-weight="400"],
-.style-preview-sample[data-weight="400"] .sample-text {
-  font-weight: 400;
-}
-
-.font-style p[data-weight="500"],
-.style-preview-sample[data-weight="500"] .sample-text {
-  font-weight: 500;
-}
-
-.font-style p[data-weight="700"],
-.style-preview-sample[data-weight="700"] .sample-text {
-  font-weight: 700;
-}
-
-.font-style p[data-weight="900"],
-.style-preview-sample[data-weight="900"] .sample-text {
-  font-weight: 900;
-}
-
 .font-style p[data-font-style="italic"],
 .style-preview-sample[data-font-style="italic"] .sample-text {
   font-style: italic;
+}
+
+/* Typefaces with lowercase-only glyphs (e.g. Marelle) have no uppercase to
+   fall back on, so every sample line — including whatever a visitor types
+   into an editable sample — is forced to render lowercase regardless of the
+   case it was typed in. Opt in via data-lowercase-only on .font-preview. */
+.font-preview[data-lowercase-only] .font-style p,
+.font-preview[data-lowercase-only] .sample-text {
+  text-transform: lowercase;
 }
 
 /* ==========================================================================
@@ -397,10 +386,7 @@ body.dark .font-image {
   font-size: 1rem;
   display: flex;
   gap: 2rem;
-}
-
-body.dark .info-fulltext p {
-  color: var(--white);
+  line-height: 1.5;
 }
 
 .info-fulltext p {
@@ -433,17 +419,6 @@ body.dark .info-fulltext p {
 
 #info-lang-list.open {
   display: block;
-}
-
-/* Footer sits in normal flow after the Information slide instead of being
-   fixed on screen — reached by scrolling to the very end of .font-preview.
-   body has margin: 0 on this page (for full-bleed slides), so the footer
-   needs its own horizontal padding to match the 1rem inset every other
-   page gets for free from body's margin. */
-footer {
-  position: static;
-  margin: 4rem 0 2rem;
-  padding: 0 1rem;
 }
 
 /* ==========================================================================
@@ -494,18 +469,6 @@ button:hover {
 
 .font-info button.active {
   font-weight: 600;
-}
-
-body.dark .font-info button {
-  color: var(--secondary-grey);
-}
-
-body.dark .font-info button.active {
-  color: var(--white);
-}
-
-body.dark.image-slide-active .font-info button {
-  color: var(--black);
 }
 
 /* ==========================================================================
@@ -593,13 +556,6 @@ body.dark.image-slide-active .font-info button {
     background: var(--fg);
   }
 
-  /* .font-image's background is forced white even in dark mode (see top of
-     file), so the active dot needs to stay black here instead of --fg's
-     white — otherwise it disappears against the white background. */
-  body.dark .img-slider-dot.active {
-    background: var(--black);
-  }
-
   /* 5. Information full text as a single column; content now runs taller than
      100vh, so let it flow instead of being vertically centered and clipped */
   .font-information {
@@ -626,21 +582,4 @@ body.dark.image-slide-active .font-info button {
     display: none;
   }
 
-  /* 8. footer: only the copyright mark remains, centered on one line */
-  .footer-content .message {
-    display: none;
-  }
-
-  .footer-content {
-    justify-content: center;
-  }
-
-  .footer-content .right-mark {
-    width: 100%;
-    text-align: center;
-  }
-
-  .footer-content .right-mark p {
-    white-space: nowrap;
-  }
 }

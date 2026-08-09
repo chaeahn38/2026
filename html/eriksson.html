@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chae Ahn</title>
+    <script src="/js/access-gate.js"></script>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/font-face.css">
+    <link rel="stylesheet" href="/css/typeface-detail.css">
+</head>
+<body>
+    <!-- ============ HEADER: SITE NAV ============ -->
+    <header>
+   <p><a href="/index.html">Chae Ahn</a></p>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/html/about.html">About</a></li>
+          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
+          <li><a href="/html/projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+      <img src="/asset/icon/scroll-to-top.svg" alt="">
+    </button>
+
+    <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============
+         No Variable button: the styles list below covers all 5 static
+         weights; ErikssonVF (font-face.css) is wired up for future use but
+         not exposed as its own slide yet. -->
+    <div class="font-info">
+      <button data-target="styles-slide">Styles</button>
+      <button data-target="image-slide">Type in use</button>
+      <button data-target="information">Information</button>
+    </div>
+
+    <!-- ============ MAIN CONTENT: 4 full-screen slides ============ -->
+    <main class="content">
+
+
+      <div class="font-preview" style="--type-family: 'Eriksson';">
+
+        <!-- ============ SLIDE 1: STYLES LIST ============
+             5 weights, no italic. -->
+        <div class="font-style" id="styles-slide">
+          <p id="eriksson-light" data-weight="300" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson Light</p>
+          <p id="eriksson-regular" data-weight="400" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson</p>
+          <p id="eriksson-medium" data-weight="500" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson Medium</p>
+          <p id="eriksson-bold" data-weight="700" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson Bold</p>
+          <p id="eriksson-extrabold" data-weight="800" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson ExtraBold</p>
+        </div>
+
+        <!-- ============ STYLE PREVIEWS (5 blocks, one per Eriksson weight) ============ -->
+        <div class="style-preview-sample" id="eriksson-light-preview" data-weight="300" data-font-style="normal">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Eriksson Light</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="eriksson-light">Eriksson Light</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
+                  <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
+                  <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="random-text">
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Every character in a monospace face claims the same fixed width, a constraint inherited from the typewriter and still useful wherever alignment matters more than economy of space — tables, timetables, code.</p>
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Fixed Width, Fixed Rhythm</p>
+            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Stockholm's timetables have run on grids like this one since long before screens did — a column of numbers, evenly spaced, is its own kind of quiet architecture.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">01 02 03 04 05 06 07 08 09 10</p>
+            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Stockholm</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">function midnight() {}</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Var god vänta</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="eriksson-regular-preview" data-weight="400" data-font-style="normal">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Eriksson</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="eriksson-light">Eriksson Light</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
+                  <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
+                  <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="random-text">
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Every character in a monospace face claims the same fixed width, a constraint inherited from the typewriter and still useful wherever alignment matters more than economy of space — tables, timetables, code.</p>
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Fixed Width, Fixed Rhythm</p>
+            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Stockholm's timetables have run on grids like this one since long before screens did — a column of numbers, evenly spaced, is its own kind of quiet architecture.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">01 02 03 04 05 06 07 08 09 10</p>
+            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Stockholm</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">function midnight() {}</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Var god vänta</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="eriksson-medium-preview" data-weight="500" data-font-style="normal">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Eriksson Medium</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="eriksson-light">Eriksson Light</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
+                  <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
+                  <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="random-text">
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Every character in a monospace face claims the same fixed width, a constraint inherited from the typewriter and still useful wherever alignment matters more than economy of space — tables, timetables, code.</p>
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Fixed Width, Fixed Rhythm</p>
+            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Stockholm's timetables have run on grids like this one since long before screens did — a column of numbers, evenly spaced, is its own kind of quiet architecture.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">01 02 03 04 05 06 07 08 09 10</p>
+            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Stockholm</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">function midnight() {}</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Var god vänta</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="eriksson-bold-preview" data-weight="700" data-font-style="normal">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Eriksson Bold</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="eriksson-light">Eriksson Light</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
+                  <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
+                  <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="random-text">
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Every character in a monospace face claims the same fixed width, a constraint inherited from the typewriter and still useful wherever alignment matters more than economy of space — tables, timetables, code.</p>
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Fixed Width, Fixed Rhythm</p>
+            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Stockholm's timetables have run on grids like this one since long before screens did — a column of numbers, evenly spaced, is its own kind of quiet architecture.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">01 02 03 04 05 06 07 08 09 10</p>
+            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Stockholm</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">function midnight() {}</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Var god vänta</p>
+          </div>
+        </div>
+
+        <div class="style-preview-sample" id="eriksson-extrabold-preview" data-weight="800" data-font-style="normal">
+          <div class="parameter">
+            <div class="weight-para">
+              <div class="font-style-change">
+                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="font-style-change-label">Eriksson ExtraBold</span>
+                  <span class="dropdown-arrow"></span>
+                </button>
+                <ul class="font-style-dropdown" role="listbox">
+                  <li><button data-style="eriksson-light">Eriksson Light</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
+                  <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
+                  <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
+                </ul>
+              </div>
+              <button class="edit-sample-btn">Edit sample</button>
+              <input type="range" min="1" max="100" value="50">
+              <div class="align-group">
+                <button class="align-left" aria-label="Align left">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-mid" aria-label="Align center">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button class="align-right" aria-label="Align right">
+                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
+                    <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
+                    <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="random-text">
+            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Every character in a monospace face claims the same fixed width, a constraint inherited from the typewriter and still useful wherever alignment matters more than economy of space — tables, timetables, code.</p>
+            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Fixed Width, Fixed Rhythm</p>
+            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Stockholm's timetables have run on grids like this one since long before screens did — a column of numbers, evenly spaced, is its own kind of quiet architecture.</p>
+            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">01 02 03 04 05 06 07 08 09 10</p>
+            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Stockholm</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">function midnight() {}</p>
+            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Var god vänta</p>
+          </div>
+        </div>
+
+
+        <!-- ============ SLIDE 3: TYPE IN USE ============
+             TODO: no Eriksson specimen images yet — add them to
+             typefaces/img/Eriksson/ and list them here, same as
+             terra.html/espinosa.html. -->
+        <div class="font-image" id="image-slide" style="--img-slide-height: 120vh;">
+          <div class="img-slider">
+          </div>
+          <div class="img-slider-dots"></div>
+
+        </div>
+
+        <!-- ============ SLIDE 4: INFORMATION ============
+             TODO: placeholder copy below — needs the real design rationale
+             and mentor for Eriksson. -->
+        <div class="font-information" id="information">
+          <div class="info-fulltext">
+            <p>Eriksson is a Swedish-leaning monospace typeface. [Expand with the real design rationale.]</p>
+          </div>
+          <div class="info-subtext">
+            <p id="info-styles-count">1 Family, 5 Styles</p>
+            <p id="info-glyph-count">349 Glyphs</p>
+            <p id="info-designer">Designed by Chae Ahn</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/type-slides.js"></script>
+</body>
+</html>

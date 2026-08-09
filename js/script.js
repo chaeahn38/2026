@@ -1,5 +1,5 @@
-// Site-wide: theme toggle, footer date/job message, and the interactive
-// glyph-point editor used on the homepage hero (index.html only).
+// Site-wide: the interactive glyph-point editor used on the homepage hero
+// (index.html only).
 
 // SVG path data for the homepage hero glyph (hand-drawn "a" letterform)
 const originalPathData =
@@ -181,9 +181,7 @@ function buildPath(paths) {
         ) {
           d += `C${path[i].x.toFixed(2)},${path[i].y.toFixed(2)},${path[i + 1].x.toFixed(
             2,
-          )},${path[i + 1].y.toFixed(2)},${path[i + 2].x.toFixed(2)},${path[i + 2].y.toFixed(
-            2,
-          )}`;
+          )},${path[i + 1].y.toFixed(2)},${path[i + 2].x.toFixed(2)},${path[i + 2].y.toFixed(2)}`;
           i += 3;
         } else if (path[i + 1] && path[i + 1].type === "offcurve" && i + 2 >= path.length) {
           // Trailing offcurve pair — close back to start point
@@ -370,7 +368,7 @@ function render() {
       const isMobile = window.innerWidth <= 768;
 
       if (pt.type === "oncurve") {
-        const size = isMobile ? 22 : 14;
+        const size = isMobile ? 11 : 9;
         const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         rect.setAttribute("x", pt.x - size / 2);
         rect.setAttribute("y", pt.y - size / 2);
@@ -384,11 +382,8 @@ function render() {
         const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         circle.setAttribute("cx", pt.x);
         circle.setAttribute("cy", pt.y);
-        circle.setAttribute("r", isMobile ? 14 : 7);
-        circle.setAttribute(
-          "class",
-          "point-offcurve" + (isSelected ? " point-selected" : ""),
-        );
+        circle.setAttribute("r", isMobile ? 7 : 5);
+        circle.setAttribute("class", "point-offcurve" + (isSelected ? " point-selected" : ""));
         circle.setAttribute("data-path", pathIdx);
         circle.setAttribute("data-point", i);
         svg.appendChild(circle);
@@ -565,20 +560,6 @@ if (svg) {
   });
 }
 
-// Theme toggle — persisted in localStorage so it survives page navigation.
-// The inline snippet at the top of <body> applies a saved "dark" theme
-// immediately (before paint) so there's no flash of the light theme; this
-// just keeps the icon/localStorage in sync on click.
-const themeIcon = document.getElementById("themeIcon");
-const themeBtn = document.getElementById("themeBtn");
-if (themeBtn) {
-  themeBtn.addEventListener("click", () => {
-    const isDark = document.body.classList.toggle("dark");
-    themeIcon.src = isDark ? "/asset/icon/theme-toggle-dark.svg" : "/asset/icon/theme-toggle-light.svg";
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  });
-}
-
 function generateRandomTargets() {
   const spread = 180;
   return homePaths.map((path) =>
@@ -620,12 +601,7 @@ function startMobileAnimation() {
         pt.x += v.x;
         pt.y += v.y;
 
-        if (
-          Math.abs(dx) > 0.5 ||
-          Math.abs(dy) > 0.5 ||
-          Math.abs(v.x) > 0.1 ||
-          Math.abs(v.y) > 0.1
-        )
+        if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5 || Math.abs(v.x) > 0.1 || Math.abs(v.y) > 0.1)
           settled = false;
       }
     }
@@ -657,36 +633,3 @@ if (svg) {
     render();
   }
 }
-
-// Footer job-search message (edit this string to update it across all pages)
-const jobMessageElement = document.getElementById("jobMessage");
-if (jobMessageElement) {
-  jobMessageElement.textContent = "Chae is looking for new job!";
-}
-
-// Update current date
-const dateElement = document.getElementById("currentDate");
-const today = new Date();
-
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const dayName = days[today.getDay()];
-const day = today.getDate();
-const monthName = months[today.getMonth()];
-const year = today.getFullYear();
-
-dateElement.textContent = `Today is ${dayName}, ${day} ${monthName} ${year}`;

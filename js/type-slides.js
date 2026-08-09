@@ -2,6 +2,94 @@
 // navigation, the image carousel with dot indicators, style-picker
 // interactions, and sample-text editing/randomization.
 
+// Style list + preview sample-text weight: applied from data-weight here
+// rather than CSS attribute selectors, since CSS can't match arbitrary
+// numeric values — this way any weight a typeface actually uses (100-900)
+// works with no CSS changes needed for a new typeface.
+document.querySelectorAll(".font-style p[data-weight]").forEach((p) => {
+  p.style.fontWeight = p.dataset.weight;
+});
+document.querySelectorAll(".style-preview-sample[data-weight]").forEach((block) => {
+  block.querySelectorAll(".sample-text").forEach((el) => {
+    el.style.fontWeight = block.dataset.weight;
+  });
+});
+
+// Information slide's long-form text: authored as however many <p> tags (or
+// just one flowing paragraph) — their text is merged, then (desktop only —
+// .info-fulltext is a single stacked column below 850px, see typeface-
+// detail.css, so there's nothing to balance there) split word-by-word (never
+// mid-word, but mid-sentence is fine) so the two columns render the same
+// number of *visual* lines — the right column takes the extra line when the
+// total is odd. Runs after fonts load (measuring against a fallback font
+// would give the wrong line count) and again on resize, since line-wrapping
+// depends on the column's rendered width, and mobile just wants the one block.
+const infoTextMobile = window.matchMedia("(max-width: 850px)");
+
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+  document.querySelectorAll(".info-fulltext").forEach((container) => {
+    const fullText = Array.from(container.querySelectorAll("p"))
+      .map((p) => p.textContent.trim())
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!fullText) return;
+
+    const words = fullText.split(" ");
+
+    container.innerHTML = "";
+    const left = document.createElement("p");
+    const right = document.createElement("p");
+    container.append(left);
+
+    // .info-fulltext p uses flex:1, so both columns are equal width regardless
+    // of content — safe to measure the left <p> alone at each candidate split.
+    const countLines = (el) => {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const tops = new Set(Array.from(range.getClientRects()).map((r) => Math.round(r.top)));
+      return tops.size;
+    };
+
+    const rebalance = () => {
+      if (infoTextMobile.matches || words.length < 2) {
+        left.textContent = fullText;
+        right.remove();
+        return;
+      }
+
+      container.append(right);
+      left.textContent = fullText;
+      right.textContent = "";
+      const totalLines = countLines(left);
+      if (totalLines < 2) return;
+      const leftTarget = Math.floor(totalLines / 2);
+
+      // Binary search the largest word count that still fits in leftTarget
+      // lines — countLines only ever grows as words are added, so this holds.
+      let lo = 1;
+      let hi = words.length;
+      let splitIndex = 1;
+      while (lo <= hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        left.textContent = words.slice(0, mid).join(" ");
+        if (countLines(left) <= leftTarget) {
+          splitIndex = mid;
+          lo = mid + 1;
+        } else {
+          hi = mid - 1;
+        }
+      }
+
+      left.textContent = words.slice(0, splitIndex).join(" ");
+      right.textContent = words.slice(splitIndex).join(" ");
+    };
+
+    rebalance();
+    window.addEventListener("resize", rebalance);
+  });
+});
+
 // Information slide: click "58 languages" to reveal the full language list.
 // On mobile the list is force-hidden by CSS regardless of this class, so the
 // toggle is effectively a no-op there.
@@ -154,17 +242,14 @@ document.querySelectorAll(".font-style-change").forEach((wrapper) => {
 const originalSampleText = new WeakMap();
 document.querySelectorAll(".sample-text").forEach((p) => originalSampleText.set(p, p.textContent));
 
-// Horizontal mouse position over a random-text block also acts as a weight slider
-// (left edge = mouseWeightMin, right edge = mouseWeightMax) — but only for typefaces
-// whose style list actually spans more than one weight (so the static faces have
-// something to switch between). Single-weight families (e.g. Espinosa's one weight,
-// Sinfonie's optical-size cuts which are each a fixed weight) skip this entirely.
-const styleWeights = new Set(
-  Array.from(document.querySelectorAll(".font-style p[data-weight]")).map((p) => p.dataset.weight),
-);
-const hasWeightRange = styleWeights.size > 1;
-const mouseWeightMin = 100;
-const mouseWeightMax = 900;
+// Variable slide only: on hover-capable devices (mouse/trackpad), horizontal
+// position across the sample text live-drives its variable axis instead of
+// the automatic CSS breathing loop — left edge = axisMin, right edge =
+// axisMax. Touch devices have no hover, so they keep the CSS animation (see
+// the `@media (hover: hover)` override in typeface-detail.css that turns the
+// animation off wherever this takes over).
+const isHoverCapable = window.matchMedia("(hover: hover)").matches;
+const AXIS_RANGE = { wght: [100, 900], opsz: [10, 50] };
 
 document.querySelectorAll(".random-text").forEach((group) => {
   const texts = Array.from(group.querySelectorAll(".sample-text"));
@@ -193,14 +278,18 @@ document.querySelectorAll(".random-text").forEach((group) => {
     current = next;
   });
 
-  // The Variable slide's weight is driven by its own looping CSS animation instead
-  if (!hasWeightRange || container?.classList.contains("font-variable")) return;
+  if (!isHoverCapable || !container?.classList.contains("font-variable")) return;
+
+  const axis = container.dataset.axis === "opsz" ? "opsz" : "wght";
+  const [axisMin, axisMax] = AXIS_RANGE[axis];
 
   group.addEventListener("mousemove", (e) => {
     if (current.isContentEditable) return;
     const rect = group.getBoundingClientRect();
     const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
-    current.style.fontWeight = Math.round(mouseWeightMin + ratio * (mouseWeightMax - mouseWeightMin));
+    const value = axisMin + ratio * (axisMax - axisMin);
+    if (axis === "opsz") current.style.fontVariationSettings = `"opsz" ${value}`;
+    else current.style.fontWeight = Math.round(value);
   });
 });
 
@@ -358,7 +447,8 @@ document.querySelectorAll(".img-slider").forEach((slider) => {
 
   const onDown = (e) => {
     // On mobile, native touch scrolling + CSS scroll-snap handle the swipe instead
-    if (e.type === "touchstart" && window.matchMedia("(max-width: 768px)").matches) return;
+    // (768px would leave a gap against the 850px mobile-layout breakpoint below)
+    if (e.type === "touchstart" && window.matchMedia("(max-width: 850px)").matches) return;
     dragging = true;
     startX = pointerX(e);
     startScrollLeft = slider.scrollLeft;
