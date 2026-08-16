@@ -136,8 +136,8 @@
           flex-wrap: wrap;
           gap: 12px;
         }
-        #search {
-          width: 100%;
+        .searchwrap {
+          display: none;
         }
         .info {
           margin-left: 0;
@@ -304,7 +304,14 @@
         try {
           const res = await fetch(API);
           const rows = await res.json();
-          const body = rows.slice(1).filter((r) => r[0]);
+          const seen = new Set();
+          const body = rows.slice(1).filter((r) => {
+            if (!r[0]) return false;
+            const key = String(r[0]).trim().toLowerCase();
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
 
           entries = body.map((r, i) => {
             r._n = i + 1;
