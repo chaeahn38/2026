@@ -1,35 +1,27 @@
-/* ==========================================================================
-   Shared layout for every typeface detail page (terra.html, espinosa.html,
-   and future typeface pages). Each page is 3-4 full-screen slides
-   (.font-style, optionally .font-variable for typefaces with a variable-
-   weight axis, .font-image, .font-information) stacked in a scrollable
-   .font-preview; js/type-slides.js tracks which one is in view.
+:root {
+  --sample-scale: 1;
+  --slide-margin: 16rem;
+}
 
-   Font families aren't hardcoded here — each page sets --type-family (and,
-   if it has a Variable slide, --type-family-variable /
-   --type-family-variable-italic) inline on .font-preview. See terra.html
-   for the reference example.
-   ========================================================================== */
 body {
   margin: 0;
 }
 
 .content {
-  display: block;
-  height: 100vh;
+  position: fixed;
+  inset: 0;
   overflow: hidden;
-  width: auto;
   margin: 0;
 }
 
-.font-preview {
+.slide-stack {
   height: 100vh;
   overflow-y: scroll;
 }
 
-.font-style,
-.font-image,
-.font-information {
+.slide-styles,
+.slide-image,
+.slide-info {
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -38,12 +30,12 @@ body {
   justify-content: center;
 }
 
-.font-style {
+.slide-styles {
   width: fit-content;
   margin: 0 auto;
 }
 
-.font-variable {
+.slide-variable {
   min-height: 100vh;
   margin-top: 15vh;
   display: flex;
@@ -58,10 +50,13 @@ body {
 /* Defaults to the images' own background (set per-page via --img-slide-bg,
    e.g. sinfonie.html) so the gaps between/around them (they don't all fill
    the frame edge-to-edge) blend in instead of showing the page background. */
-.font-image {
+.slide-image {
   background: var(--img-slide-bg, transparent);
 }
 
+/* Tells touch browsers this element only pans horizontally, so a swipe
+     here doesn't get resolved as the page's vertical scroll instead — without
+     this, dragging the slider on a touchscreen can be unreliable. */
 .img-slider {
   display: flex;
   align-items: center;
@@ -70,9 +65,6 @@ body {
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  /* Tells touch browsers this element only pans horizontally, so a swipe
-     here doesn't get resolved as the page's vertical scroll instead — without
-     this, dragging the slider on a touchscreen can be unreliable. */
   touch-action: pan-x;
   cursor:
     url("/asset/icon/carousel-arrow-left.svg") 28 19,
@@ -107,7 +99,7 @@ body {
 /* ==========================================================================
    Styles List (Styles slide)
    ========================================================================== */
-.font-style p {
+.slide-styles p {
   text-align: center;
   font-family: var(--type-family);
   font-size: calc(3.5rem * var(--sample-scale, 1));
@@ -119,7 +111,7 @@ body {
 /* ==========================================================================
    Style Preview Sample
    ========================================================================== */
-.style-preview-sample {
+.style-preview {
   min-height: 30vh;
   display: flex;
   flex-direction: column;
@@ -128,11 +120,11 @@ body {
   gap: 1rem;
 }
 
-.style-preview-sample + .style-preview-sample {
+.style-preview + .style-preview {
   margin-top: 1.5rem;
 }
 
-.style-preview-sample .sample-text {
+.style-preview .sample-text {
   font-family: var(--type-family);
   font-size: calc(2.5rem * var(--sample-scale, 1));
   margin: 3rem 0;
@@ -143,7 +135,7 @@ body {
 /* ==========================================================================
    Variable Font Weight Animation (Variable slide)
    ========================================================================== */
-.font-variable .sample-text {
+.slide-variable .sample-text {
   font-family: var(--type-family-variable, var(--type-family));
   font-size: calc(2.5rem * var(--sample-scale, 1));
   margin: 3rem 0;
@@ -163,9 +155,9 @@ body {
 }
 
 /* Typefaces whose Variable slide has no weight axis animate a different one
-   instead — opt in via data-axis on .font-variable (see sinfonie.html, whose
+   instead — opt in via data-axis on .slide-variable (see sinfonie.html, whose
    Variable font only has an optical-size axis). */
-.font-variable[data-axis="opsz"] .sample-text {
+.slide-variable[data-axis="opsz"] .sample-text {
   animation-name: opsz-breathe;
 }
 
@@ -185,14 +177,14 @@ body {
    Repeats the [data-axis="opsz"] selector to match its specificity — otherwise
    that rule's own animation-name would keep winning over this reset. */
 @media (hover: hover) {
-  .font-variable .sample-text,
-  .font-variable[data-axis="opsz"] .sample-text {
+  .slide-variable .sample-text,
+  .slide-variable[data-axis="opsz"] .sample-text {
     animation: none;
   }
 }
 
-.font-variable .sample-text em,
-.font-variable .sample-text i {
+.slide-variable .sample-text em,
+.slide-variable .sample-text i {
   font-family: var(--type-family-variable-italic, var(--type-family));
   font-style: normal;
 }
@@ -200,17 +192,17 @@ body {
 /* ==========================================================================
    Style Picker (font-style dropdown, align buttons, size slider)
    ========================================================================== */
-.weight-para {
+.style-controls {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.font-style-change {
+.style-dropdown {
   position: relative;
 }
 
-.font-style-change-btn {
+.style-dropdown-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -224,7 +216,7 @@ body {
   border-top: 5px solid var(--fg);
 }
 
-.font-style-dropdown {
+.style-dropdown-list {
   position: absolute;
   top: 100%;
   left: 0;
@@ -237,11 +229,11 @@ body {
   z-index: 20;
 }
 
-.font-style-dropdown.open {
+.style-dropdown-list.open {
   display: block;
 }
 
-.font-style-dropdown li button {
+.style-dropdown-list li button {
   display: block;
   width: 100%;
   padding: 0.4rem 0.8rem;
@@ -249,7 +241,7 @@ body {
   white-space: nowrap;
 }
 
-.weight-para input[type="range"] {
+.style-controls input[type="range"] {
   appearance: none;
   -webkit-appearance: none;
   width: 7rem;
@@ -260,12 +252,12 @@ body {
   cursor: pointer;
 }
 
-.weight-para input[type="range"]:hover,
-.weight-para input[type="range"]:focus-visible {
+.style-controls input[type="range"]:hover,
+.style-controls input[type="range"]:focus-visible {
   opacity: 1;
 }
 
-.weight-para input[type="range"]::-webkit-slider-thumb {
+.style-controls input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 0.8rem;
@@ -276,14 +268,14 @@ body {
   cursor: pointer;
 }
 
-.weight-para input[type="range"]::-moz-range-track {
+.style-controls input[type="range"]::-moz-range-track {
   width: 100%;
   height: 0.2rem;
   border-radius: 999px;
   background: none;
 }
 
-.weight-para input[type="range"]::-moz-range-thumb {
+.style-controls input[type="range"]::-moz-range-thumb {
   width: 0.8rem;
   height: 0.8rem;
   border: none;
@@ -292,7 +284,7 @@ body {
   cursor: pointer;
 }
 
-.weight-para input[type="range"]:focus-visible {
+.style-controls input[type="range"]:focus-visible {
   outline: 2px solid var(--primary-blue);
   outline-offset: 2px;
 }
@@ -359,21 +351,21 @@ body {
    CSS attribute selectors can't match arbitrary numeric values — only
    font-style stays here, as normal/italic are the only two possible values.
    Driven by data-weight/data-font-style attributes on the style-list <p>
-   (.font-style) and its matching .style-preview-sample block, instead of
+   (.slide-styles) and its matching .style-preview block, instead of
    per-typeface IDs — so a new typeface just tags its markup with these
    attributes and needs no CSS changes here. See terra.html/espinosa.html.
    ========================================================================== */
-.font-style p[data-font-style="italic"],
-.style-preview-sample[data-font-style="italic"] .sample-text {
+.slide-styles p[data-font-style="italic"],
+.style-preview[data-font-style="italic"] .sample-text {
   font-style: italic;
 }
 
 /* Typefaces with lowercase-only glyphs (e.g. Marelle) have no uppercase to
    fall back on, so every sample line — including whatever a visitor types
    into an editable sample — is forced to render lowercase regardless of the
-   case it was typed in. Opt in via data-lowercase-only on .font-preview. */
-.font-preview[data-lowercase-only] .font-style p,
-.font-preview[data-lowercase-only] .sample-text {
+   case it was typed in. Opt in via data-lowercase-only on .slide-stack. */
+.slide-stack[data-lowercase-only] .slide-styles p,
+.slide-stack[data-lowercase-only] .sample-text {
   text-transform: lowercase;
 }
 
@@ -381,9 +373,9 @@ body {
    Information Slide
    ========================================================================== */
 .info-fulltext {
-  width: 70vw;
+  width: calc(100% - 2 * var(--slide-margin));
   color: var(--primary-grey);
-  font-size: 1rem;
+  font-size: 0.8rem;
   display: flex;
   gap: 2rem;
   line-height: 1.5;
@@ -394,10 +386,10 @@ body {
 }
 
 .info-subtext {
-  width: 70vw;
+  width: calc(100% - 2 * var(--slide-margin));
   margin-top: 2rem;
   color: var(--secondary-grey);
-  font-size: 1rem;
+  font-size: 0.8rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -422,11 +414,11 @@ body {
 }
 
 /* ==========================================================================
-   Fixed Nav (font-info) & Scroll-to-Top Button
+   Fixed Nav (slide-nav) & Scroll-to-Top Button
    ========================================================================== */
-.font-info {
+.slide-nav {
   position: fixed;
-  left: max(1rem, 1vw);
+  left: 0.5rem;
   top: 45%;
   display: flex;
   flex-direction: column;
@@ -436,7 +428,7 @@ body {
 
 .scroll-top-btn {
   position: fixed;
-  left: max(1rem, 1vw);
+  left: 0.5vw;
   top: calc(46% - 2rem);
   display: none;
   padding: 0;
@@ -445,7 +437,7 @@ body {
 
 .scroll-top-btn img {
   display: block;
-  width: 0.8rem;
+  width: 0.6rem;
   height: auto;
 }
 
@@ -454,12 +446,14 @@ body.scrolled-past-styles .scroll-top-btn {
 }
 
 button {
+  font-family: "Actosk", sans-serif;
+  font-weight: 300;
   background: none;
   border: none;
   color: inherit;
   text-align: left;
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 0.8rem;
+  line-height: 1.6;
   cursor: pointer;
 }
 
@@ -467,79 +461,84 @@ button:hover {
   color: var(--tertiary-grey);
 }
 
-.font-info button.active {
+.slide-nav button {
+  font-size: 0.8rem;
+}
+
+.slide-nav button.active {
   font-weight: 600;
 }
 
 /* ==========================================================================
    Styles List, continued — hover dimming
    ========================================================================== */
-.font-style:hover {
+.slide-styles:hover {
   color: var(--tertiary-grey);
 }
 
-.font-style p:hover {
+.slide-styles p:hover {
   color: var(--fg);
 }
 
 /* ==========================================================================
    Mobile Responsive
    ========================================================================== */
+/* 1. slide-nav nav gone; navigate by scrolling only */
+/* 2 & 3. parameter controls gone; only the style-change label remains */
+/* 4. Type in use images fill the screen width, swipe snaps one at a time.
+     .slide-image's content can now run taller than 100vh, so let it flow
+     instead of clipping (that would hide the dots below a tall image). */
+/* 5. Information full text as a single column; content now runs taller than
+     100vh, so let it flow instead of being vertically centered and clipped */
+/* No toggle on mobile: "58 languages" is plain text and the language
+     list stays hidden no matter what — same specificity as #info-lang-list.open
+     above, but wins by coming later, so the .open state has no effect here. */
 @media (max-width: 850px) {
   :root {
     --sample-scale: 0.5;
+    --slide-margin: 1.5rem;
   }
 
-  /* 1. font-info nav gone; navigate by scrolling only */
-  .font-info {
+  .slide-nav {
     display: none;
   }
 
-  /* 2 & 3. parameter controls gone; only the style-change label remains */
   .dropdown-arrow,
-  .font-style-dropdown,
-  .font-style-dropdown.open,
+  .style-dropdown-list,
+  .style-dropdown-list.open,
   .edit-sample-btn,
   .align-group,
-  .weight-para input[type="range"]:not(.wght-axis) {
+  .style-controls input[type="range"]:not(.wght-axis) {
     display: none;
   }
 
-  /* 4. Type in use images fill the screen width, swipe snaps one at a time.
-     .font-image's content can now run taller than 100vh, so let it flow
-     instead of clipping (that would hide the dots below a tall image). */
-  .font-image {
+  .slide-image {
     height: auto;
     min-height: 100vh;
     overflow: visible;
   }
-
   .img-slider {
     gap: 0;
     scroll-snap-type: x mandatory;
   }
-
   .img-slider img {
     width: 100vw;
     height: auto;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
-
   .img-slider-dots {
     display: block;
     overflow: hidden;
     width: calc(5 * 0.4rem + 4 * 0.5rem);
     margin: 1rem 0;
   }
-
   .img-slider-dots-track {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     transition: transform 0.25s ease;
   }
-
   .img-slider-dot {
     flex: none;
     width: 0.4rem;
@@ -551,35 +550,26 @@ button:hover {
       transform 0.25s ease,
       background-color 0.25s ease;
   }
-
   .img-slider-dot.active {
     background: var(--fg);
   }
 
-  /* 5. Information full text as a single column; content now runs taller than
-     100vh, so let it flow instead of being vertically centered and clipped */
-  .font-information {
+  .slide-info {
     height: auto;
     min-height: 100vh;
     overflow: visible;
     justify-content: flex-start;
     padding-top: 10rem;
   }
-
   .info-fulltext {
     flex-direction: column;
   }
 
-  /* No toggle on mobile: "58 languages" is plain text and the language
-     list stays hidden no matter what — same specificity as #info-lang-list.open
-     above, but wins by coming later, so the .open state has no effect here. */
   #info-lang-toggle {
     cursor: default;
   }
-
   #info-lang-list,
   #info-lang-list.open {
     display: none;
   }
-
 }

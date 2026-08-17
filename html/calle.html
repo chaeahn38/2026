@@ -11,17 +11,8 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <header>
-   <p><a href="/index.html">Chae Ahn</a></p>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="/html/about.html">About</a></li>
-          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
-          <li><a href="/html/projects.html">Projects</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <div id="site-header-placeholder"></div>
+    <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
@@ -29,7 +20,7 @@
 
     <!-- ============ SLIDE NAV (jumps between the 3 slides below) ============
          No Variable button: Calle is a single static weight, no VF. -->
-    <div class="font-info">
+    <div class="slide-nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="image-slide">Type in use</button>
       <button data-target="information">Information</button>
@@ -39,11 +30,11 @@
     <main class="content">
 
 
-      <div class="font-preview" style="--type-family: 'Calle';">
+      <div class="slide-stack" style="--type-family: 'Calle';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============
              Single weight, no italic — one entry only. -->
-        <div class="font-style" id="styles-slide">
+        <div class="slide-styles" id="styles-slide">
           <p id="calle-regular" data-weight="400" data-font-style="normal" style="font-size: calc(8rem * var(--sample-scale, 1));">Calle</p>
         </div>
 
@@ -51,12 +42,12 @@
              Sample copy is a set of 20 French correspondence lines — chosen
              for the accented character coverage and the curly/straight
              apostrophes the font was built to carry (see css/font-face.css). -->
-        <div class="style-preview-sample" id="calle-regular-preview" data-weight="400" data-font-style="normal">
+        <div class="style-preview" id="calle-regular-preview" data-weight="400" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Calle</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Calle</span>
                 </button>
               </div>
               <button class="edit-sample-btn">Edit sample</button>
@@ -111,7 +102,7 @@
         </div>
 
         <!-- ============ SLIDE 2: TYPE IN USE ============ -->
-        <div class="font-image" id="image-slide" style="--img-slide-height: 90vh;">
+        <div class="slide-image" id="image-slide" style="--img-slide-height: 90vh;">
           <div class="img-slider">
             <img src="/typefaces/img/Calle/Sophie-Calle-Letter.png" alt="">
             <img src="/typefaces/img/Calle/Time_Workshop-6.jpg" alt="">
@@ -124,7 +115,7 @@
         <!-- ============ SLIDE 3: INFORMATION ============
              TODO: placeholder copy below — needs the real design rationale
              and mentor for Calle. -->
-        <div class="font-information" id="information">
+        <div class="slide-info" id="information">
           <div class="info-fulltext">
             <p>Calle takes its name from Sophie Calle, the French artist whose work turns confession, absence, and correspondence into form — letters read aloud, private feelings put on public display. The typeface carries a full French accented set built for that kind of writing: the hesitations, the unsent letters, the sentences that circle what they cannot quite name. [Expand with the real design rationale.]</p>
           </div>

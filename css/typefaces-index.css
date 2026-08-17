@@ -1,61 +1,79 @@
 /* ==========================================================================
    Page Layout & Grid
    ========================================================================== */
-body {
-  overflow: scroll;
-}
-
-.content {
-  display: block;
-  width: 70%;
-  margin: 4rem 17% 0 20rem;
-}
 
 .type-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0 2rem;
+  gap: 2rem;
 }
 
 /* ==========================================================================
    Typeface Card
    ========================================================================== */
+
 .typeface-card {
-  border-top: 1px solid var(--fg);
-  /* background-color: blue;s */
+  border: 1px solid var(--tertiary-grey);
 }
 
 .typeface-meta {
-  margin: 1rem 0 2rem 0;
+  margin: 0.5rem;
   font-family: "Actosk", monospace;
   font-weight: 300;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  color: var(--tertiary-grey);
 }
 
 .typeface-name {
+  margin: 0 5rem;
   text-align: center;
-  font-size: var(--typeface-size, clamp(1rem, 3rem + 4vw, 4rem));
+  font-size: var(--typeface-size, clamp(0.85rem, 2.55rem + 3.4vw, 3.4rem));
   line-height: 1;
   font-family: var(--typeface-font, inherit);
   transition: opacity 3s ease;
-  padding: 0.5rem 0 3rem 0rem;
-  /* Per-typeface vertical nudge — different fonts sit differently against
-     their own em box at the same font-size/line-height, so this is set
-     per-card inline (--typeface-baseline-shift) rather than guessed here. */
+  padding: 1.7rem 0 3.4rem 0;
   transform: translateY(var(--typeface-baseline-shift, 0));
 }
 
 /* ==========================================================================
    Responsive
    ========================================================================== */
-@media (max-width: 850px) {
+
+@media (max-width: 1300px) {
   .type-grid {
     grid-template-columns: 1fr;
     grid-template-rows: none;
+    gap: 1.5rem;
   }
-  .content {
-    transform: none;
-    width: 100%;
-    margin: 12rem 0 0;
+
+  .typeface-name {
+    margin: 0 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .type-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 1.5rem;
+  }
+
+  .typeface-name {
+    margin: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .type-grid {
+    gap: 1rem;
+  }
+
+  .typeface-name {
+    margin: 0 1rem;
+    padding: 1.2rem 0 2.2rem 0;
+  }
+
+  .typeface-meta {
+    font-size: 0.8rem;
   }
 }

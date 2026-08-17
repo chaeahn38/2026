@@ -6,10 +6,10 @@
 // rather than CSS attribute selectors, since CSS can't match arbitrary
 // numeric values — this way any weight a typeface actually uses (100-900)
 // works with no CSS changes needed for a new typeface.
-document.querySelectorAll(".font-style p[data-weight]").forEach((p) => {
+document.querySelectorAll(".slide-styles p[data-weight]").forEach((p) => {
   p.style.fontWeight = p.dataset.weight;
 });
-document.querySelectorAll(".style-preview-sample[data-weight]").forEach((block) => {
+document.querySelectorAll(".style-preview[data-weight]").forEach((block) => {
   block.querySelectorAll(".sample-text").forEach((el) => {
     el.style.fontWeight = block.dataset.weight;
   });
@@ -101,8 +101,8 @@ if (langToggle && langList) {
   });
 }
 
-// font-info buttons scroll their matching full-screen slide into view
-const slideButtons = document.querySelectorAll(".font-info button[data-target]");
+// slide-nav buttons scroll their matching full-screen slide into view
+const slideButtons = document.querySelectorAll(".slide-nav button[data-target]");
 slideButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const target = document.getElementById(btn.dataset.target);
@@ -110,8 +110,8 @@ slideButtons.forEach((btn) => {
   });
 });
 
-// Bold whichever font-info button matches the slide currently in view
-const slidesContainer = document.querySelector(".font-preview");
+// Bold whichever slide-nav button matches the slide currently in view
+const slidesContainer = document.querySelector(".slide-stack");
 if (slideButtons.length && slidesContainer) {
   const setActiveSlide = (id) => {
     slideButtons.forEach((btn) => {
@@ -157,14 +157,14 @@ if (stylesSlide && slidesContainer) {
 }
 
 // Clicking a style name scrolls to that style's preview block
-document.querySelectorAll(".font-style p").forEach((p) => {
+document.querySelectorAll(".slide-styles p").forEach((p) => {
   p.addEventListener("click", () => {
     const target = document.getElementById(`${p.id}-preview`);
     if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 });
 
-// Returns whichever sample-text is currently shown in a style-preview-sample block
+// Returns whichever sample-text is currently shown in a style-preview block
 // (the single .sample-text, or the .active one inside a .random-text group)
 const getVisibleSampleText = (container) => {
   if (!container) return null;
@@ -182,7 +182,7 @@ const alignClassMap = {
 
 document.querySelectorAll(".align-group").forEach((group) => {
   const buttons = group.querySelectorAll("button");
-  const container = group.closest(".style-preview-sample, .font-variable");
+  const container = group.closest(".style-preview, .slide-variable");
 
   const setActive = (activeBtn) => {
     buttons.forEach((btn) => btn.classList.toggle("active", btn === activeBtn));
@@ -198,15 +198,15 @@ document.querySelectorAll(".align-group").forEach((group) => {
 });
 
 // Font-style dropdown: click to open, click an item to restyle this preview in place.
-// Each dropdown item's data-style points at the id of its .font-style <p>, which
+// Each dropdown item's data-style points at the id of its .slide-styles <p>, which
 // carries the actual data-weight/data-font-style to apply — so this works for any
 // typeface's style list without a hardcoded per-typeface weight/style map.
-document.querySelectorAll(".font-style-change").forEach((wrapper) => {
-  const toggleBtn = wrapper.querySelector(".font-style-change-btn");
-  const label = wrapper.querySelector(".font-style-change-label");
-  const dropdown = wrapper.querySelector(".font-style-dropdown");
+document.querySelectorAll(".style-dropdown").forEach((wrapper) => {
+  const toggleBtn = wrapper.querySelector(".style-dropdown-btn");
+  const label = wrapper.querySelector(".style-dropdown-label");
+  const dropdown = wrapper.querySelector(".style-dropdown-list");
   if (!dropdown) return; // static label with no picker (e.g. the Variable slide)
-  const container = wrapper.closest(".style-preview-sample, .font-variable");
+  const container = wrapper.closest(".style-preview, .slide-variable");
 
   const closeDropdown = () => {
     dropdown.classList.remove("open");
@@ -255,7 +255,7 @@ document.querySelectorAll(".random-text").forEach((group) => {
   const texts = Array.from(group.querySelectorAll(".sample-text"));
   if (!texts.length) return;
 
-  const container = group.closest(".style-preview-sample, .font-variable");
+  const container = group.closest(".style-preview, .slide-variable");
   const editBtn = container?.querySelector(".edit-sample-btn");
 
   let current = texts[Math.floor(Math.random() * texts.length)];
@@ -278,7 +278,7 @@ document.querySelectorAll(".random-text").forEach((group) => {
     current = next;
   });
 
-  if (!isHoverCapable || !container?.classList.contains("font-variable")) return;
+  if (!isHoverCapable || !container?.classList.contains("slide-variable")) return;
 
   const axis = container.dataset.axis === "opsz" ? "opsz" : "wght";
   const [axisMin, axisMax] = AXIS_RANGE[axis];
@@ -295,7 +295,7 @@ document.querySelectorAll(".random-text").forEach((group) => {
 
 // Edit sample: click toggles the currently visible sample-text into an editable field
 document.querySelectorAll(".edit-sample-btn").forEach((btn) => {
-  const container = btn.closest(".style-preview-sample, .font-variable");
+  const container = btn.closest(".style-preview, .slide-variable");
 
   btn.addEventListener("click", () => {
     const sampleText = getVisibleSampleText(container);
@@ -311,8 +311,8 @@ document.querySelectorAll(".edit-sample-btn").forEach((btn) => {
 const sliderMinRem = 1;
 const sliderMaxRem = 15;
 
-document.querySelectorAll('.weight-para input[type="range"]:not(.wght-axis)').forEach((slider) => {
-  const container = slider.closest(".style-preview-sample, .font-variable");
+document.querySelectorAll('.style-controls input[type="range"]:not(.wght-axis)').forEach((slider) => {
+  const container = slider.closest(".style-preview, .slide-variable");
   if (!container) return;
 
   slider.addEventListener("input", () => {

@@ -11,24 +11,15 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <header>
-   <p><a href="/index.html">Chae Ahn</a></p>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="/html/about.html">About</a></li>
-          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
-          <li><a href="/html/projects.html">Projects</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <div id="site-header-placeholder"></div>
+    <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
     <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============ -->
-    <div class="font-info">
+    <div class="slide-nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="variable-slide">Variable</button>
       <button data-target="image-slide">Type in use</button>
@@ -39,10 +30,10 @@
     <main class="content">
 
 
-      <div class="font-preview" style="--type-family: 'Actosk'; --type-family-variable: 'Actosk Variable'; --type-family-variable-italic: 'Actosk Variable';">
+      <div class="slide-stack" style="--type-family: 'Actosk'; --type-family-variable: 'Actosk Variable'; --type-family-variable-italic: 'Actosk Variable';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============ -->
-        <div class="font-style" id="styles-slide">
+        <div class="slide-styles" id="styles-slide">
           <p id="actosk-thin" data-weight="100" data-font-style="normal" style="font-size: calc(2rem * var(--sample-scale, 1));">Actosk Thin</p>
           <p id="actosk-thin-italic" data-weight="100" data-font-style="italic" style="font-size: calc(2rem * var(--sample-scale, 1));">Actosk Thin Italic</p>
           <p id="actosk-extralight" data-weight="200" data-font-style="normal" style="font-size: calc(2rem * var(--sample-scale, 1));">Actosk ExtraLight</p>
@@ -64,15 +55,15 @@
         </div>
 
         <!-- ============ STYLE PREVIEWS (18 blocks, one per Actosk weight/style) ============ -->
-        <div class="style-preview-sample" id="actosk-thin-preview" data-weight="100" data-font-style="normal">
+        <div class="style-preview" id="actosk-thin-preview" data-weight="100" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Thin</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Thin</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -132,15 +123,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-thin-italic-preview" data-weight="100" data-font-style="italic">
+        <div class="style-preview" id="actosk-thin-italic-preview" data-weight="100" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Thin Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Thin Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -200,15 +191,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-extralight-preview" data-weight="200" data-font-style="normal">
+        <div class="style-preview" id="actosk-extralight-preview" data-weight="200" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk ExtraLight</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk ExtraLight</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -268,15 +259,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-extralight-italic-preview" data-weight="200" data-font-style="italic">
+        <div class="style-preview" id="actosk-extralight-italic-preview" data-weight="200" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk ExtraLight Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk ExtraLight Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -336,15 +327,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-light-preview" data-weight="300" data-font-style="normal">
+        <div class="style-preview" id="actosk-light-preview" data-weight="300" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Light</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Light</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -404,15 +395,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-light-italic-preview" data-weight="300" data-font-style="italic">
+        <div class="style-preview" id="actosk-light-italic-preview" data-weight="300" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Light Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Light Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -472,15 +463,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-regular-preview" data-weight="400" data-font-style="normal">
+        <div class="style-preview" id="actosk-regular-preview" data-weight="400" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Regular</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Regular</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -540,15 +531,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-regular-italic-preview" data-weight="400" data-font-style="italic">
+        <div class="style-preview" id="actosk-regular-italic-preview" data-weight="400" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Regular Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Regular Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -608,15 +599,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-medium-preview" data-weight="500" data-font-style="normal">
+        <div class="style-preview" id="actosk-medium-preview" data-weight="500" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Medium</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Medium</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -676,15 +667,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-medium-italic-preview" data-weight="500" data-font-style="italic">
+        <div class="style-preview" id="actosk-medium-italic-preview" data-weight="500" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Medium Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Medium Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -744,15 +735,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-semibold-preview" data-weight="600" data-font-style="normal">
+        <div class="style-preview" id="actosk-semibold-preview" data-weight="600" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk SemiBold</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk SemiBold</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -812,15 +803,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-semibold-italic-preview" data-weight="600" data-font-style="italic">
+        <div class="style-preview" id="actosk-semibold-italic-preview" data-weight="600" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk SemiBold Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk SemiBold Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -880,15 +871,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-bold-preview" data-weight="700" data-font-style="normal">
+        <div class="style-preview" id="actosk-bold-preview" data-weight="700" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Bold</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Bold</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -948,15 +939,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-bold-italic-preview" data-weight="700" data-font-style="italic">
+        <div class="style-preview" id="actosk-bold-italic-preview" data-weight="700" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Bold Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Bold Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1016,15 +1007,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-extrabold-preview" data-weight="800" data-font-style="normal">
+        <div class="style-preview" id="actosk-extrabold-preview" data-weight="800" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk ExtraBold</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk ExtraBold</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1084,15 +1075,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-extrabold-italic-preview" data-weight="800" data-font-style="italic">
+        <div class="style-preview" id="actosk-extrabold-italic-preview" data-weight="800" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk ExtraBold Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk ExtraBold Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1152,15 +1143,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-black-preview" data-weight="900" data-font-style="normal">
+        <div class="style-preview" id="actosk-black-preview" data-weight="900" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Black</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Black</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1220,15 +1211,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="actosk-black-italic-preview" data-weight="900" data-font-style="italic">
+        <div class="style-preview" id="actosk-black-italic-preview" data-weight="900" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Black Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Black Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1289,12 +1280,12 @@
         </div>
 
         <!-- ============ SLIDE 2: VARIABLE FONT ============ -->
-        <div class="font-variable" id="variable-slide">
+        <div class="slide-variable" id="variable-slide">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Actosk Variable</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Actosk Variable</span>
                 </button>
               </div>
               <button class="edit-sample-btn">Edit sample</button>
@@ -1345,7 +1336,7 @@
              TODO: no Actosk specimen images yet — add them to
              typefaces/img/Actosk/ and list them here, same as
              terra.html/espinosa.html. -->
-        <div class="font-image" id="image-slide" style="--img-slide-height: 120vh;">
+        <div class="slide-image" id="image-slide" style="--img-slide-height: 120vh;">
           <div class="img-slider">
           </div>
           <div class="img-slider-dots"></div>
@@ -1355,7 +1346,7 @@
         <!-- ============ SLIDE 4: INFORMATION ============
              TODO: placeholder copy below — needs the real design rationale,
              mentor, and language coverage for Actosk. -->
-        <div class="font-information" id="information">
+        <div class="slide-info" id="information">
           <div class="info-fulltext">
             <p>Actosk is a sans-serif grotesque family built as a working system. Drawing its underlying structure from Monotype Corporation's Grotesque 215, Actosk extends that foundation across nine weights, Thin through Black, each paired with an italic. Actosk gives designers a full tonal range from quiet captions to commanding headlines. It is a dependable typeface for editorial, interface, and identity work alike.</p>
           </div>

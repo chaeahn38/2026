@@ -11,24 +11,15 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <header>
-   <p><a href="/index.html">Chae Ahn</a></p>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="/html/about.html">About</a></li>
-          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
-          <li><a href="/html/projects.html">Projects</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <div id="site-header-placeholder"></div>
+    <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
     <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============ -->
-    <div class="font-info">
+    <div class="slide-nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="variable-slide">Variable</button>
       <button data-target="image-slide">Type in use</button>
@@ -39,13 +30,13 @@
     <main class="content">
 
 
-      <div class="font-preview" style="--type-family: 'Sinfonie Title'; --type-family-variable: 'Sinfonie Variable';">
+      <div class="slide-stack" style="--type-family: 'Sinfonie Title'; --type-family-variable: 'Sinfonie Variable';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============
              Sinfonie has no weight or italic axis — it varies by optical size
              instead (Title down to Caption, largest to smallest), each a
              separate static font-family (see css/font-face.css). -->
-        <div class="font-style" id="styles-slide">
+        <div class="slide-styles" id="styles-slide">
           <p id="sinfonie-title" data-weight="400" data-font-style="normal" data-family="Sinfonie Title" style="font-family: 'Sinfonie Title'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Title Display</p>
           <p id="sinfonie-head" data-weight="400" data-font-style="normal" data-family="Sinfonie Head" style="font-family: 'Sinfonie Head'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Heading Display</p>
           <p id="sinfonie-subhead" data-weight="400" data-font-style="normal" data-family="Sinfonie Subhead" style="font-family: 'Sinfonie Subhead'; font-size: calc(6rem * var(--sample-scale, 1));">Sinfonie Subheading Display</p>
@@ -54,15 +45,15 @@
         </div>
 
         <!-- ============ STYLE PREVIEWS (5 blocks, one per Sinfonie optical size) ============ -->
-        <div class="style-preview-sample" id="sinfonie-title-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Title';">
+        <div class="style-preview" id="sinfonie-title-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Title';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Sinfonie Title Display</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Sinfonie Title Display</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
                   <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
                   <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
@@ -109,15 +100,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="sinfonie-head-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Head';">
+        <div class="style-preview" id="sinfonie-head-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Head';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Sinfonie Heading Display</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Sinfonie Heading Display</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
                   <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
                   <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
@@ -164,15 +155,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="sinfonie-subhead-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Subhead';">
+        <div class="style-preview" id="sinfonie-subhead-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Subhead';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Sinfonie Subheading Display</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Sinfonie Subheading Display</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
                   <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
                   <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
@@ -219,15 +210,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="sinfonie-body-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Body';">
+        <div class="style-preview" id="sinfonie-body-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Body';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Sinfonie Body Text</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Sinfonie Body Text</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
                   <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
                   <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
@@ -276,15 +267,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="sinfonie-caption-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Caption';">
+        <div class="style-preview" id="sinfonie-caption-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Sinfonie Caption';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Sinfonie Caption Text</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Sinfonie Caption Text</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="sinfonie-title">Sinfonie Title Display</button></li>
                   <li><button data-style="sinfonie-head">Sinfonie Heading Display</button></li>
                   <li><button data-style="sinfonie-subhead">Sinfonie Subheading Display</button></li>
@@ -335,14 +326,14 @@
 
         <!-- ============ SLIDE 2: VARIABLE FONT ============
              Sinfonie Variable's only axis is optical size (opsz 10-50), not
-             weight — see .font-variable[data-axis="opsz"] in
+             weight — see .slide-variable[data-axis="opsz"] in
              css/typeface-detail.css for the breathing animation this drives. -->
-        <div class="font-variable" id="variable-slide" data-axis="opsz">
+        <div class="slide-variable" id="variable-slide" data-axis="opsz">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Sinfonie Variable</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Sinfonie Variable</span>
                 </button>
               </div>
               <button class="edit-sample-btn">Edit sample</button>
@@ -393,7 +384,7 @@
              TODO: no Sinfonie specimen images yet — add them to
              typefaces/img/Sinfonie/ and list them here, same as
              terra.html/espinosa.html. -->
-        <div class="font-image" id="image-slide" style="--img-slide-height: 120vh; --img-slide-bg: #e8ebe9;">
+        <div class="slide-image" id="image-slide" style="--img-slide-height: 120vh; --img-slide-bg: #e8ebe9;">
           <div class="img-slider">
             <img src="/typefaces/img/Sinfonie/Sinfonie00.png" alt="">
             <img src="/typefaces/img/Sinfonie/Sinfonie01.png" alt="">
@@ -411,7 +402,7 @@
         <!-- ============ SLIDE 4: INFORMATION ============
              TODO: placeholder copy below — needs the real design rationale,
              mentor, and language coverage for Sinfonie. -->
-        <div class="font-information" id="information">
+        <div class="slide-info" id="information">
           <div class="info-fulltext">
             <p>Sinfonie is a serif typeface designed for the Philharmonic Society,
 the pseudo philharmonic orchestra. The condensed proportions of

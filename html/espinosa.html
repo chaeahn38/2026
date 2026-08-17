@@ -11,24 +11,15 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <header>
-   <p><a href="/index.html">Chae Ahn</a></p>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="/html/about.html">About</a></li>
-          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
-          <li><a href="/html/projects.html">Projects</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <div id="site-header-placeholder"></div>
+    <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
     <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============ -->
-    <div class="font-info">
+    <div class="slide-nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="image-slide">Type in use</button>
       <button data-target="information">Information</button>
@@ -38,24 +29,24 @@
     <main class="content">
 
 
-      <div class="font-preview" style="--type-family: 'Espinosa';">
+      <div class="slide-stack" style="--type-family: 'Espinosa';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============ -->
-        <div class="font-style" id="styles-slide">
+        <div class="slide-styles" id="styles-slide">
           <p id="espinosa-regular" data-weight="400" data-font-style="normal" style="font-size: calc(8rem * var(--sample-scale, 1));">Espinosa</p>
           <p id="espinosa-regular-italic" data-weight="400" data-font-style="italic" style="font-size: calc(8rem * var(--sample-scale, 1));">Espinosa Italic</p>
         </div>
 
         <!-- ============ STYLE PREVIEWS (2 blocks, one per Espinosa weight/style) ============ -->
-        <div class="style-preview-sample" id="espinosa-regular-preview" data-weight="400" data-font-style="normal">
+        <div class="style-preview" id="espinosa-regular-preview" data-weight="400" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Espinosa</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Espinosa</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="espinosa-regular">Espinosa</button></li>
                   <li><button data-style="espinosa-regular-italic">Espinosa Italic</button></li>
                 </ul>
@@ -99,15 +90,15 @@
           </div>
          
 
-         <div class="style-preview-sample" id="espinosa-regular-italic-preview" data-weight="400" data-font-style="italic">
+         <div class="style-preview" id="espinosa-regular-italic-preview" data-weight="400" data-font-style="italic">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Espinosa Italic</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Espinosa Italic</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="espinosa-regular">Espinosa</button></li>
                   <li><button data-style="espinosa-regular-italic">Espinosa Italic</button></li>
                 </ul>
@@ -152,7 +143,7 @@
 
 
         <!-- ============ SLIDE 3: TYPE IN USE ============ -->
-        <div class="font-image" id="image-slide" style="--img-slide-height: 80vh;">
+        <div class="slide-image" id="image-slide" style="--img-slide-height: 80vh;">
           <div class="img-slider">
             <img src="/typefaces/img/Espinosa/chae_semester-1.png" alt="">
             <img src="/typefaces/img/Espinosa/chae_semester-2.png" alt="">
@@ -179,7 +170,7 @@
         </div>
 
         <!-- ============ SLIDE 4: INFORMATION ============ -->
-        <div class="font-information" id="information">
+        <div class="slide-info" id="information">
           <div class="info-fulltext">
             <p>Espinosa is a revival of a Spanish typeface from Imprenta Real, the Royal Printing House in Madrid, 1799. It is based on Specimen No.25, specifically the Lectura size (approximately 11 to 12 points), a typeface that embodies the aesthetic principles of the Spanish Royal Printing House. Imprenta Real was an institutional force in late 18th-century European typography, assembling by 1799 an extensive collection of punches and matrices sourced in part from Parma and from Jean-Louis Borniche in Paris. Among the Spanish master punchcutters who shaped this collection into something distinctly Iberian was Antonio Espinosa de los Monteros, whose work forms the foundation of this revival. Here, revival is treated not as replication but as translation — a practice grounded in historical fidelity while remaining structurally coherent for contemporary use.</p>
           </div>

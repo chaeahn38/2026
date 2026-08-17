@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Reset & Custom Properties
-   Loaded on every page.
-   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +6,7 @@
 }
 
 :root {
-  --white: #ffffff;
+  --white: ghostwhite;
   --black: #000000;
   --bg: var(--white);
   --fg: var(--black);
@@ -19,64 +15,76 @@
   --primary-grey: #262626;
   --secondary-grey: #666666;
   --tertiary-grey: #8f8f8f;
+  --sidebar-width: clamp(12rem, 18vw, 20rem);
 }
 
 /* ==========================================================================
    Global Elements
    ========================================================================== */
+
+html {
+  overflow-x: hidden;
+}
+
 body {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  font-size: 0.8rem;
+  margin: 0.5rem;
   background: var(--bg);
   color: var(--fg);
   min-height: 100vh;
   font-family: "Actosk", sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body.home {
   overflow: hidden;
-  margin: 0 1rem;
 }
 
 a {
-  color: var(--fg);
+  color: var(--primary-grey);
   text-decoration: none;
 }
 
-/* ==========================================================================
-   Header / Site Nav
-   ========================================================================== */
-header {
-  position: fixed;
-  font-size: 0.7rem;
-  top: 0;
-  left: 1rem;
-  display: flex;
+a:hover {
+  color: var(--tertiary-grey);
+}
+
+.site-header,
+.site-nav,
+.about-panel {
+  position: sticky;
+  top: 0.5rem;
   z-index: 10;
-  margin-top: 1rem;
-  width: fit-content;
+  font-weight: 300;
   white-space: nowrap;
-  letter-spacing: -0.2px;
-  font-weight: 300;
   color: var(--primary-grey);
-}
-
-ul li a {
-  display: flex;
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: -0.2px;
-  color: var(--primary-grey);
-  text-decoration: none;
-}
-
-header p {
-  width: 20rem;
-  margin-bottom: 1rem;
   cursor: default;
 }
 
-header p a {
-  text-decoration: none;
+.site-header,
+.about-panel {
+  grid-column: 1;
+  grid-row: 1;
 }
 
-header a:hover {
-  color: var(--secondary-grey);
+.site-name {
+  font-weight: 400;
+}
+
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.site-nav {
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .nav-menu {
@@ -86,31 +94,38 @@ header a:hover {
   gap: 2rem;
 }
 
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    font-size: 0.75rem;
-  }
-
-  .nav-menu {
-    gap: 0.5rem;
-
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-menu a {
-    font-size: 0.75rem;
-  }
-}
-
 .nav-menu li {
   list-style: none;
+}
+
+.content {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 2.5rem;
+}
+
+/* / ========================================================================== */
+
+.about-panel {
+  max-width: 14rem;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+.about-panel .intro {
+  margin-bottom: 1rem;
+}
+
+.about-panel .ext-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
 /* ==========================================================================
    Glyph Editor (index.html hero — interactive point editor, js/script.js)
    ========================================================================== */
+
 .editor-container {
   position: fixed;
   top: 0;
@@ -141,6 +156,7 @@ svg#canvas {
 }
 
 /* on-curve point (square) */
+
 .point-oncurve {
   fill: var(--tertiary-grey);
   stroke: var(--secondary-grey);
@@ -154,6 +170,7 @@ svg#canvas {
 }
 
 /* off-curve point (circle) */
+
 .point-offcurve {
   fill: transparent;
   stroke: var(--tertiary-grey);
@@ -176,6 +193,7 @@ svg#canvas {
    not ready for public viewing. See the comment at the top of that file for
    what this can and can't actually protect.
    ========================================================================== */
+
 .access-gate {
   position: fixed;
   inset: 0;
@@ -196,19 +214,99 @@ svg#canvas {
 }
 
 .access-gate-form input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   font-family: "Actosk", sans-serif;
-  font-size: 1rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--fg);
-  background: var(--bg);
+  font-weight: 300;
+  font-size: max(0.9rem, 16px);
+  width: 14rem;
+  padding: 0 0 0.4rem;
+  border: none;
+  border-bottom: 1px solid var(--fg);
+  border-radius: 0;
+  background: none;
   color: var(--fg);
   text-align: center;
+  box-shadow: none;
+}
+
+.access-gate-form input:focus {
+  outline: none;
+  border-bottom-color: var(--tertiary-grey);
+}
+
+.access-gate-form input::placeholder {
+  color: var(--tertiary-grey);
+  opacity: 1;
 }
 
 .access-gate-form button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "Actosk", sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: var(--fg);
   cursor: pointer;
 }
 
+.access-gate-form button:hover {
+  color: var(--tertiary-grey);
+}
+
 .access-gate-error {
-  color: var(--primary-red);
-} */
+  font-size: 0.75rem;
+  color: var(--tertiary-grey);
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .site-header,
+  .site-nav,
+  .about-panel {
+    font-size: 0.8rem;
+    top: 0.8rem;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .site-header,
+  .about-panel {
+    justify-self: start;
+  }
+
+  .site-nav {
+    justify-self: end;
+  }
+
+  .about-panel {
+    max-width: calc(100vw - 7rem);
+  }
+
+  .nav-menu {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .ext-link a {
+    margin-bottom: 0.5rem;
+  }
+
+  .content {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 6rem;
+    padding: 0 0.7rem;
+    max-width: 100vw;
+  }
+}

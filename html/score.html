@@ -11,17 +11,8 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <header>
-   <p><a href="/index.html">Chae Ahn</a></p>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="/html/about.html">About</a></li>
-          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
-          <li><a href="/html/projects.html">Projects</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <div id="site-header-placeholder"></div>
+    <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
@@ -31,7 +22,7 @@
          No Variable button: Score has no weight axis and no VF — its 4 cuts
          (Regular/Bold/Dots/Tube) are stylistic variants, each its own static
          family, same approach as Sinfonie's optical-size cuts. -->
-    <div class="font-info">
+    <div class="slide-nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="image-slide">Type in use</button>
       <button data-target="information">Information</button>
@@ -41,14 +32,14 @@
     <main class="content">
 
 
-      <div class="font-preview" style="--type-family: 'Score Regular';">
+      <div class="slide-stack" style="--type-family: 'Score Regular';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============
              4 stylistic cuts, no weight or italic axis. Glyph set is Latin
              letters (upper + lower) plus space ! , . ? only — no digits, no
              other punctuation — so sample copy below is written to stay
              inside that set. -->
-        <div class="font-style" id="styles-slide">
+        <div class="slide-styles" id="styles-slide">
           <p id="score-regular" data-weight="400" data-font-style="normal" data-family="Score Regular" style="font-family: 'Score Regular'; font-size: calc(6rem * var(--sample-scale, 1));">Score Regular</p>
           <p id="score-bold" data-weight="400" data-font-style="normal" data-family="Score Bold" style="font-family: 'Score Bold'; font-size: calc(6rem * var(--sample-scale, 1));">Score Bold</p>
           <p id="score-dots" data-weight="400" data-font-style="normal" data-family="Score Dots" style="font-family: 'Score Dots'; font-size: calc(6rem * var(--sample-scale, 1));">Score Dots</p>
@@ -56,15 +47,15 @@
         </div>
 
         <!-- ============ STYLE PREVIEWS (4 blocks, one per Score cut) ============ -->
-        <div class="style-preview-sample" id="score-regular-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Regular';">
+        <div class="style-preview" id="score-regular-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Regular';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Score Regular</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Score Regular</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
@@ -109,15 +100,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="score-bold-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Bold';">
+        <div class="style-preview" id="score-bold-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Bold';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Score Bold</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Score Bold</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
@@ -162,15 +153,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="score-dots-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Dots';">
+        <div class="style-preview" id="score-dots-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Dots';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Score Dots</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Score Dots</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
@@ -215,15 +206,15 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="score-tube-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Tube';">
+        <div class="style-preview" id="score-tube-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Tube';">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Score Tube</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Score Tube</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
@@ -271,7 +262,7 @@
 
         <!-- ============ SLIDE 2: TYPE IN USE ============
              Development images across all 4 cuts plus early sketches. -->
-        <div class="font-image" id="image-slide" style="--img-slide-height: 120vh;">
+        <div class="slide-image" id="image-slide" style="--img-slide-height: 120vh;">
           <div class="img-slider">
             <img src="/typefaces/img/Score/Regular03.png" alt="">
             <img src="/typefaces/img/Score/Regular04.png" alt="">
@@ -305,7 +296,7 @@
         <!-- ============ SLIDE 3: INFORMATION ============
              TODO: placeholder copy below — needs the real design rationale
              and mentor for Score. -->
-        <div class="font-information" id="information">
+        <div class="slide-info" id="information">
           <div class="info-fulltext">
             <p>Score takes its four cuts from the display technologies used to keep track of a game. Score Regular and Score Bold set the baseline letterforms, while Score Dots and Score Tube reinterpret the same shapes through a dot-matrix scoreboard and a glowing display tube. [Expand with the real design rationale.]</p>
           </div>

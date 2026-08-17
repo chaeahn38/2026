@@ -11,17 +11,8 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <header>
-   <p><a href="/index.html">Chae Ahn</a></p>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="/html/about.html">About</a></li>
-          <li><a href="/html/typefaces-index.html">Typefaces</a></li>
-          <li><a href="/html/projects.html">Projects</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <div id="site-header-placeholder"></div>
+    <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
@@ -31,7 +22,7 @@
          No Variable button: the styles list below covers all 5 static
          weights; ErikssonVF (font-face.css) is wired up for future use but
          not exposed as its own slide yet. -->
-    <div class="font-info">
+    <div class="slide-nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="image-slide">Type in use</button>
       <button data-target="information">Information</button>
@@ -41,30 +32,30 @@
     <main class="content">
 
 
-      <div class="font-preview" style="--type-family: 'Eriksson';">
+      <div class="slide-stack" style="--type-family: 'Eriksson';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============
              5 weights, no italic. -->
-        <div class="font-style" id="styles-slide">
+        <div class="slide-styles" id="styles-slide">
           <p id="eriksson-light" data-weight="300" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson Light</p>
-          <p id="eriksson-regular" data-weight="400" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson</p>
+          <p id="eriksson-regular" data-weight="400" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson Regular</p>
           <p id="eriksson-medium" data-weight="500" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson Medium</p>
           <p id="eriksson-bold" data-weight="700" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson Bold</p>
           <p id="eriksson-extrabold" data-weight="800" data-font-style="normal" style="font-size: calc(6rem * var(--sample-scale, 1));">Eriksson ExtraBold</p>
         </div>
 
         <!-- ============ STYLE PREVIEWS (5 blocks, one per Eriksson weight) ============ -->
-        <div class="style-preview-sample" id="eriksson-light-preview" data-weight="300" data-font-style="normal">
+        <div class="style-preview" id="eriksson-light-preview" data-weight="300" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Eriksson Light</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Eriksson Light</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="eriksson-light">Eriksson Light</button></li>
-                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson Regular</button></li>
                   <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
                   <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
                   <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
@@ -108,17 +99,17 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="eriksson-regular-preview" data-weight="400" data-font-style="normal">
+        <div class="style-preview" id="eriksson-regular-preview" data-weight="400" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Eriksson</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Eriksson Regular</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="eriksson-light">Eriksson Light</button></li>
-                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson Regular</button></li>
                   <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
                   <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
                   <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
@@ -162,17 +153,17 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="eriksson-medium-preview" data-weight="500" data-font-style="normal">
+        <div class="style-preview" id="eriksson-medium-preview" data-weight="500" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Eriksson Medium</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Eriksson Medium</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="eriksson-light">Eriksson Light</button></li>
-                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson Regular</button></li>
                   <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
                   <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
                   <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
@@ -216,17 +207,17 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="eriksson-bold-preview" data-weight="700" data-font-style="normal">
+        <div class="style-preview" id="eriksson-bold-preview" data-weight="700" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Eriksson Bold</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Eriksson Bold</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="eriksson-light">Eriksson Light</button></li>
-                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson Regular</button></li>
                   <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
                   <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
                   <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
@@ -270,17 +261,17 @@
           </div>
         </div>
 
-        <div class="style-preview-sample" id="eriksson-extrabold-preview" data-weight="800" data-font-style="normal">
+        <div class="style-preview" id="eriksson-extrabold-preview" data-weight="800" data-font-style="normal">
           <div class="parameter">
-            <div class="weight-para">
-              <div class="font-style-change">
-                <button class="font-style-change-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="font-style-change-label">Eriksson ExtraBold</span>
+            <div class="style-controls">
+              <div class="style-dropdown">
+                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="style-dropdown-label">Eriksson ExtraBold</span>
                   <span class="dropdown-arrow"></span>
                 </button>
-                <ul class="font-style-dropdown" role="listbox">
+                <ul class="style-dropdown-list" role="listbox">
                   <li><button data-style="eriksson-light">Eriksson Light</button></li>
-                  <li><button data-style="eriksson-regular">Eriksson</button></li>
+                  <li><button data-style="eriksson-regular">Eriksson Regular</button></li>
                   <li><button data-style="eriksson-medium">Eriksson Medium</button></li>
                   <li><button data-style="eriksson-bold">Eriksson Bold</button></li>
                   <li><button data-style="eriksson-extrabold">Eriksson ExtraBold</button></li>
@@ -329,7 +320,7 @@
              TODO: no Eriksson specimen images yet — add them to
              typefaces/img/Eriksson/ and list them here, same as
              terra.html/espinosa.html. -->
-        <div class="font-image" id="image-slide" style="--img-slide-height: 120vh;">
+        <div class="slide-image" id="image-slide" style="--img-slide-height: 120vh;">
           <div class="img-slider">
           </div>
           <div class="img-slider-dots"></div>
@@ -339,7 +330,7 @@
         <!-- ============ SLIDE 4: INFORMATION ============
              TODO: placeholder copy below — needs the real design rationale
              and mentor for Eriksson. -->
-        <div class="font-information" id="information">
+        <div class="slide-info" id="information">
           <div class="info-fulltext">
             <p>Eriksson is a Swedish-leaning monospace typeface. [Expand with the real design rationale.]</p>
           </div>

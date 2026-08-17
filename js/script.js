@@ -633,3 +633,19 @@ if (svg) {
     render();
   }
 }
+
+// About panel: clicking "About" reveals the intro/ext-link aside inline,
+// replacing .site-header it was clicked from (.contact-panel goes with it
+// since it's nested inside). Delegated on document because the header
+// (including #about-toggle) is injected asynchronously by include-header.js
+// and may not exist yet when this script runs.
+document.addEventListener("click", (e) => {
+  const aboutToggle = e.target.closest("#about-toggle");
+  if (!aboutToggle) return;
+  const aboutPanel = document.getElementById("about-panel");
+  const siteHeader = document.querySelector(".site-header");
+  if (!aboutPanel || !siteHeader) return;
+  e.preventDefault();
+  aboutPanel.hidden = !aboutPanel.hidden;
+  siteHeader.hidden = !aboutPanel.hidden;
+});
