@@ -298,7 +298,7 @@ function render() {
   const glyphPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
   const pathData = buildPath(paths);
   glyphPath.setAttribute("d", pathData);
-  glyphPath.setAttribute("class", "glyph-fill");
+  glyphPath.setAttribute("class", "hero__glyph-fill");
   glyphPath.setAttribute("fill", "#000000");
   svg.appendChild(glyphPath);
 
@@ -335,7 +335,7 @@ function render() {
           line.setAttribute("y1", path[prevOncurveIdx].y);
           line.setAttribute("x2", pt.x);
           line.setAttribute("y2", pt.y);
-          line.setAttribute("class", "handle-line");
+          line.setAttribute("class", "hero__handle-line");
           svg.appendChild(line);
         }
 
@@ -349,7 +349,7 @@ function render() {
           line.setAttribute("y1", pt.y);
           line.setAttribute("x2", path[nextOncurveIdx].x);
           line.setAttribute("y2", path[nextOncurveIdx].y);
-          line.setAttribute("class", "handle-line");
+          line.setAttribute("class", "hero__handle-line");
           svg.appendChild(line);
         }
       }
@@ -374,7 +374,7 @@ function render() {
         rect.setAttribute("y", pt.y - size / 2);
         rect.setAttribute("width", size);
         rect.setAttribute("height", size);
-        rect.setAttribute("class", "point-oncurve" + (isSelected ? " point-selected" : ""));
+        rect.setAttribute("class", "hero__point--oncurve" + (isSelected ? " hero__point--selected" : ""));
         rect.setAttribute("data-path", pathIdx);
         rect.setAttribute("data-point", i);
         svg.appendChild(rect);
@@ -383,7 +383,7 @@ function render() {
         circle.setAttribute("cx", pt.x);
         circle.setAttribute("cy", pt.y);
         circle.setAttribute("r", isMobile ? 7 : 5);
-        circle.setAttribute("class", "point-offcurve" + (isSelected ? " point-selected" : ""));
+        circle.setAttribute("class", "hero__point--offcurve" + (isSelected ? " hero__point--selected" : ""));
         circle.setAttribute("data-path", pathIdx);
         circle.setAttribute("data-point", i);
         svg.appendChild(circle);
@@ -634,18 +634,35 @@ if (svg) {
   }
 }
 
-// About panel: clicking "About" reveals the intro/ext-link aside inline,
-// replacing .site-header it was clicked from (.contact-panel goes with it
+// About panel: clicking "About" reveals the intro/links aside inline,
+// replacing .header it was clicked from (.header__contact goes with it
 // since it's nested inside). Delegated on document because the header
 // (including #about-toggle) is injected asynchronously by include-header.js
 // and may not exist yet when this script runs.
 document.addEventListener("click", (e) => {
   const aboutToggle = e.target.closest("#about-toggle");
   if (!aboutToggle) return;
-  const aboutPanel = document.getElementById("about-panel");
-  const siteHeader = document.querySelector(".site-header");
+  const aboutPanel = document.getElementById("header__about");
+  const siteHeader = document.querySelector(".header");
   if (!aboutPanel || !siteHeader) return;
   e.preventDefault();
-  aboutPanel.hidden = !aboutPanel.hidden;
-  siteHeader.hidden = !aboutPanel.hidden;
+  const opening = aboutPanel.hidden;
+  aboutPanel.hidden = !opening;
+  // Keep .header in the grid flow (so its row height doesn't collapse and
+  // shift .content) — just hide it visually behind the absolutely
+  // positioned .header__about panel.
+  siteHeader.style.visibility = opening ? "hidden" : "";
+
+  // On mobile, .header__about is tall enough to overlap .content — push
+  // .content down by the panel's actual height while it's open. Desktop
+  // keeps the panel as a non-shifting overlay, so this only applies ≤768px.
+  const content = document.querySelector(".content");
+  if (content) {
+    if (opening && window.innerWidth <= 768) {
+      const baseTop = content.getBoundingClientRect().top - aboutPanel.getBoundingClientRect().top;
+      content.style.marginTop = `${aboutPanel.offsetHeight + baseTop}px`;
+    } else {
+      content.style.marginTop = "";
+    }
+  }
 });

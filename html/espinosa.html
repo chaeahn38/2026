@@ -11,15 +11,15 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <div id="site-header-placeholder"></div>
+    <div id="header-placeholder"></div>
     <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
-    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <button class="type-detail__scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
     <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============ -->
-    <div class="slide-nav">
+    <div class="type-detail__nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="image-slide">Type in use</button>
       <button data-target="information">Information</button>
@@ -29,47 +29,47 @@
     <main class="content">
 
 
-      <div class="slide-stack" style="--type-family: 'Espinosa';">
+      <div class="type-detail__slides" style="--type-family: 'Espinosa';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============ -->
-        <div class="slide-styles" id="styles-slide">
+        <div class="type-detail__slide-styles" id="styles-slide">
           <p id="espinosa-regular" data-weight="400" data-font-style="normal" style="font-size: calc(8rem * var(--sample-scale, 1));">Espinosa</p>
           <p id="espinosa-regular-italic" data-weight="400" data-font-style="italic" style="font-size: calc(8rem * var(--sample-scale, 1));">Espinosa Italic</p>
         </div>
 
         <!-- ============ STYLE PREVIEWS (2 blocks, one per Espinosa weight/style) ============ -->
-        <div class="style-preview" id="espinosa-regular-preview" data-weight="400" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Espinosa</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="espinosa-regular-preview" data-weight="400" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Espinosa</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="espinosa-regular">Espinosa</button></li>
                   <li><button data-style="espinosa-regular-italic">Espinosa Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -78,50 +78,50 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-                    <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">In a certain province whose name I shall not trouble to set down, there dwelt a gentleman of modest fortune, possessed of an old horse, a rusted sword, and a library of romances that had, by slow degrees, entirely undone his reason. He rose before dawn each day, not to till his fields, which lay neglected, but to read of giants and enchanters until his eyes ached and his supper grew cold upon the table.</p>
-                    <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">El Caballero de la Triste Figura</p>
-                    <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">It is related, by those who claim to have known him, that he would speak for hours of tournaments long since forgotten, and of ladies whose beauty, he swore, outshone the sun itself; and though his neighbors laughed behind their hands, he took no notice, so wholly was he given over to the service of his imagined lady, in whose name he vowed to right every wrong the world might offer him, however small, however imagined, however far beyond the reach of an old man on an older horse.</p>
-                    <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Chapter III. Wherein Our Knight Is Dubbed in a Manner Most Irregular</p>
-                    <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Rocinante, Fiel Compañero</p>
-                    <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">A Errar Es Humano, A Soñar Es Divino</p>
-                    <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">¡Adelante, Sin Miedo!</p>
+                    <div class="type-detail__random-text">
+                    <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">In a certain province whose name I shall not trouble to set down, there dwelt a gentleman of modest fortune, possessed of an old horse, a rusted sword, and a library of romances that had, by slow degrees, entirely undone his reason. He rose before dawn each day, not to till his fields, which lay neglected, but to read of giants and enchanters until his eyes ached and his supper grew cold upon the table.</p>
+                    <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">El Caballero de la Triste Figura</p>
+                    <p class="type-detail__sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">It is related, by those who claim to have known him, that he would speak for hours of tournaments long since forgotten, and of ladies whose beauty, he swore, outshone the sun itself; and though his neighbors laughed behind their hands, he took no notice, so wholly was he given over to the service of his imagined lady, in whose name he vowed to right every wrong the world might offer him, however small, however imagined, however far beyond the reach of an old man on an older horse.</p>
+                    <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Chapter III. Wherein Our Knight Is Dubbed in a Manner Most Irregular</p>
+                    <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Rocinante, Fiel Compañero</p>
+                    <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">A Errar Es Humano, A Soñar Es Divino</p>
+                    <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">¡Adelante, Sin Miedo!</p>
           </div>
           </div>
          
 
-         <div class="style-preview" id="espinosa-regular-italic-preview" data-weight="400" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Espinosa Italic</span>
-                  <span class="dropdown-arrow"></span>
+         <div class="type-detail__style-preview" id="espinosa-regular-italic-preview" data-weight="400" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Espinosa Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="espinosa-regular">Espinosa</button></li>
                   <li><button data-style="espinosa-regular-italic">Espinosa Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -130,21 +130,21 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Now it happened that our knight, having ridden three days without bread or rest, came upon an inn which he took, in the fever of his fancy, for a castle of surpassing splendor, and the innkeeper for its lord; and so earnestly did he entreat to be knighted there and then that the good man, more from a wish to be rid of him than any ceremony, obliged him before the sun had fully risen.</p>
-  <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Historia del Ingenioso Hidalgo, Segunda Parte</p>
-  <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">And thus armed, thus christened, thus made a knight of no order but his own devising, he set forth once more into the world, meeting on the road a company of merchants whom he took for a train of princes, and challenged, in the loftiest terms he could summon, to confess that his lady surpassed all others in beauty, though not one among them had ever laid eyes upon her, nor, in truth, had he himself seen more of her than a girl he once glimpsed winnowing wheat.</p>
-  <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Chapter VII. Of the Adventure of the Thirty Windmills</p>
-  <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Sancho, Fiel Escudero</p>
-  <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Gigantes de Piedra y Viento</p>
-  <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">¡Por Mi Fe, Dulcinea!</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Now it happened that our knight, having ridden three days without bread or rest, came upon an inn which he took, in the fever of his fancy, for a castle of surpassing splendor, and the innkeeper for its lord; and so earnestly did he entreat to be knighted there and then that the good man, more from a wish to be rid of him than any ceremony, obliged him before the sun had fully risen.</p>
+  <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">Historia del Ingenioso Hidalgo, Segunda Parte</p>
+  <p class="type-detail__sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">And thus armed, thus christened, thus made a knight of no order but his own devising, he set forth once more into the world, meeting on the road a company of merchants whom he took for a train of princes, and challenged, in the loftiest terms he could summon, to confess that his lady surpassed all others in beauty, though not one among them had ever laid eyes upon her, nor, in truth, had he himself seen more of her than a girl he once glimpsed winnowing wheat.</p>
+  <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Chapter VII. Of the Adventure of the Thirty Windmills</p>
+  <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Sancho, Fiel Escudero</p>
+  <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Gigantes de Piedra y Viento</p>
+  <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">¡Por Mi Fe, Dulcinea!</p>
           </div>
           </div>
 
 
         <!-- ============ SLIDE 3: TYPE IN USE ============ -->
-        <div class="slide-image" id="image-slide" style="--img-slide-height: 80vh;">
-          <div class="img-slider">
+        <div class="type-detail__slide-image" id="image-slide" style="--img-slide-height: 80vh;">
+          <div class="type-detail__img-slider">
             <img src="/typefaces/img/Espinosa/chae_semester-1.png" alt="">
             <img src="/typefaces/img/Espinosa/chae_semester-2.png" alt="">
             <img src="/typefaces/img/Espinosa/chae_semester-3.png" alt="">
@@ -165,16 +165,16 @@
             <img src="/typefaces/img/Espinosa/chae_revival04.png" alt="">
 
           </div>
-          <div class="img-slider-dots"></div>
+          <div class="type-detail__img-slider-dots"></div>
 
         </div>
 
         <!-- ============ SLIDE 4: INFORMATION ============ -->
-        <div class="slide-info" id="information">
-          <div class="info-fulltext">
+        <div class="type-detail__slide-info" id="information">
+          <div class="type-detail__info-fulltext">
             <p>Espinosa is a revival of a Spanish typeface from Imprenta Real, the Royal Printing House in Madrid, 1799. It is based on Specimen No.25, specifically the Lectura size (approximately 11 to 12 points), a typeface that embodies the aesthetic principles of the Spanish Royal Printing House. Imprenta Real was an institutional force in late 18th-century European typography, assembling by 1799 an extensive collection of punches and matrices sourced in part from Parma and from Jean-Louis Borniche in Paris. Among the Spanish master punchcutters who shaped this collection into something distinctly Iberian was Antonio Espinosa de los Monteros, whose work forms the foundation of this revival. Here, revival is treated not as replication but as translation — a practice grounded in historical fidelity while remaining structurally coherent for contemporary use.</p>
           </div>
-          <div class="info-subtext">
+          <div class="type-detail__info-subtext">
             <p id="info-styles-count">1 Family, 2 Styles</p>
             <p id="info-glyph-count">173 Glyphs</p>
             <p id="info-lang-toggle">60 languages</p>

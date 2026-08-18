@@ -24,10 +24,10 @@
     const overlay = document.createElement("div");
     overlay.className = "access-gate";
     overlay.innerHTML = `
-      <form class="access-gate-form">
+      <form class="access-gate__form">
         <input type="password" name="access-password" autocomplete="off" placeholder="Password" autofocus />
         <button type="submit">Enter</button>
-        <p class="access-gate-error" hidden>Incorrect password.</p>
+        <p class="access-gate__error" hidden>Incorrect password.</p>
       </form>
     `;
     document.body.appendChild(overlay);
@@ -38,7 +38,7 @@
 
     const form = overlay.querySelector("form");
     const input = overlay.querySelector("input");
-    const error = overlay.querySelector(".access-gate-error");
+    const error = overlay.querySelector(".access-gate__error");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();

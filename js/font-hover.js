@@ -1,5 +1,5 @@
 // Typeface-card hover: cycle a random look every 1s while hovered. Opt in per
-// card on the .typeface-card, plus --typeface-font (see typefaces-index.html):
+// card on the .type-grid__card, plus --typeface-font (see typefaces-index.html):
 //   - data-weights / data-styles (comma-separated) for typefaces that vary by
 //     weight/italic, e.g. Terra, Espinosa.
 //   - data-families (comma-separated font-family names) for typefaces that
@@ -14,9 +14,9 @@ const FADE_MS = isTouch ? 300 : 150;
 const CYCLE_MS = isTouch ? 1000 : 500;
 
 document
-  .querySelectorAll(".typeface-card[data-weights], .typeface-card[data-families]")
+  .querySelectorAll(".type-grid__card[data-weights], .type-grid__card[data-families]")
   .forEach((card) => {
-    const name = card.querySelector(".typeface-name");
+    const name = card.querySelector(".type-grid__name");
     if (!name) return;
 
     const weights = card.dataset.weights

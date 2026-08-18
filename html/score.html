@@ -11,10 +11,10 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <div id="site-header-placeholder"></div>
+    <div id="header-placeholder"></div>
     <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
-    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <button class="type-detail__scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
@@ -22,7 +22,7 @@
          No Variable button: Score has no weight axis and no VF — its 4 cuts
          (Regular/Bold/Dots/Tube) are stylistic variants, each its own static
          family, same approach as Sinfonie's optical-size cuts. -->
-    <div class="slide-nav">
+    <div class="type-detail__nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="image-slide">Type in use</button>
       <button data-target="information">Information</button>
@@ -32,14 +32,14 @@
     <main class="content">
 
 
-      <div class="slide-stack" style="--type-family: 'Score Regular';">
+      <div class="type-detail__slides" style="--type-family: 'Score Regular';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============
              4 stylistic cuts, no weight or italic axis. Glyph set is Latin
              letters (upper + lower) plus space ! , . ? only — no digits, no
              other punctuation — so sample copy below is written to stay
              inside that set. -->
-        <div class="slide-styles" id="styles-slide">
+        <div class="type-detail__slide-styles" id="styles-slide">
           <p id="score-regular" data-weight="400" data-font-style="normal" data-family="Score Regular" style="font-family: 'Score Regular'; font-size: calc(6rem * var(--sample-scale, 1));">Score Regular</p>
           <p id="score-bold" data-weight="400" data-font-style="normal" data-family="Score Bold" style="font-family: 'Score Bold'; font-size: calc(6rem * var(--sample-scale, 1));">Score Bold</p>
           <p id="score-dots" data-weight="400" data-font-style="normal" data-family="Score Dots" style="font-family: 'Score Dots'; font-size: calc(6rem * var(--sample-scale, 1));">Score Dots</p>
@@ -47,40 +47,40 @@
         </div>
 
         <!-- ============ STYLE PREVIEWS (4 blocks, one per Score cut) ============ -->
-        <div class="style-preview" id="score-regular-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Regular';">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Score Regular</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="score-regular-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Regular';">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Score Regular</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
                   <li><button data-style="score-tube">Score Tube</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -89,51 +89,51 @@
               </div>
             </div>
           </div>
-          <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Every scoreboard keeps the same quiet promise, that the truth of the game will be counted out in full view, letter by letter, until the whistle ends it.</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Home Team Leads</p>
-            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Halftime settles over the stadium like a held breath, the crowd trading seats for concourse lines before the clock starts again.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Full Time Whistle</p>
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Kickoff</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Extra Time</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Away Side Equalizes Late</p>
+          <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Every scoreboard keeps the same quiet promise, that the truth of the game will be counted out in full view, letter by letter, until the whistle ends it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Home Team Leads</p>
+            <p class="type-detail__sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Halftime settles over the stadium like a held breath, the crowd trading seats for concourse lines before the clock starts again.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Full Time Whistle</p>
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Kickoff</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Extra Time</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Away Side Equalizes Late</p>
           </div>
         </div>
 
-        <div class="style-preview" id="score-bold-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Bold';">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Score Bold</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="score-bold-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Bold';">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Score Bold</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
                   <li><button data-style="score-tube">Score Tube</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -142,51 +142,51 @@
               </div>
             </div>
           </div>
-          <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Bold plays win the biggest games, and the biggest games are the ones a crowd remembers long after the season ends.</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Champions Rise</p>
-            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Underdogs take the lead in the final minutes, and the roar that follows carries all the way to the parking lot.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Victory Belongs to Us</p>
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Glory</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Overtime</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Every Point Counts Twice</p>
+          <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Bold plays win the biggest games, and the biggest games are the ones a crowd remembers long after the season ends.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Champions Rise</p>
+            <p class="type-detail__sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Underdogs take the lead in the final minutes, and the roar that follows carries all the way to the parking lot.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Victory Belongs to Us</p>
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Glory</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Overtime</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Every Point Counts Twice</p>
           </div>
         </div>
 
-        <div class="style-preview" id="score-dots-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Dots';">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Score Dots</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="score-dots-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Dots';">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Score Dots</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
                   <li><button data-style="score-tube">Score Tube</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -195,51 +195,51 @@
               </div>
             </div>
           </div>
-          <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Dot by dot the old board lights up, a grainy glow spelling out the count long before anything moved on a screen.</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Pixels Count</p>
-            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Analog charm and a digital heart, the matrix flickers once before the final buzz sounds across the arena.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Grainy Glow of Game Night</p>
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Flicker</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Matrix</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Dotted Letters Climb the Board</p>
+          <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Dot by dot the old board lights up, a grainy glow spelling out the count long before anything moved on a screen.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Pixels Count</p>
+            <p class="type-detail__sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Analog charm and a digital heart, the matrix flickers once before the final buzz sounds across the arena.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Grainy Glow of Game Night</p>
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Flicker</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Matrix</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Dotted Letters Climb the Board</p>
           </div>
         </div>
 
-        <div class="style-preview" id="score-tube-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Tube';">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Score Tube</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="score-tube-preview" data-weight="400" data-font-style="normal" style="--type-family: 'Score Tube';">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Score Tube</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="score-regular">Score Regular</button></li>
                   <li><button data-style="score-bold">Score Bold</button></li>
                   <li><button data-style="score-dots">Score Dots</button></li>
                   <li><button data-style="score-tube">Score Tube</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -248,22 +248,22 @@
               </div>
             </div>
           </div>
-          <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Neon hums above the arena long after the seats have emptied, the tube light warming a board no one is reading anymore.</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Warm Amber Glow</p>
-            <p class="sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Glass and filament aglow, the arcade hums a static tone that outlasts every game played beneath it.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Retro Glow, Modern Game</p>
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Vintage</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Arcade</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Static Hum Before Kickoff</p>
+          <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Neon hums above the arena long after the seats have emptied, the tube light warming a board no one is reading anymore.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Warm Amber Glow</p>
+            <p class="type-detail__sample-text" style="font-size: calc(1.5rem * var(--sample-scale, 1));">Glass and filament aglow, the arcade hums a static tone that outlasts every game played beneath it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Retro Glow, Modern Game</p>
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Vintage</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Arcade</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Static Hum Before Kickoff</p>
           </div>
         </div>
 
 
         <!-- ============ SLIDE 2: TYPE IN USE ============
              Development images across all 4 cuts plus early sketches. -->
-        <div class="slide-image" id="image-slide" style="--img-slide-height: 120vh;">
-          <div class="img-slider">
+        <div class="type-detail__slide-image" id="image-slide" style="--img-slide-height: 120vh;">
+          <div class="type-detail__img-slider">
             <img src="/typefaces/img/Score/Regular03.png" alt="">
             <img src="/typefaces/img/Score/Regular04.png" alt="">
             <img src="/typefaces/img/Score/Regular05.png" alt="">
@@ -289,18 +289,18 @@
             <img src="/typefaces/img/Score/Sketch04.png" alt="">
             <img src="/typefaces/img/Score/Sketch05.png" alt="">
           </div>
-          <div class="img-slider-dots"></div>
+          <div class="type-detail__img-slider-dots"></div>
 
         </div>
 
         <!-- ============ SLIDE 3: INFORMATION ============
              TODO: placeholder copy below — needs the real design rationale
              and mentor for Score. -->
-        <div class="slide-info" id="information">
-          <div class="info-fulltext">
+        <div class="type-detail__slide-info" id="information">
+          <div class="type-detail__info-fulltext">
             <p>Score takes its four cuts from the display technologies used to keep track of a game. Score Regular and Score Bold set the baseline letterforms, while Score Dots and Score Tube reinterpret the same shapes through a dot-matrix scoreboard and a glowing display tube. [Expand with the real design rationale.]</p>
           </div>
-          <div class="info-subtext">
+          <div class="type-detail__info-subtext">
             <p id="info-styles-count">1 Family, 4 Styles</p>
             <p id="info-glyph-count">58 Glyphs</p>
             <p id="info-lang-toggle">Latin letters only, no numerals</p>

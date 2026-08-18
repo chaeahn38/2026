@@ -11,16 +11,16 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <div id="site-header-placeholder"></div>
+    <div id="header-placeholder"></div>
     <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
-    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <button class="type-detail__scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
     <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============
          No Variable button: Marelle is a single static weight, no VF. -->
-    <div class="slide-nav">
+    <div class="type-detail__nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="image-slide">Type in use</button>
       <button data-target="information">Information</button>
@@ -30,44 +30,44 @@
     <main class="content">
 
 
-      <div class="slide-stack" style="--type-family: 'Marelle';" data-lowercase-only>
+      <div class="type-detail__slides" style="--type-family: 'Marelle';" data-lowercase-only>
 
         <!-- ============ SLIDE 1: STYLES LIST ============
              Single weight, no italic — one entry only. Rendered lowercase
              (see [data-lowercase-only] in typeface-detail.css) since Marelle
              has no uppercase glyphs to fall back on. -->
-        <div class="slide-styles" id="styles-slide">
+        <div class="type-detail__slide-styles" id="styles-slide">
           <p id="marelle-regular" data-weight="400" data-font-style="normal" style="font-size: calc(8rem * var(--sample-scale, 1));">Marelle</p>
         </div>
 
         <!-- ============ STYLE PREVIEW (1 block — only style Marelle has) ============ -->
-        <div class="style-preview" id="marelle-regular-preview" data-weight="400" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Marelle</span>
+        <div class="type-detail__style-preview" id="marelle-regular-preview" data-weight="400" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Marelle</span>
                 </button>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -76,21 +76,21 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">abcdefghijklmnopqrstuvwxyz</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">a is for apple</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">b is for ball</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">c is for cat</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">1, 2, 3, 4: count with me</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">abc, easy as 1, 2, 3!</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">trace each letter slowly</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">ça va bien, mon ami</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">abcdefghijklmnopqrstuvwxyz</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">a is for apple</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">b is for ball</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">c is for cat</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">1, 2, 3, 4: count with me</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">abc, easy as 1, 2, 3!</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">trace each letter slowly</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">ça va bien, mon ami</p>
           </div>
         </div>
 
         <!-- ============ SLIDE 2: TYPE IN USE ============ -->
-        <div class="slide-image" id="image-slide" style="--img-slide-height: 80vh;">
-          <div class="img-slider">
+        <div class="type-detail__slide-image" id="image-slide" style="--img-slide-height: 80vh;">
+          <div class="type-detail__img-slider">
             <img src="/typefaces/img/Marelle/marelle-speceimen1.jpg" alt="">
             <img src="/typefaces/img/Marelle/marelle-speceimen2.jpg" alt="">
             <img src="/typefaces/img/Marelle/marelle-speceimen3.jpg" alt="">
@@ -100,16 +100,16 @@
             <img src="/typefaces/img/Marelle/marelle-speceimen7.png" alt="">
             <img src="/typefaces/img/Marelle/marelle-speceimen8.png" alt="">
           </div>
-          <div class="img-slider-dots"></div>
+          <div class="type-detail__img-slider-dots"></div>
 
         </div>
 
         <!-- ============ SLIDE 3: INFORMATION ============ -->
-        <div class="slide-info" id="information">
-          <div class="info-fulltext">
+        <div class="type-detail__slide-info" id="information">
+          <div class="type-detail__info-fulltext">
             <p>Marelle is a playful, rounded typeface with soft, chunky letterforms, designed as an alphabet-learning font for young children just starting to recognize and write their letters. Because it was made for early literacy rather than general-purpose writing, Marelle draws lowercase only — there is no capital set to fall back on, so typing in uppercase simply renders in lowercase instead.</p>
           </div>
-          <div class="info-subtext">
+          <div class="type-detail__info-subtext">
             <p id="info-styles-count">1 Style</p>
             <p id="info-glyph-count">59 Glyphs</p>
             <p id="info-lang-toggle">Lowercase Latin only</p>

@@ -11,15 +11,15 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <div id="site-header-placeholder"></div>
+    <div id="header-placeholder"></div>
     <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
-    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <button class="type-detail__scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
     <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============ -->
-    <div class="slide-nav">
+    <div class="type-detail__nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="variable-slide">Variable</button>
       <button data-target="image-slide">Type in use</button>
@@ -30,10 +30,10 @@
     <main class="content">
 
 
-      <div class="slide-stack" style="--type-family: 'Actosk'; --type-family-variable: 'Actosk Variable'; --type-family-variable-italic: 'Actosk Variable';">
+      <div class="type-detail__slides" style="--type-family: 'Actosk'; --type-family-variable: 'Actosk Variable'; --type-family-variable-italic: 'Actosk Variable';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============ -->
-        <div class="slide-styles" id="styles-slide">
+        <div class="type-detail__slide-styles" id="styles-slide">
           <p id="actosk-thin" data-weight="100" data-font-style="normal" style="font-size: calc(2rem * var(--sample-scale, 1));">Actosk Thin</p>
           <p id="actosk-thin-italic" data-weight="100" data-font-style="italic" style="font-size: calc(2rem * var(--sample-scale, 1));">Actosk Thin Italic</p>
           <p id="actosk-extralight" data-weight="200" data-font-style="normal" style="font-size: calc(2rem * var(--sample-scale, 1));">Actosk ExtraLight</p>
@@ -55,15 +55,15 @@
         </div>
 
         <!-- ============ STYLE PREVIEWS (18 blocks, one per Actosk weight/style) ============ -->
-        <div class="style-preview" id="actosk-thin-preview" data-weight="100" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Thin</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-thin-preview" data-weight="100" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Thin</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -84,25 +84,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -111,27 +111,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-thin-italic-preview" data-weight="100" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Thin Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-thin-italic-preview" data-weight="100" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Thin Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -152,25 +152,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -179,27 +179,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-extralight-preview" data-weight="200" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk ExtraLight</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-extralight-preview" data-weight="200" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk ExtraLight</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -220,25 +220,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -247,27 +247,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-extralight-italic-preview" data-weight="200" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk ExtraLight Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-extralight-italic-preview" data-weight="200" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk ExtraLight Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -288,25 +288,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -315,27 +315,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-light-preview" data-weight="300" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Light</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-light-preview" data-weight="300" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Light</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -356,25 +356,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -383,27 +383,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-light-italic-preview" data-weight="300" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Light Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-light-italic-preview" data-weight="300" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Light Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -424,25 +424,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -451,27 +451,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bound proofs sat untouched on the shelf for a decade before anyone thought to reprint them.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Enzo Mari, Sedia 1, 1974</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bound proofs sat untouched on the shelf for a decade before anyone thought to reprint them.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Enzo Mari, Sedia 1, 1974</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-regular-preview" data-weight="400" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Regular</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-regular-preview" data-weight="400" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Regular</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -492,25 +492,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -519,27 +519,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Enzo Mari, Sedia 1, 1974</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Enzo Mari, Sedia 1, 1974</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-regular-italic-preview" data-weight="400" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Regular Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-regular-italic-preview" data-weight="400" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Regular Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -560,25 +560,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -587,27 +587,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-medium-preview" data-weight="500" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Medium</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-medium-preview" data-weight="500" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Medium</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -628,25 +628,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -655,27 +655,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-medium-italic-preview" data-weight="500" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Medium Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-medium-italic-preview" data-weight="500" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Medium Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -696,25 +696,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -723,27 +723,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-semibold-preview" data-weight="600" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk SemiBold</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-semibold-preview" data-weight="600" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk SemiBold</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -764,25 +764,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -791,27 +791,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-semibold-italic-preview" data-weight="600" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk SemiBold Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-semibold-italic-preview" data-weight="600" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk SemiBold Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -832,25 +832,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -859,27 +859,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bound proofs sat untouched on the shelf for a decade before anyone thought to reprint them.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bound proofs sat untouched on the shelf for a decade before anyone thought to reprint them.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-bold-preview" data-weight="700" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Bold</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-bold-preview" data-weight="700" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Bold</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -900,25 +900,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -927,27 +927,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bound proofs sat untouched on the shelf for a decade before anyone thought to reprint them.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Enzo Mari, Sedia 1, 1974</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bound proofs sat untouched on the shelf for a decade before anyone thought to reprint them.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always cut the paste-up boards an inch too large, out of a habit no one had ever asked him to explain.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Enzo Mari, Sedia 1, 1974</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-bold-italic-preview" data-weight="700" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Bold Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-bold-italic-preview" data-weight="700" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Bold Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -968,25 +968,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -995,27 +995,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The typesetter reset the whole page rather than admit the error.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept a drafting table by the window long after he'd stopped drawing at it, as if the light alone were reason enough to keep it there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never signed her sketches, only dated them.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Eileen Gray, E-1027 Table, 1927</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof came back with every margin note in a different color ink.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-extrabold-preview" data-weight="800" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk ExtraBold</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-extrabold-preview" data-weight="800" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk ExtraBold</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1036,25 +1036,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -1063,27 +1063,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one could say who had first proposed grouping the chairs that way, only that once it was done, no one wanted to move them back.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ray Eames, Molded Plywood Chair, 1946</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alvar Aalto, Savoy Vase, 1936</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The kerning table was redone twice before anyone was satisfied.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He measured the baseline grid by hand, twice, though the software had already told him it was correct.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-extrabold-italic-preview" data-weight="800" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk ExtraBold Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-extrabold-italic-preview" data-weight="800" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk ExtraBold Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1104,25 +1104,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -1131,27 +1131,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept every rejected logo in a folder marked simply 'no.'</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Le Corbusier, Chaise Longue, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof press had not been oiled in years, but it still ran true.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They redrew the letterform's shoulder eleven times before agreeing it finally looked like it wasn't trying.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Marianne Brandt, Kandem Table Lamp, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-black-preview" data-weight="900" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Black</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-black-preview" data-weight="900" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Black</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1172,25 +1172,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -1199,27 +1199,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Dieter Rams, Braun SK4, 1956</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The specimen sheet was printed on the back of an old invoice.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered why the studio kept a single uppercase Q pinned above the door, only that it had always been there.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Florence Knoll, Credenza, 1961</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Josef Albers, Homage to the Square, 1950</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
           </div>
         </div>
 
-        <div class="style-preview" id="actosk-black-italic-preview" data-weight="900" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Black Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="actosk-black-italic-preview" data-weight="900" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Black Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="actosk-thin">Actosk Thin</button></li>
                   <li><button data-style="actosk-thin-italic">Actosk Thin Italic</button></li>
                   <li><button data-style="actosk-extralight">Actosk ExtraLight</button></li>
@@ -1240,25 +1240,25 @@
                   <li><button data-style="actosk-black-italic">Actosk Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -1267,46 +1267,46 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The type foundry closed the year after the specimen book was finally finished.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He redesigned the ampersand alone for a week, certain the rest of the alphabet could wait.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Verner Panton, Panton Chair, 1967</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Paul Rand, IBM Logo, 1972</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The printer ran the job twice, certain the first pass had a flaw no one else could see.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She kept the original pencil sketch taped inside the studio door, faded almost to nothing, long after the typeface shipped.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Achille Castiglioni, Arco Lamp, 1962</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Wim Crouwel, New Alphabet, 1967</p>
           </div>
         </div>
 
         <!-- ============ SLIDE 2: VARIABLE FONT ============ -->
-        <div class="slide-variable" id="variable-slide">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Actosk Variable</span>
+        <div class="type-detail__slide-variable" id="variable-slide">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Actosk Variable</span>
                 </button>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -1315,20 +1315,20 @@
               </div>
             </div>
           </div>
-          <div class="random-text">
-<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Massimo Vignelli, New York Subway Map, 1972</p>
-<p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof sheet curled at the edges before the ink had even dried.</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">He kept redrawing the lowercase g long after the rest of the family had shipped, certain that letter alone still had more to give.</p>
-<p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Herbert Bayer, Universal Typeface, 1925</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">No one in the studio could agree on the width of the space bar, and so, for a year, it simply changed depending on who typed last.</p>
-<p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Jan Tschichold, Die neue Typographie, 1928</p>
-<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Otl Aicher, Rotis, 1988</p>
-<p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The specimen posters were pinned up in order of weight, lightest nearest the door.</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">She traced the counter of the lowercase a by hand for a week before trusting herself to draw it directly on screen.</p>
-<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Adrian Frutiger, Univers, 1957</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">The whole family shipped a year late, delayed, everyone agreed, by a single stubborn italic.</p>
-<p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always tested a new weight on the same paragraph first, a habit from his first job that he never once explained.</p>
-<p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The last specimen book printed before the studio closed listed every weight but the one everyone had actually used.</p>
+          <div class="type-detail__random-text">
+<p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Massimo Vignelli, New York Subway Map, 1972</p>
+<p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The proof sheet curled at the edges before the ink had even dried.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">He kept redrawing the lowercase g long after the rest of the family had shipped, certain that letter alone still had more to give.</p>
+<p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Herbert Bayer, Universal Typeface, 1925</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">No one in the studio could agree on the width of the space bar, and so, for a year, it simply changed depending on who typed last.</p>
+<p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Jan Tschichold, Die neue Typographie, 1928</p>
+<p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Otl Aicher, Rotis, 1988</p>
+<p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The specimen posters were pinned up in order of weight, lightest nearest the door.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">She traced the counter of the lowercase a by hand for a week before trusting herself to draw it directly on screen.</p>
+<p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Adrian Frutiger, Univers, 1957</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">The whole family shipped a year late, delayed, everyone agreed, by a single stubborn italic.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He always tested a new weight on the same paragraph first, a habit from his first job that he never once explained.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The last specimen book printed before the studio closed listed every weight but the one everyone had actually used.</p>
 </div>
           </div>
 
@@ -1336,21 +1336,21 @@
              TODO: no Actosk specimen images yet — add them to
              typefaces/img/Actosk/ and list them here, same as
              terra.html/espinosa.html. -->
-        <div class="slide-image" id="image-slide" style="--img-slide-height: 120vh;">
-          <div class="img-slider">
+        <div class="type-detail__slide-image" id="image-slide" style="--img-slide-height: 120vh;">
+          <div class="type-detail__img-slider">
           </div>
-          <div class="img-slider-dots"></div>
+          <div class="type-detail__img-slider-dots"></div>
 
         </div>
 
         <!-- ============ SLIDE 4: INFORMATION ============
              TODO: placeholder copy below — needs the real design rationale,
              mentor, and language coverage for Actosk. -->
-        <div class="slide-info" id="information">
-          <div class="info-fulltext">
+        <div class="type-detail__slide-info" id="information">
+          <div class="type-detail__info-fulltext">
             <p>Actosk is a sans-serif grotesque family built as a working system. Drawing its underlying structure from Monotype Corporation's Grotesque 215, Actosk extends that foundation across nine weights, Thin through Black, each paired with an italic. Actosk gives designers a full tonal range from quiet captions to commanding headlines. It is a dependable typeface for editorial, interface, and identity work alike.</p>
           </div>
-          <div class="info-subtext">
+          <div class="type-detail__info-subtext">
             <p id="info-styles-count">18 Styles</p>
             <p id="info-lang-toggle">95 languages</p>
             <p id="info-lang-list">Afrikaans, Albanian, Asu, Basque, Bemba, Bena, Breton, Catalan, Chiga, Colognian, Cornish, Croatian, Czech, Danish, Dutch, Embu, English, Esperanto, Estonian, Faroese, Filipino, Finnish, French, Friulian, Galician, Ganda, German, Gusii, Hungarian, Icelandic, Inari Sami, Indonesian, Irish, Italian, Jola-Fonyi, Kabuverdianu, Kalaallisut, Kalenjin, Kamba, Kikuyu, Kinyarwanda, Latvian, Lithuanian, Lower Sorbian, Luo, Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde, Malagasy, Maltese, Manx, Meru, Morisyen, Northern Sami, North Ndebele, Norwegian Bokmål, Norwegian Nynorsk, Nyankole, Oromo, Polish, Portuguese, Quechua, Romansh, Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena, Serbian, Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish, Swahili, Swedish, Swiss German, Taita, Teso, Turkish, Upper Sorbian, Uzbek (Latin), Volapük, Vunjo, Walser, Welsh, Western Frisian, Zulu</p>

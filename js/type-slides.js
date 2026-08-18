@@ -6,18 +6,18 @@
 // rather than CSS attribute selectors, since CSS can't match arbitrary
 // numeric values — this way any weight a typeface actually uses (100-900)
 // works with no CSS changes needed for a new typeface.
-document.querySelectorAll(".slide-styles p[data-weight]").forEach((p) => {
+document.querySelectorAll(".type-detail__slide-styles p[data-weight]").forEach((p) => {
   p.style.fontWeight = p.dataset.weight;
 });
-document.querySelectorAll(".style-preview[data-weight]").forEach((block) => {
-  block.querySelectorAll(".sample-text").forEach((el) => {
+document.querySelectorAll(".type-detail__style-preview[data-weight]").forEach((block) => {
+  block.querySelectorAll(".type-detail__sample-text").forEach((el) => {
     el.style.fontWeight = block.dataset.weight;
   });
 });
 
 // Information slide's long-form text: authored as however many <p> tags (or
 // just one flowing paragraph) — their text is merged, then (desktop only —
-// .info-fulltext is a single stacked column below 850px, see typeface-
+// the info text is a single stacked column below 850px, see typeface-
 // detail.css, so there's nothing to balance there) split word-by-word (never
 // mid-word, but mid-sentence is fine) so the two columns render the same
 // number of *visual* lines — the right column takes the extra line when the
@@ -27,7 +27,7 @@ document.querySelectorAll(".style-preview[data-weight]").forEach((block) => {
 const infoTextMobile = window.matchMedia("(max-width: 850px)");
 
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
-  document.querySelectorAll(".info-fulltext").forEach((container) => {
+  document.querySelectorAll(".type-detail__info-fulltext").forEach((container) => {
     const fullText = Array.from(container.querySelectorAll("p"))
       .map((p) => p.textContent.trim())
       .join(" ")
@@ -42,7 +42,7 @@ const infoTextMobile = window.matchMedia("(max-width: 850px)");
     const right = document.createElement("p");
     container.append(left);
 
-    // .info-fulltext p uses flex:1, so both columns are equal width regardless
+    // The info-fulltext <p> uses flex:1, so both columns are equal width regardless
     // of content — safe to measure the left <p> alone at each candidate split.
     const countLines = (el) => {
       const range = document.createRange();
@@ -101,8 +101,8 @@ if (langToggle && langList) {
   });
 }
 
-// slide-nav buttons scroll their matching full-screen slide into view
-const slideButtons = document.querySelectorAll(".slide-nav button[data-target]");
+// Slide-nav buttons scroll their matching full-screen slide into view
+const slideButtons = document.querySelectorAll(".type-detail__nav button[data-target]");
 slideButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const target = document.getElementById(btn.dataset.target);
@@ -111,7 +111,7 @@ slideButtons.forEach((btn) => {
 });
 
 // Bold whichever slide-nav button matches the slide currently in view
-const slidesContainer = document.querySelector(".slide-stack");
+const slidesContainer = document.querySelector(".type-detail__slides");
 if (slideButtons.length && slidesContainer) {
   const setActiveSlide = (id) => {
     slideButtons.forEach((btn) => {
@@ -157,32 +157,32 @@ if (stylesSlide && slidesContainer) {
 }
 
 // Clicking a style name scrolls to that style's preview block
-document.querySelectorAll(".slide-styles p").forEach((p) => {
+document.querySelectorAll(".type-detail__slide-styles p").forEach((p) => {
   p.addEventListener("click", () => {
     const target = document.getElementById(`${p.id}-preview`);
     if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 });
 
-// Returns whichever sample-text is currently shown in a style-preview block
-// (the single .sample-text, or the .active one inside a .random-text group)
+// Returns whichever sample text is currently shown in a style-preview block
+// (the single .type-detail__sample-text, or the .active one inside a .type-detail__random-text group)
 const getVisibleSampleText = (container) => {
   if (!container) return null;
-  const randomGroup = container.querySelector(".random-text");
-  if (randomGroup) return randomGroup.querySelector(".sample-text.active");
-  return container.querySelector(".sample-text");
+  const randomGroup = container.querySelector(".type-detail__random-text");
+  if (randomGroup) return randomGroup.querySelector(".type-detail__sample-text.active");
+  return container.querySelector(".type-detail__sample-text");
 };
 
 // Align buttons: default to "mid", clicking sets the active icon and aligns the sample text
 const alignClassMap = {
-  "align-left": "left",
-  "align-mid": "center",
-  "align-right": "right",
+  "type-detail__align-btn--left": "left",
+  "type-detail__align-btn--mid": "center",
+  "type-detail__align-btn--right": "right",
 };
 
-document.querySelectorAll(".align-group").forEach((group) => {
+document.querySelectorAll(".type-detail__align-group").forEach((group) => {
   const buttons = group.querySelectorAll("button");
-  const container = group.closest(".style-preview, .slide-variable");
+  const container = group.closest(".type-detail__style-preview, .type-detail__slide-variable");
 
   const setActive = (activeBtn) => {
     buttons.forEach((btn) => btn.classList.toggle("active", btn === activeBtn));
@@ -193,20 +193,20 @@ document.querySelectorAll(".align-group").forEach((group) => {
 
   buttons.forEach((btn) => btn.addEventListener("click", () => setActive(btn)));
 
-  const defaultBtn = group.querySelector(".align-mid");
+  const defaultBtn = group.querySelector(".type-detail__align-btn--mid");
   if (defaultBtn) setActive(defaultBtn);
 });
 
 // Font-style dropdown: click to open, click an item to restyle this preview in place.
-// Each dropdown item's data-style points at the id of its .slide-styles <p>, which
+// Each dropdown item's data-style points at the id of its .type-detail__slide-styles <p>, which
 // carries the actual data-weight/data-font-style to apply — so this works for any
 // typeface's style list without a hardcoded per-typeface weight/style map.
-document.querySelectorAll(".style-dropdown").forEach((wrapper) => {
-  const toggleBtn = wrapper.querySelector(".style-dropdown-btn");
-  const label = wrapper.querySelector(".style-dropdown-label");
-  const dropdown = wrapper.querySelector(".style-dropdown-list");
+document.querySelectorAll(".type-detail__dropdown").forEach((wrapper) => {
+  const toggleBtn = wrapper.querySelector(".type-detail__dropdown-btn");
+  const label = wrapper.querySelector(".type-detail__dropdown-label");
+  const dropdown = wrapper.querySelector(".type-detail__dropdown-list");
   if (!dropdown) return; // static label with no picker (e.g. the Variable slide)
-  const container = wrapper.closest(".style-preview, .slide-variable");
+  const container = wrapper.closest(".type-detail__style-preview, .type-detail__slide-variable");
 
   const closeDropdown = () => {
     dropdown.classList.remove("open");
@@ -240,7 +240,7 @@ document.querySelectorAll(".style-dropdown").forEach((wrapper) => {
 // Random-text groups: only one sample line shows at a time; click swaps in a random other one.
 // Any edit made to the outgoing text is discarded (reset to its original wording) once it's hidden.
 const originalSampleText = new WeakMap();
-document.querySelectorAll(".sample-text").forEach((p) => originalSampleText.set(p, p.textContent));
+document.querySelectorAll(".type-detail__sample-text").forEach((p) => originalSampleText.set(p, p.textContent));
 
 // Variable slide only: on hover-capable devices (mouse/trackpad), horizontal
 // position across the sample text live-drives its variable axis instead of
@@ -251,12 +251,12 @@ document.querySelectorAll(".sample-text").forEach((p) => originalSampleText.set(
 const isHoverCapable = window.matchMedia("(hover: hover)").matches;
 const AXIS_RANGE = { wght: [100, 900], opsz: [10, 50] };
 
-document.querySelectorAll(".random-text").forEach((group) => {
-  const texts = Array.from(group.querySelectorAll(".sample-text"));
+document.querySelectorAll(".type-detail__random-text").forEach((group) => {
+  const texts = Array.from(group.querySelectorAll(".type-detail__sample-text"));
   if (!texts.length) return;
 
-  const container = group.closest(".style-preview, .slide-variable");
-  const editBtn = container?.querySelector(".edit-sample-btn");
+  const container = group.closest(".type-detail__style-preview, .type-detail__slide-variable");
+  const editBtn = container?.querySelector(".type-detail__edit-btn");
 
   let current = texts[Math.floor(Math.random() * texts.length)];
   current.classList.add("active");
@@ -278,7 +278,7 @@ document.querySelectorAll(".random-text").forEach((group) => {
     current = next;
   });
 
-  if (!isHoverCapable || !container?.classList.contains("slide-variable")) return;
+  if (!isHoverCapable || !container?.classList.contains("type-detail__slide-variable")) return;
 
   const axis = container.dataset.axis === "opsz" ? "opsz" : "wght";
   const [axisMin, axisMax] = AXIS_RANGE[axis];
@@ -293,9 +293,9 @@ document.querySelectorAll(".random-text").forEach((group) => {
   });
 });
 
-// Edit sample: click toggles the currently visible sample-text into an editable field
-document.querySelectorAll(".edit-sample-btn").forEach((btn) => {
-  const container = btn.closest(".style-preview, .slide-variable");
+// Edit sample: click toggles the currently visible sample text into an editable field
+document.querySelectorAll(".type-detail__edit-btn").forEach((btn) => {
+  const container = btn.closest(".type-detail__style-preview, .type-detail__slide-variable");
 
   btn.addEventListener("click", () => {
     const sampleText = getVisibleSampleText(container);
@@ -311,8 +311,8 @@ document.querySelectorAll(".edit-sample-btn").forEach((btn) => {
 const sliderMinRem = 1;
 const sliderMaxRem = 15;
 
-document.querySelectorAll('.style-controls input[type="range"]:not(.wght-axis)').forEach((slider) => {
-  const container = slider.closest(".style-preview, .slide-variable");
+document.querySelectorAll('.type-detail__controls input[type="range"]:not(.wght-axis)').forEach((slider) => {
+  const container = slider.closest(".type-detail__style-preview, .type-detail__slide-variable");
   if (!container) return;
 
   slider.addEventListener("input", () => {
@@ -325,7 +325,7 @@ document.querySelectorAll('.style-controls input[type="range"]:not(.wght-axis)')
 
 // Img-slider: click-drag pans the strip; on release it always snaps exactly one
 // image forward/back (or back to where it started), never leaving it mid-image
-document.querySelectorAll(".img-slider").forEach((slider) => {
+document.querySelectorAll(".type-detail__img-slider").forEach((slider) => {
   const images = Array.from(slider.querySelectorAll("img"));
   if (!images.length) return;
 
@@ -387,16 +387,16 @@ document.querySelectorAll(".img-slider").forEach((slider) => {
 
   // Dot indicators below the slider: an Instagram-style sliding window that only
   // ever shows VISIBLE_DOTS dots, shrinking the ones near the edge of the window
-  const dotsContainer = slider.parentElement.querySelector(".img-slider-dots");
+  const dotsContainer = slider.parentElement.querySelector(".type-detail__img-slider-dots");
   if (dotsContainer) {
     const VISIBLE_DOTS = 5;
     const track = document.createElement("div");
-    track.className = "img-slider-dots-track";
+    track.className = "type-detail__img-slider-dots-track";
     dotsContainer.appendChild(track);
 
     const dots = images.map((img, i) => {
       const dot = document.createElement("button");
-      dot.className = "img-slider-dot";
+      dot.className = "type-detail__img-slider-dot";
       dot.setAttribute("aria-label", `Go to image ${i + 1}`);
       dot.addEventListener("click", () => snapTo(i));
       track.appendChild(dot);
@@ -437,7 +437,7 @@ document.querySelectorAll(".img-slider").forEach((slider) => {
 
   // Cursor swaps between the left- and right-pointing arrow depending on which half is hovered
   slider.addEventListener("mousemove", (e) => {
-    slider.classList.toggle("cursor-right", isRightHalf(e.clientX));
+    slider.classList.toggle("type-detail__img-slider--cursor-right", isRightHalf(e.clientX));
   });
 
   let dragging = false;

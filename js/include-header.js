@@ -1,8 +1,8 @@
-// Injects the shared site header/nav/about-panel markup (html/partials/header.html)
-// into every page's <div id="site-header-placeholder">, so that block only
+// Injects the shared header/nav/about-panel markup (html/partials/header.html)
+// into every page's <div id="header-placeholder">, so that block only
 // needs to be edited in one place.
 (() => {
-  const placeholder = document.getElementById("site-header-placeholder");
+  const placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
 
   fetch("/html/partials/header.html")

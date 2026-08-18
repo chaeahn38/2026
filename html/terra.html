@@ -11,15 +11,15 @@
 </head>
 <body>
     <!-- ============ HEADER: SITE NAV ============ -->
-    <div id="site-header-placeholder"></div>
+    <div id="header-placeholder"></div>
     <script src="/js/include-header.js"></script>
     <!-- ============ SCROLL-TO-TOP BUTTON ============ -->
-    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <button class="type-detail__scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
       <img src="/asset/icon/scroll-to-top.svg" alt="">
     </button>
 
     <!-- ============ SLIDE NAV (jumps between the 4 slides below) ============ -->
-    <div class="slide-nav">
+    <div class="type-detail__nav">
       <button data-target="styles-slide">Styles</button>
       <button data-target="variable-slide">Variable</button>
       <button data-target="image-slide">Type in use</button>
@@ -30,10 +30,10 @@
     <main class="content">
 
 
-      <div class="slide-stack" style="--type-family: 'Terra'; --type-family-variable: 'Terra Upright'; --type-family-variable-italic: 'Terra Italic';">
+      <div class="type-detail__slides" style="--type-family: 'Terra'; --type-family-variable: 'Terra Upright'; --type-family-variable-italic: 'Terra Italic';">
 
         <!-- ============ SLIDE 1: STYLES LIST ============ -->
-        <div class="slide-styles" id="styles-slide">
+        <div class="type-detail__slide-styles" id="styles-slide">
           <p id="terra-light" data-weight="300" data-font-style="normal" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Terra Light</p>
           <p id="terra-light-italic" data-weight="300" data-font-style="italic" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Terra Light Italic</p>
           <p id="terra-regular" data-weight="400" data-font-style="normal" style="font-size: calc(3.5rem * var(--sample-scale, 1));">Terra Regular</p>
@@ -47,15 +47,15 @@
         </div>
 
         <!-- ============ STYLE PREVIEWS (10 blocks, one per Terra weight/style) ============ -->
-        <div class="style-preview" id="terra-light-preview" data-weight="300" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Light</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-light-preview" data-weight="300" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Light</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -68,25 +68,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -95,28 +95,28 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Isamu Noguchi, Akari Light Sculpture, 1951</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">He wrote the same first line eleven times, and never once got past it.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The garden had been planted by someone who no longer lived there, and yet every spring it kept its promise, indifferent to who was left to see it.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never once mentioned the accident, and no one thought to ask.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Diego Giacometti, Table aux Feuilles</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The dog waited by the gate long after there was any reason to.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">By the time the storm passed, the whole town had already agreed on a version of what happened, and no one, not even the people who had seen it, thought to disagree.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He folded the map back the wrong way, on purpose, every time.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Isamu Noguchi, Akari Light Sculpture, 1951</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">He wrote the same first line eleven times, and never once got past it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The garden had been planted by someone who no longer lived there, and yet every spring it kept its promise, indifferent to who was left to see it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She never once mentioned the accident, and no one thought to ask.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Diego Giacometti, Table aux Feuilles</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The dog waited by the gate long after there was any reason to.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">By the time the storm passed, the whole town had already agreed on a version of what happened, and no one, not even the people who had seen it, thought to disagree.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He folded the map back the wrong way, on purpose, every time.</p>
           </div>
           </div>
          
 
-        <div class="style-preview" id="terra-light-italic-preview" data-weight="300" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Light Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-light-italic-preview" data-weight="300" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Light Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -129,25 +129,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -156,27 +156,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Hans Wegner, The Chair, 1949</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The photograph had faded so badly that only the outline of her hat remained.</p>
-            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">He had promised to write, and for the first year he did, though the letters grew shorter, and eventually they stopped altogether, without either of them deciding it should be so.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ruth Asawa, Untitled, Hanging Form</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She burned the recipe after making it once, so no one could ask for it again.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The lighthouse had not worked in years, but sailors still spoke of it kindly.</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">They had built the fence together the summer before the divorce, and neither of them, in all the years after, ever mentioned tearing it down.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Hans Wegner, The Chair, 1949</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The photograph had faded so badly that only the outline of her hat remained.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">He had promised to write, and for the first year he did, though the letters grew shorter, and eventually they stopped altogether, without either of them deciding it should be so.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Ruth Asawa, Untitled, Hanging Form</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She burned the recipe after making it once, so no one could ask for it again.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The lighthouse had not worked in years, but sailors still spoke of it kindly.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">They had built the fence together the summer before the divorce, and neither of them, in all the years after, ever mentioned tearing it down.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Charlotte Perriand, Ombra Chair, 1954</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-regular-preview" data-weight="400" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Regular</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-regular-preview" data-weight="400" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Regular</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -189,25 +189,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -216,27 +216,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Constantin Brâncuși, Bird in Space, 1928</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The piano had not been tuned since the wedding, and still she played it every Sunday.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered whose idea the trip had been, only that they had all agreed to it too quickly, the way people agree to things they secretly hope will not happen.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He kept a spare key to a house that no longer existed.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Jean Prouvé, Standard Chair, 1934</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The orchard had gone wild, but the apples still came, bitter and small.</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">She read the last chapter first, every time, as if knowing the ending might somehow change how she felt about everything that came before it.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Josef Hoffmann, Vase, Wiener Werkstätte, 1905</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Constantin Brâncuși, Bird in Space, 1928</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The piano had not been tuned since the wedding, and still she played it every Sunday.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">No one remembered whose idea the trip had been, only that they had all agreed to it too quickly, the way people agree to things they secretly hope will not happen.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He kept a spare key to a house that no longer existed.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Jean Prouvé, Standard Chair, 1934</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The orchard had gone wild, but the apples still came, bitter and small.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">She read the last chapter first, every time, as if knowing the ending might somehow change how she felt about everything that came before it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Josef Hoffmann, Vase, Wiener Werkstätte, 1905</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-regular-italic-preview" data-weight="400" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Regular Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-regular-italic-preview" data-weight="400" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Regular Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -249,25 +249,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -276,27 +276,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Lee Miller, Portrait of Space, Egypt, 1937</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The tailor never once asked why the coat needed to be so long.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Every winter he repainted the shutters the same color, though no one had ever asked him to, and no one, in truth, had ever noticed the difference.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept the ticket stub long after she had forgotten the film.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Irving Penn, Cuzco Children, Peru, 1948</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bell had cracked years ago, but they rang it anyway, out of habit.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He never told her about the letter, and by the time he thought to, so many years had passed that telling her would have meant explaining the silence too.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Dorothea Lange, Migrant Mother, Nipomo, 1936</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Lee Miller, Portrait of Space, Egypt, 1937</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The tailor never once asked why the coat needed to be so long.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">Every winter he repainted the shutters the same color, though no one had ever asked him to, and no one, in truth, had ever noticed the difference.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">She kept the ticket stub long after she had forgotten the film.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Irving Penn, Cuzco Children, Peru, 1948</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bell had cracked years ago, but they rang it anyway, out of habit.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He never told her about the letter, and by the time he thought to, so many years had passed that telling her would have meant explaining the silence too.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Dorothea Lange, Migrant Mother, Nipomo, 1936</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-medium-preview" data-weight="500" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Medium</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-medium-preview" data-weight="500" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Medium</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -309,25 +309,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -336,27 +336,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Louise Nevelson, Sky Cathedral, 1958</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The fire had gone out hours ago, but neither of them moved to relight it.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She had learned to read the weather by the way her grandmother's knees ached, and though the doctors called it nonsense, she never once found her wrong.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He signed the letter with a name that was not quite his own.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">René Magritte, Le Fils de l'Homme, 1964</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The boat had not left the harbor in years, but they kept it painted.</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">They never spoke of the year they lost the farm, though it sat, unspoken, at the center of every conversation they ever had after that.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Fernand Léger, Les Constructeurs, 1950</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Louise Nevelson, Sky Cathedral, 1958</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The fire had gone out hours ago, but neither of them moved to relight it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She had learned to read the weather by the way her grandmother's knees ached, and though the doctors called it nonsense, she never once found her wrong.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He signed the letter with a name that was not quite his own.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">René Magritte, Le Fils de l'Homme, 1964</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The boat had not left the harbor in years, but they kept it painted.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">They never spoke of the year they lost the farm, though it sat, unspoken, at the center of every conversation they ever had after that.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Fernand Léger, Les Constructeurs, 1950</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-medium-italic-preview" data-weight="500" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Medium Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-medium-italic-preview" data-weight="500" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Medium Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -369,25 +369,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -396,27 +396,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">André Kertész, Distortion No. 40, Paris, 1933</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The shop had closed years before, but the sign stayed up out of stubbornness.</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">He kept driving long after the turn he needed had passed, unwilling, for reasons he could not have explained, to admit that he was lost.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Berenice Abbott, Nightview, New York, 1932</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She never learned his last name, and by the time it mattered, it was too late to ask.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The bridge had been closed for repairs so long that people forgot it had ever opened.</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Every year on the same date, without explanation, she sent a letter to an address that, as far as anyone could tell, no longer existed.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Gio Ponti, Superleggera Chair, 1957</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">André Kertész, Distortion No. 40, Paris, 1933</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The shop had closed years before, but the sign stayed up out of stubbornness.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">He kept driving long after the turn he needed had passed, unwilling, for reasons he could not have explained, to admit that he was lost.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Berenice Abbott, Nightview, New York, 1932</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She never learned his last name, and by the time it mattered, it was too late to ask.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The bridge had been closed for repairs so long that people forgot it had ever opened.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">Every year on the same date, without explanation, she sent a letter to an address that, as far as anyone could tell, no longer existed.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Gio Ponti, Superleggera Chair, 1957</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-bold-preview" data-weight="700" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Bold</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-bold-preview" data-weight="700" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Bold</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -429,25 +429,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -456,27 +456,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Wifredo Lam, Sans Titre, 1966</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The chair had been empty at the table for so long that no one thought to move it.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They had rebuilt the barn twice after the fires, each time a little smaller, until eventually it was less a barn than a memory of one, kept upright out of loyalty.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Robert Frank, Trolley, New Orleans, 1955</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The wallpaper had faded to almost nothing, but she could still trace the pattern with her eyes closed.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">He never returned the borrowed coat, and by winter, it no longer felt like borrowing.</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Marcel Breuer, Wassily Chair, 1925</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">No one asked why she kept the porch light on all summer.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Wifredo Lam, Sans Titre, 1966</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The chair had been empty at the table for so long that no one thought to move it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">They had rebuilt the barn twice after the fires, each time a little smaller, until eventually it was less a barn than a memory of one, kept upright out of loyalty.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Robert Frank, Trolley, New Orleans, 1955</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The wallpaper had faded to almost nothing, but she could still trace the pattern with her eyes closed.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">He never returned the borrowed coat, and by winter, it no longer felt like borrowing.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Marcel Breuer, Wassily Chair, 1925</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">No one asked why she kept the porch light on all summer.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-bold-italic-preview" data-weight="700" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Bold Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-bold-italic-preview" data-weight="700" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Bold Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -489,25 +489,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -516,27 +516,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alexander Calder, Untitled Mobile, 1957</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She kept his letters in a hatbox and never once read them again.</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">The house had been empty for years, but the garden had not noticed, and it went on blooming as if someone were still there to see it.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He never learned to swim, and he never once mentioned why.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Jean Royère, Ours Polaire Sofa, 1950</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bread was still warm when she finally decided not to knock.</p>
-            <p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">They walked the whole length of the pier without saying a word to each other, and by the time they reached the end, neither of them remembered what there had been to say in the first place.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He left the porch light on, though no one was coming home that night.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Alexander Calder, Untitled Mobile, 1957</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She kept his letters in a hatbox and never once read them again.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">The house had been empty for years, but the garden had not noticed, and it went on blooming as if someone were still there to see it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He never learned to swim, and he never once mentioned why.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Jean Royère, Ours Polaire Sofa, 1950</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The bread was still warm when she finally decided not to knock.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">They walked the whole length of the pier without saying a word to each other, and by the time they reached the end, neither of them remembered what there had been to say in the first place.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">He left the porch light on, though no one was coming home that night.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-black-preview" data-weight="900" data-font-style="normal">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Black</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-black-preview" data-weight="900" data-font-style="normal">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Black</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -549,25 +549,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -576,27 +576,27 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Georges Braque, Nature Morte à la Guitare, 1932</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The clock had stopped years ago, and no one had bothered to fix it.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She wore her mother's coat that winter, and though it did not fit her, she never once thought to have it altered, as if the wrongness of it were the point.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Serge Poliakoff, Composition Abstraite, 1962</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">There was nothing left to say, so they said nothing, and it was enough.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">He counted the stairs each morning, though he had lived there for thirty years.</p>
-            <p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The train arrived late, as it always did, and no one seemed to mind, least of all the old man who had missed it on purpose, twice, that same week.</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She left the door open, as if someone might still be expected before nightfall.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(7rem * var(--sample-scale, 1));">Georges Braque, Nature Morte à la Guitare, 1932</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The clock had stopped years ago, and no one had bothered to fix it.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">She wore her mother's coat that winter, and though it did not fit her, she never once thought to have it altered, as if the wrongness of it were the point.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Serge Poliakoff, Composition Abstraite, 1962</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">There was nothing left to say, so they said nothing, and it was enough.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">He counted the stairs each morning, though he had lived there for thirty years.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The train arrived late, as it always did, and no one seemed to mind, least of all the old man who had missed it on purpose, twice, that same week.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">She left the door open, as if someone might still be expected before nightfall.</p>
           </div>
         </div>
 
-        <div class="style-preview" id="terra-black-italic-preview" data-weight="900" data-font-style="italic">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Black Italic</span>
-                  <span class="dropdown-arrow"></span>
+        <div class="type-detail__style-preview" id="terra-black-italic-preview" data-weight="900" data-font-style="italic">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Black Italic</span>
+                  <span class="type-detail__dropdown-arrow"></span>
                 </button>
-                <ul class="style-dropdown-list" role="listbox">
+                <ul class="type-detail__dropdown-list" role="listbox">
                   <li><button data-style="terra-light">Terra Light</button></li>
                   <li><button data-style="terra-light-italic">Terra Light Italic</button></li>
                   <li><button data-style="terra-regular">Terra Regular</button></li>
@@ -609,25 +609,25 @@
                   <li><button data-style="terra-black-italic">Terra Black Italic</button></li>
                 </ul>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -636,46 +636,46 @@
               </div>
             </div>
           </div>
-                    <div class="random-text">
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Line Vautrin, Miroir Soleil, circa 1955</p>
-            <p class="sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">The letter arrived three weeks after he had stopped expecting it, and by then the news it carried had already made its way to him some other way, so he read it only out of habit.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">They spoke of the sea as if it were a person they had once loved.</p>
-            <p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">He kept the letter unopened for eleven years, and never once explained why.</p>
-            <p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Man Ray, Noire et Blanche, 1926</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The bread had gone stale on the table, and still no one thought to clear it away, as though clearing it meant admitting that no one was coming back.</p>
-            <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">He put his gripsack on the floor at his feet, but held the casket in his lap.</p>
-            <p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The porch had not been swept since the funeral, and by spring the leaves had covered it entirely.</p>
+                    <div class="type-detail__random-text">
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Line Vautrin, Miroir Soleil, circa 1955</p>
+            <p class="type-detail__sample-text" style="font-size: calc(3rem * var(--sample-scale, 1));">The letter arrived three weeks after he had stopped expecting it, and by then the news it carried had already made its way to him some other way, so he read it only out of habit.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">They spoke of the sea as if it were a person they had once loved.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">He kept the letter unopened for eleven years, and never once explained why.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">Man Ray, Noire et Blanche, 1926</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The bread had gone stale on the table, and still no one thought to clear it away, as though clearing it meant admitting that no one was coming back.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">He put his gripsack on the floor at his feet, but held the casket in his lap.</p>
+            <p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">The porch had not been swept since the funeral, and by spring the leaves had covered it entirely.</p>
           </div>
         </div>
 
         <!-- ============ SLIDE 2: VARIABLE FONT ============ -->
-        <div class="slide-variable" id="variable-slide">
-          <div class="parameter">
-            <div class="style-controls">
-              <div class="style-dropdown">
-                <button class="style-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="style-dropdown-label">Terra Variable</span>
+        <div class="type-detail__slide-variable" id="variable-slide">
+          <div class="type-detail__parameter">
+            <div class="type-detail__controls">
+              <div class="type-detail__dropdown">
+                <button class="type-detail__dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="type-detail__dropdown-label">Terra Variable</span>
                 </button>
               </div>
-              <button class="edit-sample-btn">Edit sample</button>
+              <button class="type-detail__edit-btn">Edit sample</button>
               <input type="range" min="1" max="100" value="50">
-              <div class="align-group">
-                <button class="align-left" aria-label="Align left">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+              <div class="type-detail__align-group">
+                <button class="type-detail__align-btn--left" aria-label="Align left">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="1" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-mid" aria-label="Align center">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--mid" aria-label="Align center">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="5" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
                   </svg>
                 </button>
-                <button class="align-right" aria-label="Align right">
-                  <svg class="align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
+                <button class="type-detail__align-btn--right" aria-label="Align right">
+                  <svg class="type-detail__align-icon" viewBox="0 0 25 20" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="0" width="23" height="2" fill="currentColor"/>
                     <rect x="9" y="9" width="15" height="2" fill="currentColor"/>
                     <rect x="1" y="18" width="23" height="2" fill="currentColor"/>
@@ -684,27 +684,27 @@
               </div>
             </div>
           </div>
-          <div class="random-text">
- <p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Jean-Michel Frank, <i>Console Table</i>, 1935</p>
-<p class="sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The garden gate had rusted shut, but no one thought to force it open.</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">She had memorized the train schedule long before she ever had a reason to leave, as though preparing for a departure she could not yet name.</p>
-<p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Brassaï, <i>Graffiti Series</i>, Paris, 1935</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">He kept the receipt from that dinner in his wallet for years, and when she finally asked why, all he said was, <i>"I wasn't ready to let it be over."</i></p>
-<p class="sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The greenhouse had shattered in the storm, but the roses grew anyway, uncovered.</p>
-<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">They had agreed, without ever saying so aloud, to never again mention the summer the well ran dry.</p>
-<p class="sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Gaetano Pesce, <i>Pratone Armchair</i>, 1971</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">She left the book open on the table, its spine cracked at the same page it had been for weeks, <i>Notes on the Sea</i> still unfinished.</p>
-<p class="sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">He never said the word <i>divorce</i>, not once, in all the years he lived alone in that house.</p>
-<p class="sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Her mother used to say, <i>"the house remembers, even when we don't,"</i> and after the fire, she finally understood what she meant.</p>
-<p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The film playing at the old theater that week was <i>A Quiet Departure</i>, though almost no one came to see it.</p>
-<p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept the note folded in his coat pocket for years, four words in her handwriting: <i>come back when ready</i>.</p>
-<p class="sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The record playing when she walked in was, unmistakably, <i>Kind of Blue</i>, and she never once asked him to change it.</p>
+          <div class="type-detail__random-text">
+ <p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">Jean-Michel Frank, <i>Console Table</i>, 1935</p>
+<p class="type-detail__sample-text" style="font-size: calc(5rem * var(--sample-scale, 1));">The garden gate had rusted shut, but no one thought to force it open.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">She had memorized the train schedule long before she ever had a reason to leave, as though preparing for a departure she could not yet name.</p>
+<p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Brassaï, <i>Graffiti Series</i>, Paris, 1935</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">He kept the receipt from that dinner in his wallet for years, and when she finally asked why, all he said was, <i>"I wasn't ready to let it be over."</i></p>
+<p class="type-detail__sample-text" style="font-size: calc(8rem * var(--sample-scale, 1));">The greenhouse had shattered in the storm, but the roses grew anyway, uncovered.</p>
+<p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">They had agreed, without ever saying so aloud, to never again mention the summer the well ran dry.</p>
+<p class="type-detail__sample-text" style="font-size: calc(4rem * var(--sample-scale, 1));">Gaetano Pesce, <i>Pratone Armchair</i>, 1971</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">She left the book open on the table, its spine cracked at the same page it had been for weeks, <i>Notes on the Sea</i> still unfinished.</p>
+<p class="type-detail__sample-text" style="font-size: calc(6rem * var(--sample-scale, 1));">He never said the word <i>divorce</i>, not once, in all the years he lived alone in that house.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2rem * var(--sample-scale, 1));">Her mother used to say, <i>"the house remembers, even when we don't,"</i> and after the fire, she finally understood what she meant.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The film playing at the old theater that week was <i>A Quiet Departure</i>, though almost no one came to see it.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">He kept the note folded in his coat pocket for years, four words in her handwriting: <i>come back when ready</i>.</p>
+<p class="type-detail__sample-text" style="font-size: calc(2.5rem * var(--sample-scale, 1));">The record playing when she walked in was, unmistakably, <i>Kind of Blue</i>, and she never once asked him to change it.</p>
 </div>
           </div>
 
         <!-- ============ SLIDE 3: TYPE IN USE ============ -->
-        <div class="slide-image" id="image-slide" style="--img-slide-height: 120vh;">
-          <div class="img-slider">
+        <div class="type-detail__slide-image" id="image-slide" style="--img-slide-height: 120vh;">
+          <div class="type-detail__img-slider">
             <img src="/typefaces/img/Terra/Terra01.png" alt="">
             <img src="/typefaces/img/Terra/Terra02.png" alt="">
             <img src="/typefaces/img/Terra/Terra03.png" alt="">
@@ -720,17 +720,17 @@
             <img src="/typefaces/img/Terra/Terra-Sketch01.png" alt="">
             <img src="/typefaces/img/Terra/Terra-Sketch02.png" alt="">
           </div>
-          <div class="img-slider-dots"></div>
+          <div class="type-detail__img-slider-dots"></div>
 
         </div>
 
         <!-- ============ SLIDE 4: INFORMATION ============ -->
-        <div class="slide-info" id="information">
-          <div class="info-fulltext">
+        <div class="type-detail__slide-info" id="information">
+          <div class="type-detail__info-fulltext">
             <p>In 'The Bold Idea,' Michael Twyman argues that the rise of bold type was not a matter of stylistic preference but a response to broader shifts in society; the expansion of education, the growing volume of printed matter, competitive pressures in advertising, and a new, non-linear way of thinking about text exemplified by graphs, charts, and tables.</p>
             <p>Terra is a slab-serif type family that extends this same line of thinking into contemporary type design. Designed for editorial use in an art and lifestyle magazine, Terra spans Light to Black across both Upright and Italic styles, offering a complete system for body text typesetting: rhythm carried through its rounded, humanist details, contrast built into its weight range, and emphasis delivered through an italic that shifts tone from informational to conversational, particularly suited to interview and feature pieces.</p>
           </div>
-          <div class="info-subtext">
+          <div class="type-detail__info-subtext">
             <p id="info-styles-count">10 Styles</p>
             <p id="info-lang-toggle">58 languages</p>
             <p id="info-lang-list">Afrikaans, Albanian, Asu, Basque, Bemba, Bena, Breton, Catalan, Chiga, Cornish, Dutch, English, Filipino, Friulian, Galician, German, Gusii, Indonesian, Irish, Italian, Kabuverdianu, Kalenjin, Kinyarwanda, Luo, Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde, Malagasy, Manx, Morisyen, North Ndebele, Nyankole, Oromo, Portuguese, Quechua, Romansh, Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena, Shambala, Shona, Soga, Somali, Spanish, Swahili, Swiss German, Taita, Teso, Uzbek (Latin), Vunjo, Zulu</p>

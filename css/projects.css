@@ -1,6 +1,6 @@
 /* //------Project List-----// */
 
-.project-list {
+.projects__list {
   width: 80%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -9,34 +9,34 @@
   font-size: 0.8rem;
 }
 
-.project-item {
+.projects__item {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
 
-.project-preview {
+.projects__preview {
   border: 1px solid var(--tertiary-grey);
   width: 100%;
   object-fit: cover;
   margin-bottom: 0.3rem;
 }
 
-.project-title {
+.projects__title {
   color: var(--tertiary-grey);
 }
 
-.project-info,
-.project-info a {
+.projects__info,
+.projects__info a {
   color: var(--tertiary-grey);
 }
 
-.project-link a:hover {
+.projects__link a:hover {
   color: orange;
 }
 
 @media (max-width: 1024px) {
-  .project-list {
+  .projects__list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -46,7 +46,7 @@
     margin-left: 0.2rem;
     margin-bottom: 20rem;
   }
-  .project-list {
+  .projects__list {
     width: 100%;
     grid-template-columns: 1fr;
   }
